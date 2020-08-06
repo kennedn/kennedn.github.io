@@ -1,0 +1,239 @@
+@font-face {
+	font-family: ubuntu;
+  	src: url('/font/ubuntu/UbuntuMono-R.ttf');
+}
+
+html, body {
+	//background-color: #bc1142; 
+	width: 100%;
+	height: 100%;
+	min-height: 100%;
+	overflow: hidden;
+	white-space:nowrap;
+}
+
+#background {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: -1000; 
+	display: none;
+	//border: 10px solid purple;
+}
+
+.center {
+}
+
+.tile-container {
+	perspective: 100%;
+	display: inline-block;
+	cursor: pointer; 
+}
+.tile-container, .front, .back {
+	width:400px;
+	height:400px; 
+}
+.tile-container:hover {   
+  transition: transform 0.3s;
+  transform: scale(0.95); 
+}
+.tile-container:not(:hover) {
+  transition: transform 0.3s;
+  transform: scale(1.0); 
+}
+.tile {
+	transform-style: preserve-3d;
+	transition: transform 0.7s;
+	position: relative; 
+	overflow: visible;
+	white-space: normal;
+}			
+.tile .front {
+	z-index: 2;
+	transform: rotateY(0deg); 
+}
+.tile .back {
+  transform: rotateY( 180deg ); 
+}
+.tile .front,.back {
+	backface-visibility: hidden;
+  
+	position: absolute;
+	top: 0;
+	left: 0; 
+}
+.tile.flipped {
+    transform: rotateY( 180deg );
+}
+.tile.end-flipped {
+	transition: transform 0.5s;
+	transform: rotateY(90deg);
+} 
+.tile img {
+	width:100%;
+	height: 100%;
+	user-select: none;
+	user-drag: none;
+}
+.tile .back .p-bg {
+    width: 98%;
+    height: 1%;
+    left:1%;
+    bottom:1%;
+    background-color: rgba(0,0,0,0.08);
+    display: inline;
+    position: absolute;
+}
+.tile .back p {
+	display: inline;
+	left:0;
+  	//top: -20;
+	position: absolute;
+	padding: 0% 5% 5% 5%;
+	text-align: left;
+  	color: white;
+  	font-family: "ubuntu";
+  	font-style: normal;    
+  	font-size: 26;
+  	user-select: none;
+}
+.tile .back h1 {
+	display: inline;
+	position: absolute;
+  	left: 0;
+  	top: 0;
+	padding: 10% 5% 5% 5%;
+	text-align: left;
+  	color: white;
+  	font-family: "ubuntu";
+  	font-style: normal;    
+  	font-size: 32pt;
+  	user-select: none;
+}
+
+.tile-container-big {
+	perspective: 100%;
+	display: inline-block;
+	cursor: pointer; 
+}
+.tile-container-big, .front, .back {
+	width:400px;
+	height:400px; 
+}
+
+.tile-big {
+	transform-style: preserve-3d;
+	transition: transform 1.2s;
+	position: relative; 
+	overflow: visible;
+	white-space: normal;
+}			
+.tile-big .front {
+	z-index: 2;
+	transform: rotateY(0deg); 
+}
+.tile-big .back {
+  transform: rotateY( 180deg ); 
+}
+.tile-big .front,.back {
+	backface-visibility: hidden;
+  
+	position: absolute;
+	top: 0;
+	left: 0; 
+}
+.tile-big.flipped {
+    transform: rotateY( 180deg );
+}
+.tile-big.end-flipped {
+	transition: transform 0.5s;
+	transform: rotateY(90deg);
+} 
+.tile-big img {
+	width:100%;
+	height: 100%;
+	user-select: none;
+	user-drag: none;
+}
+.tile-big .back .p-bg {
+    width: 98%;
+    height: 1%;
+    left:1%;
+    bottom:1%;
+    background-color: rgba(0,0,0,0.08);
+    display: inline;
+    position: absolute;
+}
+.tile-big .back p {
+	display: inline;
+	left:0;
+  	//top: -20;
+	position: absolute;
+	padding: 0% 5% 5% 5%;
+	text-align: left;
+  	color: white;
+  	font-family: "ubuntu";
+  	font-style: normal;    
+  	font-size: 26;
+  	user-select: none;
+}
+.tile-big .back h1 {
+	display: inline;
+	position: absolute;
+  	left: 0;
+  	top: 0;
+	padding: 10% 5% 5% 5%;
+	text-align: left;
+  	color: white;
+  	font-family: "ubuntu";
+  	font-style: normal;    
+  	font-size: 32pt;
+  	user-select: none;
+}
+.tile-big .back iframe {
+	display: inline;
+	position: absolute;
+  	left: 0;
+  	top: 0;
+  	width: 100%;
+  	height: 100vh;
+	padding: 5%, 5%, 5%, 5%;
+  	user-select: none;
+  	background-color: "transparent";
+  	border: 0;
+}
+h1 {
+	display: inline;
+	position: absolute;
+  	left: 0;
+  	top: 0;
+	padding: 10% 5% 5% 5%;
+	text-align: left;
+  	color: white;
+  	font-family: "ubuntu";
+  	font-style: normal;    
+  	font-size: 32pt;
+  	user-select: none;
+}
+
+#watermark {
+  position: absolute;
+  //overflow: hidden;
+  z-index:10000;
+}
+#watermark img {
+  max-width: 100%;
+}
+#watermark p {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #fff;
+  background-color: rgba(0,0,0,0.3);
+  font-size: 100px;
+  pointer-events: none;
+  -webkit-transform: rotate(45deg) translate(50%);
+  -moz-transform: rotate(45deg) translate(50%);
+}

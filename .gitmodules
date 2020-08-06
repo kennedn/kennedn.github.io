@@ -1,0 +1,3 @@
+[submodule "gravitation"]
+	path = gravitation
+	url = https://github.com/kennedn/p5Gravitation
