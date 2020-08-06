@@ -1,3 +1,9 @@
 [submodule "gravitation"]
 	path = gravitation
 	url = https://github.com/kennedn/p5Gravitation
+[submodule "pong"]
+	path = pong
+	url = https://github.com/kennedn/p5Pong
+[submodule ".PyTetris"]
+	path = .PyTetris
+	url = https://github.com/kennedn/PyTetris
