@@ -1,6 +1,6 @@
 @font-face {
 	font-family: ubuntu;
-  	src: url('/font/Ubuntu-B.ttf');
+  	src: url('/font/Ubuntu-R.ttf');
 }
 
 html, body {
@@ -21,6 +21,16 @@ html, body {
 	z-index: -1000; 
 	display: none;
 	//border: 10px solid purple;
+}
+
+#GFrame {
+	zoom: 1;
+	-moz-transform: scale(1);
+	-moz-transform-origin: 0 0;
+	-o-transform: scale(1);
+	-o-transform-origin: 0 0;
+	-webkit-transform: scale(1);
+	-webkit-transform-origin: 0 0;
 }
 
 .center {

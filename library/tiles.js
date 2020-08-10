@@ -48,16 +48,28 @@ function resizeTile() {
   $("h1").css({'font-size' :32 * font_scaler});
   $("#watermark p").css({'font-size' :100 * font_scaler,'left' : - (100 * font_scaler) *4});
 
-  var pad = 0.97;
-  var canvas = $(".tile-big > .back > iframe").contents().find("canvas");
-  var canvas_div = $(".tile-big > .back > iframe").contents().find("#PyTetris");
+  var pad = 1;
+//  var canvas = $(".tile-big > .back > iframe").contents().find("canvas");
+//  var canvas_div = $(".tile-big > .back > iframe").contents().find("#PyTetris");
+  var canvas = $("#GFrame");
   var ratio = canvas.width() / canvas.height();
-  canvas_div.css({'height': tileScale*rows*pad + 'px'});
-  canvas_div.css({'width': canvas.height() * ratio + 'px'});
+
+
+  //canvas_div.css({'height': tileScale*rows*pad + 'px'});
+  //canvas_div.css({'width': canvas_div.height() * ratio + 'px'});
+  var webkit_scale = canvas.height() / (tileScale*rows*pad);
   canvas.css({'height': tileScale*rows*pad + 'px'});
-  canvas.css({'width': canvas_div.height() * ratio + 'px'});
+  canvas.css({'width': canvas.height() * ratio + 'px'}); 
+  canvas.css({'-moz-transform': 'scale(' + 0.1 + ')'});
+  canvas.css({'-o-transform': 'scale(' + 0.1 + ')'});
+  canvas.css({'-webkit-transform': 'scale(' + 0.1 + ')'});
   if (canvas.length === 0)
     resizeOnCanvas(100);
+//  else {
+//    var ctx = canvas.get(0);
+//    ctx.height = -1;
+//    ctx.width = -1;
+//  }
 }
 
 
@@ -187,7 +199,22 @@ $(document).ready(function() {
           }
           else {
             // flip tile back around
-            if(k != cols * rows) {
+            if(k === cols * rows) {
+              $("#0").toggleClass('flipped');
+              $("#0 > .back").append("<iframe seamless scrolling='no' id='GFrame' src='/tetris/index.html'></iframe>");
+              resizeTile();
+            }
+            else if(k === cols * rows - 1) {
+              $("#0").toggleClass('flipped');
+              $("#0 > .back").append("<iframe seamless scrolling='no' id='GFrame' src='/pong/index.html'></iframe>");
+              resizeTile();
+            }
+            else if(k === cols * rows - 2) {
+              $("#0").toggleClass('flipped');
+              $("#0 > .back").append("<iframe seamless scrolling='no' id='GFrame' src='/gravitation/index.html'></iframe>");
+              resizeTile();
+            }
+            else {
               $("#"+k).toggleClass('flipped');
               (function(k){
                 $("#"+k +" .front").delay(400).fadeOut(500, function() {
@@ -198,11 +225,6 @@ $(document).ready(function() {
                 //location.reload();
                 });
               })(k);
-            }
-            else {
-              $("#0").toggleClass('flipped');
-              $("#0 > .back").append("<iframe seamless scrolling='no' id='PyApp' src='/tetris/index.html'></iframe>");
-              resizeTile();
             }
 
             // Fade the tile then navigate to url afterwards
