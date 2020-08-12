@@ -1,6 +1,7 @@
 [submodule "gravitation"]
 	path = gravitation
 	url = https://github.com/kennedn/p5Gravitation
+        ignore = dirty
 [submodule "pong"]
 	path = pong
 	url = https://github.com/kennedn/p5Pong
