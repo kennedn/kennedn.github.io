@@ -53,6 +53,127 @@ html, body {
   transition: transform 0.3s;
   transform: scale(1.0); 
 }
+
+.tile-container-big {
+	perspective: 100%;
+	display: inline-block;
+	cursor: pointer; 
+}
+.tile-container-big, .front, .back {
+	width:400px;
+	height:400px; 
+}
+
+.tile-big {
+	transform-style: preserve-3d;
+	transition: transform 1.2s;
+	position: relative; 
+	overflow: visible;
+	white-space: normal;
+}			
+.tile-big .front {
+	z-index: 2;
+	transform: rotateY(0deg); 
+}
+.tile-big .back {
+  transform: rotateY( 180deg ); 
+  z-index : 100;
+}
+.tile-big .front,.back {
+	backface-visibility: hidden;
+  
+	position: absolute;
+	top: 0;
+	left: 0; 
+}
+.tile-big.flipped {
+    transform: rotateY( 180deg );
+}
+.tile-big.end-flipped {
+	transition: transform 0.5s;
+	transform: rotateY(90deg);
+} 
+.tile-big img {
+	width:100%;
+	height: 100%;
+	user-select: none;
+	user-drag: none;
+}
+.tile-big .back img {
+	position:relative;
+	z-index: 1000;
+	pointer-events: none;
+}
+.tile-big .back .p-bg {
+    width: 98%;
+    height: 1%;
+    left:1%;
+    bottom:1%;
+    background-color: rgba(0,0,0,0.1);
+    display: inline;
+    position: absolute;
+}
+.tile-big .back .p-bg #big-p {
+	display: inline;
+	left:0;
+  	//top: 20%;
+	position: absolute;
+	padding: 5% 5% 5% 5%;
+	text-align: left;
+  	color: white;
+  	font-family: "ubuntu";
+  	font-style: normal;    
+  	font-size: 76;
+  	//line-height: 120%;
+  	user-select: none;
+}
+.tile-big .back h1 {
+	display: inline;
+	position: absolute;
+  	left: 0;
+  	top: 0;
+	padding: 10% 5% 5% 5%;
+	text-align: left;
+  	color: white;
+  	font-family: "ubuntu";
+  	font-style: normal;    
+  	font-size: 32pt;
+  	user-select: none;
+}
+.tile-big .back .wrapperTop {
+	position: absolute;
+  	left: 0;
+  	top: 0;
+  	width: 98%;
+  	height: 98%;
+  	user-select: none;
+  	border: 0;*/
+}
+.tile-big .back .wrapperLeft {
+	position: absolute;
+  	left: 0;
+  	top: 0;
+  	width: 98%;
+  	height: 98%;
+  	user-select: none;
+  	border: 0;
+}
+
+.tile-big .back .wrapperLeft .gameFrame {
+	left: 0;
+	top: 0;
+	user-select: none;
+	padding: 0% .25% .25% .25%;
+
+}
+
+.tile-big .back .wrapperTop .gameFrame {
+	left: 0;
+	top: 0;
+	user-select: none;
+	padding: 1% .5% .5% 1.5%;
+
+}
 .tile {
 	transform-style: preserve-3d;
 	transition: transform 0.7s;
@@ -121,127 +242,6 @@ html, body {
   	font-style: normal;    
   	font-size: 32pt;
   	user-select: none;
-}
-
-.tile-container-big {
-	perspective: 100%;
-	display: inline-block;
-	cursor: pointer; 
-}
-.tile-container-big, .front, .back {
-	width:400px;
-	height:400px; 
-}
-
-.tile-big {
-	transform-style: preserve-3d;
-	transition: transform 1.2s;
-	position: relative; 
-	overflow: visible;
-	white-space: normal;
-}			
-.tile-big .front {
-	z-index: 2;
-	transform: rotateY(0deg); 
-}
-.tile-big .back {
-  transform: rotateY( 180deg ); 
-  z-index : 100;
-}
-.tile-big .front,.back {
-	backface-visibility: hidden;
-  
-	position: absolute;
-	top: 0;
-	left: 0; 
-}
-.tile-big.flipped {
-    transform: rotateY( 180deg );
-}
-.tile-big.end-flipped {
-	transition: transform 0.5s;
-	transform: rotateY(90deg);
-} 
-.tile-big img {
-	width:100%;
-	height: 100%;
-	user-select: none;
-	user-drag: none;
-}
-.tile-big .back img {
-	position:relative;
-	z-index: 1000;
-	pointer-events: none;
-}
-.tile-big .back .p-bg {
-    width: 98%;
-    height: 1%;
-    left:1%;
-    bottom:1%;
-    background-color: rgba(0,0,0,0.1);
-    display: inline;
-    position: absolute;
-}
-.tile-big .back p {
-	display: inline;
-	left:0;
-  	//top: -20;
-	position: absolute;
-	padding: 5% 5% 5% 5%;
-	text-align: left;
-  	color: white;
-  	font-family: "ubuntu";
-  	font-style: normal;    
-  	font-size: 26;
-  	line-height: 120%;
-  	user-select: none;
-}
-.tile-big .back h1 {
-	display: inline;
-	position: absolute;
-  	left: 0;
-  	top: 0;
-	padding: 10% 5% 5% 5%;
-	text-align: left;
-  	color: white;
-  	font-family: "ubuntu";
-  	font-style: normal;    
-  	font-size: 32pt;
-  	user-select: none;
-}
-.tile-big .back .wrapperTop {
-	position: absolute;
-  	left: 0;
-  	top: 0;
-  	width: 98%;
-  	height: 98%;
-  	user-select: none;
-  	border: 0;*/
-}
-.tile-big .back .wrapperLeft {
-	position: absolute;
-  	left: 0;
-  	top: 0;
-  	width: 98%;
-  	height: 98%;
-  	user-select: none;
-  	border: 0;
-}
-
-.tile-big .back .wrapperLeft .gameFrame {
-	left: 0;
-	top: 0;
-	user-select: none;
-	padding: 0% .25% .25% .25%;
-
-}
-
-.tile-big .back .wrapperTop .gameFrame {
-	left: 0;
-	top: 0;
-	user-select: none;
-	padding: 1% .5% .5% 1.5%;
-
 }
 /* pyjamas iframe hide */
 #__pygwt_historyFrame { position: absolute; }
