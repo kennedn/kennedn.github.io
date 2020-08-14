@@ -7,3 +7,4 @@
 [submodule ".PyTetris"]
 	path = .PyTetris
 	url = https://github.com/kennedn/PyTetris
+        branch = jsdl
