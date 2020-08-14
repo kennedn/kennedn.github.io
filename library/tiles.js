@@ -29,10 +29,10 @@ function resizeTile() {
   // Get lowest of the two and use this as the tile width & height going forward
   let tileSize=Math.min(tileWidth,tileHeight);
 
-  // Derive a font scaler from the difference between tile and doc size
+  // Derive a font scaler from the tileSize
   let fontScaler = tileSize / 360;
 
-  // Set Background div to the window dimensions ( for colour transitions)
+  // Set Background div to the window dimensions (for colour transitions)
   $("#background").css({'width': WIDTH , 'height': HEIGHT});
 
   // Set container divs to equal the derived tile sizes
@@ -51,6 +51,8 @@ function resizeTile() {
      'width': tileSize * rows,
      'height': tileSize * columns
   });
+
+
   $(".tile-container-big > .tile-big > .back > .wrapperLeft, .wrapperTop").each(function() {
       var $wrap = $(this);
       var wrapWidth = $wrap.width(); // width of the wrapper
@@ -71,24 +73,8 @@ function resizeTile() {
   $("#big-p").css({'font-size' : 34 * fontScaler});
   $(".tile .back h1").css({'font-size' :32 * fontScaler});
   $("h1").css({'font-size' :32 * fontScaler});
-  //$("#watermark p").css({'font-size' :100 * fontScaler,'left' : - (100 * fontScaler) *4});
-  var canvas = $(".tile-container-big > .tile-big > .back > .wrapperLeft, .wrapperTop").children("iframe").contents().find("canvas");
-  // //  var canvas_div = $(".tile-big > .back > iframe").contents().find("#PyTetris");
-  // let pad = 1;
-  // let gameFrame = $("#GFrame");
-  // let gameRatio = gameFrame.width() / gameFrame.height();
-  // let gameSize = Math.min((tileSize*rows*pad), tileSize*columns*pad/2);
-  // let webkitScaler = Math.min(gameFrame.width(), gameFrame.height()/2) / gameSize;
-  // //let webkitScaler = (gameRatio > 1) ?  ((tileSize*rows*pad) / 2) / gameFrame.width(): 
-  // //                                 (tileSize*columns*pad) / gameFrame.height();
 
-  // //canvas_div.css({'height': tileSize*rows*pad + 'px'});
-  // //canvas_div.css({'width': canvas_div.height() * ratio + 'px'});
-  // gameFrame.css({'height': gameSize*2});
-  // gameFrame.css({'width': gameSize}); 
-  // gameFrame.css({'-moz-transform': 'scale(' + webkitScaler + ')'});
-  // gameFrame.css({'-o-transform': 'scale(' + webkitScaler + ')'});
-  // gameFrame.css({'-webkit-transform': 'scale(' + webkitScaler + ')'});
+  var canvas = $(".tile-container-big > .tile-big > .back > .wrapperLeft, .wrapperTop").children("iframe").contents().find("canvas");
   if (canvas.length === 0)
     resizeOnCanvas(120);
 }
@@ -222,6 +208,19 @@ $(document).ready(function() {
           //reset the paragraph background to 1% height
           $("#"+lastFlipped).find(".p-bg").animate({height: '1%'},400);
       }
+      // flip tile back around
+      else if(j === columns * rows) {
+        $("#0").toggleClass('flipped');
+        $("#0").find(".p-bg").animate({height: '40%'},800,"swing");
+      }
+      else if(j === columns * rows - 1) {
+        $("#0").toggleClass('flipped');
+        $("#0").find(".p-bg").animate({height: '40%'},800,"swing");
+      }
+      else if(j === columns * rows - 2) {
+        $("#0").toggleClass('flipped');
+        $("#0").find(".p-bg").animate({height: '40%'},800,"swing");
+      }
       // Ending animations.
       else {
         // For each tile that isnt the one we just clicked
@@ -234,31 +233,16 @@ $(document).ready(function() {
             $("#"+k).toggleClass('end-flipped');
           }
           else {
-            // flip tile back around
-            if(k === columns * rows) {
-              $("#0").toggleClass('flipped');
-              $("#0").find(".p-bg").animate({height: '40%'},800,"swing");
-            }
-            else if(k === columns * rows - 1) {
-              $("#0").toggleClass('flipped');
-              $("#0").find(".p-bg").animate({height: '40%'},800,"swing");
-            }
-            else if(k === columns * rows - 2) {
-              $("#0").toggleClass('flipped');
-              $("#0").find(".p-bg").animate({height: '40%'},800,"swing");
-            }
-            else {
-              $("#"+k).toggleClass('flipped');
-              (function(k){
-                $("#"+k +" .front").delay(400).fadeOut(500, function() {
-              
-                //location.reload();
-                localStorage.setItem('caller', colors[k-1]);
-                //window.location = "/index.html"
-                //location.reload();
-                });
-              })(k);
-            }
+            $("#"+k).toggleClass('flipped');
+            (function(k){
+              $("#"+k +" .front").delay(400).fadeOut(500, function() {
+            
+              //location.reload();
+              localStorage.setItem('caller', colors[k-1]);
+              //window.location = "/index.html"
+              location.reload();
+              });
+            })(k);
 
             // Fade the tile then navigate to url afterwards
           }

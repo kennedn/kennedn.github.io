@@ -112,13 +112,16 @@ html, body {
     background-color: rgba(0,0,0,0.1);
     display: inline;
     position: absolute;
+  	z-index: 900;
+  	user-select: none;
+  	pointer-events: none;
 }
 .tile-big .back .p-bg #big-p {
 	display: inline;
 	left:0;
   	//top: 20%;
 	position: absolute;
-	padding: 5% 5% 5% 5%;
+	padding: 1% 1% 1% 3%;
 	text-align: left;
   	color: white;
   	font-family: "ubuntu";
@@ -126,6 +129,7 @@ html, body {
   	font-size: 76;
   	//line-height: 120%;
   	user-select: none;
+	pointer-events: none;
 }
 .tile-big .back h1 {
 	display: inline;
@@ -199,7 +203,9 @@ html, body {
     transform: rotateY( 180deg );
 }
 .tile.end-flipped {
-	transition: transform 0.5s;
+
+	backface-visibility: hidden;
+	transition: transform 0.8s;
 	transform: rotateY(90deg);
 } 
 .tile img {
