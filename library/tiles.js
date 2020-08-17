@@ -148,13 +148,7 @@ $(document).ready(function() {
   
   tileHTML += `</div>
                <div class="back">
-                  <img onmousedown="return false" src="/images/tile_back.png"/>
-                  <div class="p-bg">
-                    <p id="big-p"> ${paras[0][0]} </p>
-                  </div>
-               </div>
-              </div>
-            </div>`;
+                  <img onmousedown="return false" src="/images/tile_back.png"/>`;
   $("body").append(tileHTML);
 
   resizeTile();
@@ -180,15 +174,15 @@ $(document).ready(function() {
             $("#0 > .back > .wrapperLeft").remove();
             $("#0 > .back > .wrapperTop").remove();
             if(j === columns * rows) {
-              $("#0 > .back").append("<div class='wrapperLeft'><iframe seamless scrolling='no' frameBorder='0' class='gameFrame' src='/tetris/index.html'></iframe></div>");
+              $("#0 > .back").append(`</div></div></div><div class='wrapperLeft'><iframe seamless scrolling='no' frameBorder='0' class='gameFrame' src='/tetris/index.html'></iframe></div>`);
               resizeOnCanvas(100);
             }
             else if(j === columns * rows - 1) {
-              $("#0 > .back").append("<div class='wrapperTop'><iframe seamless scrolling='no' frameBorder='0' class='gameFrame' src='/pong/index.html'></iframe></div>");
+              $("#0 > .back").append(`<div class="p-bg"><p id="big-p"> ${paras[0][0]} </p></div></div></div></div><div class='wrapperTop'><iframe seamless scrolling='no' frameBorder='0' class='gameFrame' src='/pong/index.html'></iframe></div>`);
               resizeOnCanvas(100);
             }
             else if(j === columns * rows - 2) {
-              $("#0 > .back").append("<div class='wrapperTop'><iframe seamless scrolling='no' frameBorder='0' class='gameFrame' src='/gravitation/index.html'></iframe></div>");
+              $("#0 > .back").append(`<div class="p-bg"><p id="big-p"> ${paras[0][0]} </p></div></div></div></div><div class='wrapperTop'><iframe seamless scrolling='no' frameBorder='0' class='gameFrame' src='/gravitation/index.html'></iframe></div>`);
               resizeOnCanvas(100);
             }
         });    
