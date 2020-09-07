@@ -1,0 +1,44 @@
+{
+	"tiles": [
+      	{
+			"type": "normal",
+			"id": null,
+			"active": true,
+			"url": null,
+			"color": "#0d2636",
+			"icon": "/images/github_icon.png",
+			"title": "Bio",
+			"text": "A summary of who I am, where I've been and what i've done."
+		},
+      	{
+			"type": "normal",
+			"id": null,
+			"active": true,
+			"url": null,
+			"color": "#0d2636",
+			"icon": "/images/github_icon.png",
+			"title": "Stuff I've made",
+			"text": "Be it games, some hacky bash scripts or some random project."
+		},
+      	{
+			"type": "normal",
+			"id": null,
+			"active": true,
+			"url": null,
+			"color": "#0d2636",
+			"icon": "/images/github_icon.png",
+			"title": "Contact",
+			"text": "How you can get in touch."
+		},
+      	{
+			"type": "normal",
+			"id": null,
+			"active": true,
+			"url": null,
+			"color": "#0d2636",
+			"icon": "/images/github_icon.png",
+			"title": "Contact",
+			"text": "How you can get in touch."
+		}
+	]
+}

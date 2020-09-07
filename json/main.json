@@ -1,0 +1,94 @@
+{
+	"tiles": [
+      	{
+			"type": "normal",
+			"id": null,
+			"active": true,
+			"url":  "/json/github.json",
+			"color": "#1c817e",
+			"icon": "/images/bio_icon.png",
+			"title": "Bio",
+			"text": "A summary of who I am, where I've been and what i've done."
+		},
+      	{
+			"type": "normal",
+			"id": null,
+			"active": true,
+			"url": null,
+			"color": "#dd2164",
+			"icon": "/images/stuff_icon.png",
+			"title": "Stuff I've made",
+			"text": "Be it games, some hacky bash scripts or some random project."
+		},
+      	{
+			"type": "normal",
+			"id": null,
+			"active": true,
+			"url": "https://kennedn.root.sx/gollum",
+			"color": "#6e04a9",
+			"icon": "/images/contact_icon.png",
+			"title": "Contact",
+			"text": "How you can get in touch."
+		},
+      	{
+			"type": "normal",
+			"id": null,
+			"active": true,
+			"url": null,
+			"color": "#dd2164",
+			"icon": "/images/stuff_icon.png",
+			"title": "Stuff I've made",
+			"text": "Be it games, some hacky bash scripts or some random project."
+		},
+      	{
+			"type": "normal",
+			"id": null,
+			"active": true,
+			"url": null,
+			"color": "#6e04a9",
+			"icon": "/images/contact_icon.png",
+			"title": "Contact",
+			"text": "How you can get in touch."
+		},
+      	{
+			"type": "normal",
+			"id": null,
+			"active": true,
+			"url": null,
+			"color": "#1c817e",
+			"icon": "/images/bio_icon.png",
+			"title": "Bio",
+			"text": "A summary of who I am, where I've been and what i've done."
+		},
+      	{
+			"type": "normal",
+			"id": null,
+			"active": true,
+			"url": null,
+			"color": "#6e04a9",
+			"icon": "/images/contact_icon.png",
+			"title": "Contact",
+			"text": "How you can get in touch."
+		},
+      	{
+			"type": "normal",
+			"id": null,
+			"active": true,
+			"url": null,
+			"color": "#1c817e",
+			"icon": "/images/bio_icon.png",
+			"title": "Bio",
+			"text": "A summary of who I am, where I've been and what i've done."
+		},
+      	{
+			"type": "normal",
+			"id": null,
+			"active": true,
+			"url": null,
+			"color": "#dd2164",
+			"icon": "/images/stuff_icon.png",
+			"title": "Stuff I've made",
+			"text": "Be it games, some hacky bash scripts or some random project."
+		}
+	]
+}
