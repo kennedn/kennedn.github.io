@@ -157,7 +157,7 @@ $(document).ready(function() {
   $("body").append(tileHTML);
 
   resizeTile(tileSqrt);
-  window.onresize = resizeTile;
+  window.onresize = () => {resizeTile(tileSqrt)};
 
 
   // Grab the height of the container, half it and apply it as a hard value to the tiles origin.
