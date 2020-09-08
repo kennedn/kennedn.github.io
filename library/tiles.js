@@ -37,7 +37,7 @@ function resizeTile(tileSqrt) {
   let fontScaler = tileSize / 360;
 
   // Set Background div to the window dimensions (for colour transitions)
-  $("#background").css({'width': WIDTH , 'height': HEIGHT});
+  $("#background").css({'width': WIDTH * 1.1 , 'height': HEIGHT * 1.1});
 
   // Set container divs to equal the derived tile sizes
   $(".tile-container, .tile > .front, .tile > .back").css(
@@ -84,14 +84,9 @@ function resizeTile(tileSqrt) {
 }
 
 
-
-$(document).ready(function() {
+function tileGenerator(jsonFile) {
+  $(".center").remove();
   let lastFlipped;
-  let jsonFile = false;
-  jsonFile = localStorage.getItem('jsonFile');
-  localStorage.removeItem('jsonFile');
-  if(!jsonFile)
-    jsonFile = "/json/main.json";
 
   let tileSet = JSON.parse($.getJSON({'url': jsonFile, 'async': false}).responseText).tiles;
   let colFade = 400;
@@ -114,26 +109,30 @@ $(document).ready(function() {
                     <div class="front">`;
 
   tileSet.forEach((tile, i) => {
-    tileHTML+=`<div class="tile-container">
-      <div id="${i+1}" class="tile" style="${tile.active ? '' : 'display:none; cursor:default;'}">
+    if (tile.active)
+      tileHTML+=`<div class="tile-container">
+        <div id="${i+1}" class="tile">
+          <div class="front" style="background:${tile.color};">
+            <h1> ${tile.title} </h1>
+            <img onmousedown="return false" src="${tile.icon}"/>
+          </div>`;
+    else
+      tileHTML+=`<div class="tile-container" style="pointer-events:none;">
+        <div id="${i+1}" class="tile">
+          <div class="front" style="background:${tile.color};">
+          </div>`;
+    tileHTML+=`<div class="back">
+            <img onmousedown="return false" src="/images/tile_back.png"/>
+            <h1> ${tile.title} </h1>
 
-        <div class="front">
-          <h1> ${tile.title} </h1>
-          <img onmousedown="return false" src="${tile.icon}"/>
+          <div class="p-bg"> 
+              <p> ${tile.text} </p>
+          </div> 
+
+          </div>
+          
         </div>
-
-        <div class="back">
-          <img onmousedown="return false" src="/images/tile_back.png"/>
-          <h1> ${tile.title} </h1>
-
-        <div class="p-bg"> 
-            <p> ${tile.text} </p>
-        </div> 
-
-        </div>
-        
-      </div>
-    </div>`;
+      </div>`;
     //<div class="p-bg"><p id="big-p"> ${paras[0][0]} </p></div></div></div></div><div class='wrapperTop'><iframe seamless scrolling='no' frameBorder='0' class='gameFrame' src='/pong/index.html'></iframe></div>
     // Determine break points in the tile list so that we get as close to 
     if(i != 0 && i + 1 % tileSqrt == 0)
@@ -157,7 +156,6 @@ $(document).ready(function() {
   $("body").append(tileHTML);
 
   resizeTile(tileSqrt);
-  window.onresize = () => {resizeTile(tileSqrt)};
 
 
   // Grab the height of the container, half it and apply it as a hard value to the tiles origin.
@@ -206,23 +204,51 @@ $(document).ready(function() {
       else {
         // For each tile that isnt the one we iust clicked
         for(let k=1;k<=tileSet.length;k++) {
-            $("#"+k+ " .front, .back").fadeOut(400, () => {
-                k = this.id;
+          if( k == lastFlipped) {
+            $("#"+k+ " .front, .back").fadeOut(400);
+            setTimeout((k) => {
                 if( k == lastFlipped){
                   localStorage.setItem('lastColor', tileSet[k-1].color);
 
-                  if(tileSet[k-1].url.split('.').pop() === 'json') {
-                    localStorage.setItem('jsonFile', tileSet[k-1].url);
-                    location.reload();
-                    //location.href = location.href;
+                  if(tileSet[k-1].url !== null && tileSet[k-1].url.split('.').pop() === 'json') {
+                    history.pushState({ 'jsonFile': tileSet[k-1].url }, "");
+                    tileGenerator(tileSet[k-1].url);
                   }
-                  else
+                  else if(tileSet[k-1].url !== null)
                     window.location.href = tileSet[k-1].url;
+                  else
+                    location.reload();
                 }
-            });
+            }, 400, k);
+          }
+          else
+            $("#"+k+ " .front, .back").fadeOut(400);
+
+
         }
       }       
       lastFlipped = Number(this.id);
     });
   }
+}
+
+$(document).ready(function() {
+  window.onresize = () => {resizeTile(tileSqrt);};
+
+  let jsonFile = "/json/main.json";
+  window.addEventListener('popstate', (event) => {
+    console.log("state: " + JSON.stringify(event.state));
+    if (event.state == null)
+      tileGenerator(jsonFile);
+    else
+      tileGenerator(event.state.jsonFile);
+  });
+  // No center div means tileGenerator has not ran
+  if($(".center").length == 0) {
+    if (history.state != null)
+      tileGenerator(history.state.jsonFile);
+    else
+      tileGenerator(jsonFile);
+  }
+
 });
