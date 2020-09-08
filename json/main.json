@@ -5,10 +5,10 @@
 			"id": null,
 			"active": true,
 			"url":  "/json/github.json",
-			"color": "#1c817e",
-			"icon": "/images/bio_icon.png",
-			"title": "Bio",
-			"text": "A summary of who I am, where I've been and what i've done."
+			"color": "#0d2636",
+			"icon": "/images/github_icon.png",
+			"title": "Github",
+			"text": "Some of my Github projects that were made with ☕ and ❤️."
 		},
       	{
 			"type": "normal",

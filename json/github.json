@@ -4,11 +4,11 @@
 			"type": "normal",
 			"id": null,
 			"active": true,
-			"url": null,
+			"url": "https://github.com/kennedn/tvcom",
 			"color": "#0d2636",
 			"icon": "/images/github_icon.png",
-			"title": "Bio",
-			"text": "A summary of who I am, where I've been and what i've done."
+			"title": "tvcom",
+			"text": "tvcom is an assistance module that provides a friendly interface for commanding LG tvs via a serial connection."
 		},
       	{
 			"type": "normal",

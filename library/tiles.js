@@ -216,9 +216,9 @@ $(document).ready(function() {
                     location.reload();
                     //location.href = location.href;
                   }
+                  else
+                    window.location.href = tileSet[k-1].url;
                 }
-                else
-                  window.location.href = tileSet[k-1].url;
             });
         }
       }       
