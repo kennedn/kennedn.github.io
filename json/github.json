@@ -5,8 +5,9 @@
 			"id": null,
 			"active": true,
 			"url": "https://github.com/kennedn/tvcom",
-			"color": "#0d2636",
+			"color": "#1c817e",
 			"icon": "/images/github_icon.png",
+			"outIcon": "/images/tvcom.png",
 			"title": "tvcom",
 			"text": "tvcom is an assistance module that provides a friendly interface for commanding LG tvs via a serial connection."
 		},
@@ -15,7 +16,7 @@
 			"id": null,
 			"active": true,
 			"url": null,
-			"color": "#0d2636",
+			"color": "#dd2164",
 			"icon": "/images/github_icon.png",
 			"title": "Stuff I've made",
 			"text": "Be it games, some hacky bash scripts or some random project."
@@ -25,7 +26,7 @@
 			"id": null,
 			"active": true,
 			"url": null,
-			"color": "#0d2636",
+			"color": "#6e04a9",
 			"icon": "/images/github_icon.png",
 			"title": "Contact",
 			"text": "How you can get in touch."

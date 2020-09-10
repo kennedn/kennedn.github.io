@@ -5,8 +5,9 @@
 			"id": null,
 			"active": true,
 			"url":  "/json/github.json",
-			"color": "#0d2636",
+			"color": "#1c817e",
 			"icon": "/images/github_icon.png",
+			"outIcon": "/images/grid.png",
 			"title": "Github",
 			"text": "Some of my Github projects that were made with ☕ and ❤️."
 		},
@@ -64,31 +65,31 @@
 			"type": "normal",
 			"id": null,
 			"active": true,
-			"url": null,
+			"url": "/gravitation/index.html",
 			"color": "#6e04a9",
-			"icon": "/images/contact_icon.png",
-			"title": "Contact",
-			"text": "How you can get in touch."
+			"icon": "/images/stuff_icon.png",
+			"title": "p5Gravitation",
+			"text": "A p5 experiment using a reversed square law function (anti-gravity) that follows the mouse around in a 2d matrix of dots"
 		},
       	{
 			"type": "normal",
 			"id": null,
-			"active": false,
-			"url": null,
+			"active": true,
+			"url": "/pong/index.html",
 			"color": "#1c817e",
-			"icon": "/images/bio_icon.png",
-			"title": "Bio",
-			"text": "A summary of who I am, where I've been and what i've done."
+			"icon": "/images/stuff_icon.png",
+			"title": "p5Pong",
+			"text": "A simple Pong clone, coded using the <a href='https://p5js.org/'>p5.js</a> library."
 		},
       	{
 			"type": "normal",
 			"id": null,
-			"active": false,
-			"url": null,
+			"active": true,
+			"url": "/tetris/index.html",
 			"color": "#dd2164",
 			"icon": "/images/stuff_icon.png",
-			"title": "Stuff I've made",
-			"text": "Be it games, some hacky bash scripts or some random project."
+			"title": "jsTetris",
+			"text": "A basic implementation of Tetris, coded in Python using Pygame, compiled to JavaScript using Pyjs with Pyjsdl."
 		}
 	]
 }
