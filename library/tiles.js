@@ -182,7 +182,8 @@ function tileGenerator(jsonFile) {
         // Must catch a:hover event so that we can break out of tile flip click
         // and just navigate to URL if the user clicks an <a> tag
         if ($("a:hover").length != 0) {
-          window.location.href = $("a:hover").attr('href');
+          //window.location.href = $("a:hover").attr('href');
+          window.open($("a:hover").attr('href'), '_blank');
           return false;
         }
         // If we did not click the same tile twice

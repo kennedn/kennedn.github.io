@@ -33,11 +33,6 @@ html, body {
 	-webkit-transform-origin: 0 0;
 }
 
-*:focus {
-	outline-style: none;
-	box-shadow: none;
-	border-color: transparent;
-}
 .center {
 }
 
@@ -169,7 +164,7 @@ html, body {
 	left: 0;
 	top: 0;
 	user-select: none;
-	padding: 0% .25% .25% .25%;
+	padding: 1% 1% 1% 1%;
 
 }
 
@@ -309,4 +304,37 @@ h1 {
   pointer-events: none;
   -webkit-transform: rotate(45deg) translate(50%);
   -moz-transform: rotate(45deg) translate(50%);
+}
+p {
+	left:0;
+	text-align: left;
+  	color: white;
+  	font-family: "ubuntu";
+  	font-style: normal;    
+  	font-size: 26;
+  	white-space: normal;
+}
+a {
+	font-family: "ubuntu";
+	font-style: normal;
+	color: white;
+}
+table {
+  font-family: ubuntu;
+  border-collapse: collapse;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  color: white;
+  font-family: "ubuntu";
+  font-style: normal;    
+  font-size: 26;
+  white-space: normal;
+}
+
+tr:nth-child(even) {
+  background-color: rgba(171, 171, 178, .5);
 }

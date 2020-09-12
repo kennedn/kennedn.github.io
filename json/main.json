@@ -9,7 +9,7 @@
 			"icon": "/images/github_icon.png",
 			"outIcon": "/images/grid.png",
 			"title": "Github",
-			"text": "Some of my Github projects that were made with ☕ and ❤️."
+			"text": "Some of my more interesting github projects, made with ☕ and ❤️."
 		},
       	{
 			"type": "normal",
@@ -69,7 +69,7 @@
 			"color": "#6e04a9",
 			"icon": "/images/stuff_icon.png",
 			"title": "p5Gravitation",
-			"text": "A p5 experiment using a reversed square law function (anti-gravity) that follows the mouse around in a 2d matrix of dots"
+			"text": "Manipulate gravity with your mouse, coded using the <a href='https://p5js.org/'>p5.js</a> library."
 		},
       	{
 			"type": "normal",
@@ -89,7 +89,7 @@
 			"color": "#dd2164",
 			"icon": "/images/stuff_icon.png",
 			"title": "jsTetris",
-			"text": "A basic implementation of Tetris, coded in Python using Pygame, compiled to JavaScript using Pyjs with Pyjsdl."
+			"text": "A basic implementation of Tetris, coded in Python using <a href='https://www.pygame.org/wiki/GettingStarted'>Pygame</a>, compiled to JavaScript using <a href='http://pyjs.org/'>Pyjs</a> with <a href='https://gatc.ca/projects/pyjsdl/'>Pyjsdl</a>."
 		}
 	]
 }
