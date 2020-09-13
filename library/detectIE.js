@@ -1,8 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
 	if (window.document.documentMode) {
 		var body = document.getElementsByTagName("body")[0];
+		var html = document.getElementsByTagName("html")[0];
 		var colors = [ "#6e04a9", "#1c817e", "#dd2164"];
-		body.setAttribute("style", "background-color:" + colors[Math.floor(Math.random() * colors.length)]); 
+		// Restore scroll bar & display random color for bg
+		html.setAttribute("style", "overflow: visible; position: static;"); 
+		body.setAttribute("style", "overflow: visible; position: static; background-color:" + colors[Math.floor(Math.random() * colors.length)]); 
+		// Display some text and a link to jsTetris
 		body.innerHTML += "<p style='font-size:32;'> 1999 called, it want's its browser back.</p><p>Sadly some of the features included in this webpage are not compatible with internet explorer, please try a modern browser such as Firefox, Chrome or even Edge.</p>";
 		body.innerHTML += "<p>Or if you are a stubborn sort, heres a taster from the site:";
 		body.innerHTML += "<p><a href='tetris/index.html'>jsTetris</a>";

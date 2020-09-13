@@ -62,7 +62,7 @@
 			"text": "A summary of who I am, where I've been and what i've done."
 		},
       	{
-			"type": "normal",
+			"type": "game",
 			"id": null,
 			"active": true,
 			"url": "/gravitation/index.html",
@@ -72,7 +72,7 @@
 			"text": "Manipulate gravity with your mouse, coded using the <a href='https://p5js.org/'>p5.js</a> library."
 		},
       	{
-			"type": "normal",
+			"type": "game",
 			"id": null,
 			"active": true,
 			"url": "/pong/index.html",
@@ -82,7 +82,7 @@
 			"text": "A simple Pong clone, coded using the <a href='https://p5js.org/'>p5.js</a> library."
 		},
       	{
-			"type": "normal",
+			"type": "game",
 			"id": null,
 			"active": true,
 			"url": "/tetris/index.html",
