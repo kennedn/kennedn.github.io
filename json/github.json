@@ -1,4 +1,6 @@
 {
+	"return_icon": "/images/return_button.png",
+	"footer_text": "<span>© Joshua Kennedy 2020</span><br><span>Site code is open source 🔓 and can be found <a href='https://github.com/kennedn/kennedn.github.io'>here</a></span>.",
 	"tiles": [
       	{
 			"type": "normal",
@@ -7,7 +9,7 @@
 			"url": "https://github.com/kennedn/tvcom",
 			"color": "#1c817e",
 			"icon": "/images/github_icon.png",
-			"outIcon": "/images/tvcom.png",
+			"outIcon": "/images/tvcom_out.png",
 			"title": "tvcom",
 			"text": "tvcom is an assistance module that provides a friendly interface for commanding LG tvs via a serial connection."
 		},

@@ -1,4 +1,6 @@
 {
+	"return_icon": "/images/return_button.png",
+	"footer_text": "<span>© Joshua Kennedy 2020</span><br><span>Site code is open source 🔓 and can be found <a href='https://github.com/kennedn/kennedn.github.io'>here</a></span>.",
 	"tiles": [
       	{
 			"type": "normal",
@@ -7,9 +9,8 @@
 			"url":  "/json/github.json",
 			"color": "#1c817e",
 			"icon": "/images/github_icon.png",
-			"outIcon": "/images/grid.png",
 			"title": "Github",
-			"text": "Some of my more interesting github projects, made with ☕ and ❤️."
+			"text": "Some of my cooler github projects.</br></br>Sorted by amount of coffee consumed."
 		},
       	{
 			"type": "normal",
@@ -69,7 +70,8 @@
 			"color": "#6e04a9",
 			"icon": "/images/stuff_icon.png",
 			"title": "p5Gravitation",
-			"text": "Manipulate gravity with your mouse, coded using the <a href='https://p5js.org/'>p5.js</a> library."
+			"text": "Manipulate gravity with your mouse, coded using the <a href='https://p5js.org/'>p5.js</a> library.",
+			"big_text": "Hello mate 0"
 		},
       	{
 			"type": "game",
@@ -79,7 +81,8 @@
 			"color": "#1c817e",
 			"icon": "/images/stuff_icon.png",
 			"title": "p5Pong",
-			"text": "A simple Pong clone, coded using the <a href='https://p5js.org/'>p5.js</a> library."
+			"text": "A simple Pong clone, coded using the <a href='https://p5js.org/'>p5.js</a> library.",
+			"big_text": "Hello mate 1"
 		},
       	{
 			"type": "game",
@@ -89,7 +92,8 @@
 			"color": "#dd2164",
 			"icon": "/images/stuff_icon.png",
 			"title": "jsTetris",
-			"text": "A basic implementation of Tetris, coded in Python using <a href='https://www.pygame.org/wiki/GettingStarted'>Pygame</a>, compiled to JavaScript using <a href='http://pyjs.org/'>Pyjs</a> with <a href='https://gatc.ca/projects/pyjsdl/'>Pyjsdl</a>."
+			"text": "A basic implementation of Tetris, coded in Python using <a href='https://www.pygame.org/wiki/GettingStarted'>Pygame</a>, compiled to JavaScript using <a href='http://pyjs.org/'>Pyjs</a> with <a href='https://gatc.ca/projects/pyjsdl/'>Pyjsdl</a>.",
+			"big_text": "Hello mate 2"
 		}
 	]
 }

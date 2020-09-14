@@ -25,19 +25,21 @@ function resizeOnCanvas(tileSqrt, time) {
 // Dynamic resize function
 // governs the sizing of the tile array, iframe canvas's and fonts.
 function resizeTile(tileSqrt) {
-  
   // Get Window dimensions
   let WIDTH = $(window).outerWidth();
   let HEIGHT = $(window).outerHeight();
-
+  // 15% pad either side of tiles
+  let pad = 0.7;
+  let isMobile = (WIDTH < HEIGHT * pad);
   // Calculate maximum width / height each tile could have to fit in current window (minus a small pad)
   let tileWidth= Math.floor((WIDTH * (1/tileSqrt)) - (WIDTH * 0.002));
   let tileHeight= Math.floor((HEIGHT * 1/tileSqrt) - (HEIGHT * 0.009));
   // Get lowest of the two and use this as the tile width & height going forward
-  let tileSize=Math.min(tileWidth,tileHeight);
-
+  let tileSize=Math.min(tileWidth * (isMobile ? 1 : pad),tileHeight);
+  let tileScaler = tileSize * tileSqrt / 3;
   // Derive a font scaler from the tileSize
-  let fontScaler = tileSize / 360;
+  let fontScaler = tileScaler / 360;
+  let fontTileScaler = tileSize / 360;
 
   // Set Background div to the window dimensions (for colour transitions)
   $("#background").css({'width': WIDTH * 1.1 , 'height': HEIGHT * 1.1});
@@ -47,6 +49,39 @@ function resizeTile(tileSqrt) {
     {'width': tileSize, 'height': tileSize});
   $(".tile-container-big, .tile-big > .front, .tile-big > .back").css(
     {'width': tileSize*tileSqrt, 'height': tileSize*tileSqrt});
+
+  if (isMobile) {
+   // Set container divs to equal the derived tile sizes
+    $(".return").css(
+      {'width': tileScaler / 2, 'height': tileScaler / 2});
+    $("#footer").attr("class", "footer-bottom");
+    $('.return-center').css({
+       'position' : 'absolute',
+       'left' : '12%',
+       'top' : (HEIGHT - (tileSize * tileSqrt)) / 4,
+       'margin-left' :-tileScaler/4,
+       'margin-top' : -tileScaler/4,
+       'width': tileScaler / 2,
+       'height': tileScaler / 2
+    });
+  }
+  else {
+   // Set container divs to equal the derived tile sizes
+    $(".return").css(
+      {'width': tileScaler / 3, 'height': tileScaler / 3});
+    $("#footer").attr("class", "footer-right");
+    $('.return-center').css({
+       'position' : 'absolute',
+       'left' : (WIDTH - (tileSize * tileSqrt)) / 3,
+       'top' : '10%',
+       'margin-left' :-tileScaler/3,
+
+       'margin-top' : -tileScaler/4,
+       'width': tileScaler / 3,
+       'height': tileScaler / 3
+    });
+  }
+
 
   // Move the center div to the center of the screen using our derived tile sizes
   $('.center').css({
@@ -74,16 +109,19 @@ function resizeTile(tileSqrt) {
   });
   
   // Set fonts based on scaler
-  $(".tile .back p").css({'font-size' : 26 * fontScaler});
-  $("#big-p").css({'font-size' : 34 * fontScaler});
-  $(".tile .back h1").css({'font-size' :32 * fontScaler});
-  $("h1").css({'font-size' :32 * fontScaler});
+  $(".tile .back p").css({'font-size' : 26 * fontTileScaler});
+  $(".tile-big .back .p").css({'font-size' : 28 * fontScaler});
+  $(".tile .back h1").css({'font-size' :32 * fontTileScaler});
+  $("h1").css({'font-size' :32 * fontTileScaler});
+  $("#footer p").css({'font-size' :26 * fontScaler});
 
 }
 
 // Build DOM elements, inserting properties from the tileSet JSON where relevant
-function DOMBuilder(tileSet, tileSqrt) {
-  tileHTML = `<div class="center">
+function DOMBuilder(tileData, tileSqrt) {
+  let tileSet = tileData.tiles;
+  tileHTML = `<div id="background"></div>
+              <div class="center">
                 <div class="tile-container-big">
                   <div id=0 class="tile-big">
                     <div class="front">`;
@@ -99,14 +137,14 @@ function DOMBuilder(tileSet, tileSqrt) {
                       <img onmousedown="return false" src="${tile.icon}"/>
                     </div>`;
     else
-      tileHTML+=`<div class="tile-container" style="pointer-events:none;">
+      tileHTML+=`<div class="tile-container" style="pointer-events:none; cursor: default;">
                   <div id="${i+1}" class="tile end-flipped">
                   <div class="front" style="background:${tile.color};"></div>`;
 
     tileHTML+=`<div class="back">
-                <img onmousedown="return false" src="${tile.outIcon}" onerror="this.src='/images/grid.png'"/>
+                <img onmousedown="return false" src="${tile.outIcon}" onerror="this.src='/images/default_out.png'"/>
                 <div class="background" style="background:${tile.color}"></div>
-                <img onmousedown="return false" src="/images/tile_back.png"/>
+                <img onmousedown="return false" src="/images/back_icon.png"/>
                 <h1> ${tile.title} </h1>
                 <div class="p-bg"> 
                   <p> ${tile.text} </p>
@@ -121,7 +159,7 @@ function DOMBuilder(tileSet, tileSqrt) {
 
   tileHTML += ` </div>
                <div class="back">
-                <img onmousedown="return false" src="/images/tile_back.png"/> 
+                <img onmousedown="return false" src="/images/back_icon.png"/> 
                 <div class="p-bg">
                   <p id="big-p"> This is a big frickin tile my dude. </p>
                 </div>
@@ -130,6 +168,16 @@ function DOMBuilder(tileSet, tileSqrt) {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+          <div class="return-center">
+            <div id="return-button" class="return flipped">
+              <img src="${tileData.return_icon}"/>
+              <img src="images/return_back.png"/>
+            </div>
+          </div>
+          <div id="footer" class="footer-right">
+            <p>${tileData.footer_text}</p>
           </div>`;
 
   // Append DOM elements to body
@@ -140,6 +188,7 @@ function tileClick(event) {
   // Set our id again
   let i = Number(this.id);
   let tileSet = event.data.tileSet;
+  let tileData = event.data;
   // Retrieve lastFlipped from local storage, set to false if not available
   let lastFlipped = Number(localStorage.getItem('lastFlipped'));
   if (lastFlipped === 0)
@@ -205,7 +254,11 @@ function tileClick(event) {
     }
     else if (isGame) {
       $("#0").toggleClass('flipped');
-      $("#0").find(".p-bg").animate({height: '30%'},800,"swing");
+      $("#0").find(".p-bg").last().html("<p id='big-p'>"+tileSet[lastFlipped-1].big_text+"</p>");
+      setTimeout( function () {
+        $("#return-button").removeClass('flipped');
+      }, 600);
+      $("#0").find(".p-bg").last().animate({height: '30%'},800,"swing");
     }
     // Handle url redirection and history persistance, runs on a timeout 
     // so that we execute just as the second tile flip animation is finishing 
@@ -221,7 +274,8 @@ function tileClick(event) {
       }
       else
         location.reload();
-      localStorage.removeItem('lastFlipped');
+      if (!isGame)
+        localStorage.removeItem('lastFlipped');
     }, 350, url, color, type, isGame, lastFlipped);
   }
   localStorage.setItem('lastFlipped',this.id);
@@ -229,7 +283,7 @@ function tileClick(event) {
 
 function tileGenerator(jsonFile) {
   // Remove previous tile DOM elements & children
-  $(".center").remove();
+  $("body").empty();
   // Generate tiles after getJSON retrieves jsonFile
   $.getJSON(jsonFile, (data) => {
     // Retrieve tiles structure from jsonFile
@@ -249,7 +303,7 @@ function tileGenerator(jsonFile) {
       $("#background").css("background-color", tileSet[1].color);
     }
     // Build and append HTML elements
-    DOMBuilder(tileSet, tileSqrt);
+    DOMBuilder(data, tileSqrt);
 
     resizeTile(tileSqrt);
     // Call resizeTile on window resize
@@ -267,11 +321,20 @@ function tileGenerator(jsonFile) {
     for(let i=1;i <= tileSet.length; i++){
       // Rotate each tile so that its front is visible
 
-      setTimeout((i) => {$("#"+i).removeClass('end-flipped');}, 400, i);
-
-      //watch for a click on the div with id i
-      $("#"+i).click({"tileSet": tileSet}, tileClick);
+      setTimeout((i) => {
+        $("#"+i).removeClass('end-flipped');
+        //watch for a click on the div with id i
+        $("#"+i).click({"tileSet": tileSet}, tileClick);
+      }, 400, i);
     }
+    $("#return-button").click(() => {
+      let lastFlipped = localStorage.getItem('lastFlipped');
+      $("#" + lastFlipped).removeClass('flipped');
+      //$("#" + lastFlipped).find(".p-bg").html('<p>'+tileSet[lastFlipped - 1].text+'</p>');
+      localStorage.removeItem('lastFlipped');
+      $("#0").removeClass('flipped');
+      $("#return-button").addClass('flipped');
+    });
   });
 }
 
