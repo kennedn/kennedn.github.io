@@ -1,0 +1,49 @@
+ {
+ 	"return_icon": "/images/return_button.png",
+	"tiles": [
+   	{
+			"type": "game",
+			"id": null,
+			"active": true,
+			"url": "/gravitation/index.html",
+			"color": "#6e04a9",
+			"icon": "/images/stuff_icon.png",
+			"title": "p5Gravitation",
+			"text": "Manipulate gravity with your mouse, coded using the <a target='_blank' href='https://p5js.org/'>p5.js</a> library.",
+			"big_text": "Hello mate 0"
+		},
+      	{
+			"type": "game",
+			"id": null,
+			"active": true,
+			"url": "/pong/index.html",
+			"color": "#1c817e",
+			"icon": "/images/stuff_icon.png",
+			"title": "p5Pong",
+			"text": "A simple Pong clone, coded using the <a target='_blank' href='https://p5js.org/'>p5.js</a> library.",
+			"big_text": "Hello mate 1"
+		},
+      	{
+			"type": "game",
+			"id": null,
+			"active": true,
+			"url": "/tetris/index.html",
+			"color": "#dd2164",
+			"icon": "/images/stuff_icon.png",
+			"title": "jsTetris",
+			"text": "A basic implementation of Tetris, coded in Python using <a target='_blank' href='https://www.pygame.org/wiki/GettingStarted'>Pygame</a>, compiled to JavaScript using <a target='_blank' href='http://pyjs.org/'>Pyjs</a> with <a target='_blank' href='https://gatc.ca/projects/pyjsdl/'>Pyjsdl</a>.",
+			"big_text": "Hello mate 2"
+		},
+		{
+			"type": "game",
+			"id": null,
+			"active": false,
+			"url": "/tetris/index.html",
+			"color": "#6e04a9",
+			"icon": "/images/stuff_icon.png",
+			"title": "jsTetris",
+			"text": "A basic implementation of Tetris, coded in Python using <a target='_blank' href='https://www.pygame.org/wiki/GettingStarted'>Pygame</a>, compiled to JavaScript using <a target='_blank' href='http://pyjs.org/'>Pyjs</a> with <a target='_blank' href='https://gatc.ca/projects/pyjsdl/'>Pyjsdl</a>.",
+			"big_text": "Hello mate 2"
+		}
+	]
+}

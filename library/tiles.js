@@ -2,41 +2,55 @@
 function isLinkLocal(link) {
   if (link === null)
     return false;
-  return (link.host !== window.location.host);
+  let a = document.createElement('a');
+  a.href = link;
+  return (a.host === window.location.host);
 }
 
+// Return base url for a given link string
+function getHost(link) {
+  if (link === null)
+    return "";
+  let a = document.createElement('a');
+  a.href = link;
+  return a.host;
+}
 // Recursive canvas resize function to compensate for the time between 
 // iframe onload event and canvas the becoming available on the DOM
-function resizeOnCanvas(tileSqrt, time) {
+function resizeOnCanvas(time) {
   let object = $("#0 > .back > .wrapperLeft, .wrapperTop").children("iframe").contents().find("canvas");
   // Canvas now exists so call resize function
   if(object.length > 0) {
-      resizeTile(tileSqrt);
+      resizeTile();
       return;
   }
   // Canvas not in DOM yet, call self again after a timeout
   else {
       setTimeout(function() {
-          resizeOnCanvas(tileSqrt, time);
+          resizeOnCanvas(time);
       }, time);
   }
 }
 
 // Dynamic resize function
 // governs the sizing of the tile array, iframe canvas's and fonts.
-function resizeTile(tileSqrt) {
+function resizeTile() {
+  let tileSqrt = localStorage.getItem('tileSqrt');
+  if (tileSqrt === null)
+    return;
   // Get Window dimensions
   let WIDTH = $(window).outerWidth();
   let HEIGHT = $(window).outerHeight();
   // 15% pad either side of tiles
   let pad = 0.7;
   let isMobile = (WIDTH < HEIGHT * pad);
+  localStorage.setItem("isMobile", isMobile);
   // Calculate maximum width / height each tile could have to fit in current window (minus a small pad)
   let tileWidth= Math.floor((WIDTH * (1/tileSqrt)) - (WIDTH * 0.002));
   let tileHeight= Math.floor((HEIGHT * 1/tileSqrt) - (HEIGHT * 0.009));
   // Get lowest of the two and use this as the tile width & height going forward
   let tileSize=Math.min(tileWidth * (isMobile ? 1 : pad),tileHeight);
-  let tileScaler = tileSize * tileSqrt / 3;
+  let tileScaler = Math.floor(tileSize * tileSqrt / 3);
   // Derive a font scaler from the tileSize
   let fontScaler = tileScaler / 360;
   let fontTileScaler = tileSize / 360;
@@ -118,13 +132,19 @@ function resizeTile(tileSqrt) {
 }
 
 // Build DOM elements, inserting properties from the tileSet JSON where relevant
-function DOMBuilder(tileData, tileSqrt) {
+function DOMBuilder(tileData) {
+  // Retrieve tileSqrt from localStorage, if it does not exist we are not
+  // ready to draw the DOM
+  let tileSqrt = localStorage.getItem('tileSqrt');
+  if (tileSqrt === null)
+    return;
+
   let tileSet = tileData.tiles;
-  tileHTML = `<div id="background"></div>
+  tileHTML = `<div class="auto-generated">
               <div class="center">
                 <div class="tile-container-big">
                   <div id=0 class="tile-big">
-                    <div class="front">`;
+                    <div class="front" style="cursor:default;">`;
 
   tileSet.forEach((tile, i) => {
     if (!tile.hasOwnProperty("outIcon"))
@@ -140,9 +160,8 @@ function DOMBuilder(tileData, tileSqrt) {
       tileHTML+=`<div class="tile-container" style="pointer-events:none; cursor: default;">
                   <div id="${i+1}" class="tile end-flipped">
                   <div class="front" style="background:${tile.color};"></div>`;
-
-    tileHTML+=`<div class="back">
-                <img onmousedown="return false" src="${tile.outIcon}" onerror="this.src='/images/default_out.png'"/>
+    tileHTML+=`<div class="back" ${tile.type === "download" ? 'style="cursor: default;"' : ''}>
+                <img src="${tile.outIcon}" onerror="this.src='/images/default_out.png'"/>
                 <div class="background" style="background:${tile.color}"></div>
                 <img onmousedown="return false" src="/images/back_icon.png"/>
                 <h1> ${tile.title} </h1>
@@ -172,21 +191,21 @@ function DOMBuilder(tileData, tileSqrt) {
         </div>
           <div class="return-center">
             <div id="return-button" class="return flipped">
-              <img src="${tileData.return_icon}"/>
-              <img src="images/return_back.png"/>
+              <img onmousedown="return false" src="${tileData.return_icon}"/>
+              <img onmousedown="return false" src="images/return_back.png"/>
             </div>
           </div>
-          <div id="footer" class="footer-right">
-            <p>${tileData.footer_text}</p>
-          </div>`;
+        </div>`;
 
   // Append DOM elements to body
   $("body").append(tileHTML);
 }
 
+// Callback function for tile click event
 function tileClick(event) {
   // Set our id again
   let i = Number(this.id);
+
   let tileSet = event.data.tileSet;
   let tileData = event.data;
   // Retrieve lastFlipped from local storage, set to false if not available
@@ -196,6 +215,7 @@ function tileClick(event) {
 
   // Set some easy access varaibles for our tileSet
   let url = tileSet[i-1].url;
+  let title = tileSet[i-1].title;
   let color = tileSet[i-1].color;
   let type = tileSet[i-1].type;
   // Determine whether tile seems to be a valid game
@@ -204,11 +224,19 @@ function tileClick(event) {
   // Must catch a:hover event so that we can break out of tile flip click
   // and just navigate to URL if the user clicks an <a> tag
   if ($("a:hover").length != 0) {
-    window.open($("a:hover").attr('href'), '_blank');
+    // Create a clone of the <a> tag so that we don't end up recursivly firing a tile click event
+    let a = $("a:hover")[0].cloneNode(true);
+    a.click();
     return false;
   }
+
+
+
   // If we are not clicking the same tile for a second time
   if( i != lastFlipped ) {  
+    if (url !== null && !isLinkLocal(url) && JSON.parse(localStorage.getItem("isMobile"))) {
+      $("#"+i+" .back").find("h1").html("Visit " + getHost(url) + "?");
+  }
     // Rotate clicked tile
     $(this).toggleClass('flipped');
     // Animate the paragraph backgrounds height
@@ -233,7 +261,7 @@ function tileClick(event) {
     $("#"+lastFlipped).find(".p-bg").animate({height: '1%'},400);
   }
   // Ending animations.
-  else {
+  else if (type !== "download") {
     // pull some needed vars from the tile
     url = tileSet[lastFlipped-1].url;
     color = tileSet[lastFlipped-1].color;
@@ -252,12 +280,16 @@ function tileClick(event) {
             $("#"+k).toggleClass('end-flipped');
       }
     }
-    else if (isGame) {
+    else {
+      // Flip the tile array around
       $("#0").toggleClass('flipped');
+      // Set paragraph text element
       $("#0").find(".p-bg").last().html("<p id='big-p'>"+tileSet[lastFlipped-1].big_text+"</p>");
+      // Flip around return button so it is visible
       setTimeout( function () {
         $("#return-button").removeClass('flipped');
       }, 600);
+      // Raise p-bg
       $("#0").find(".p-bg").last().animate({height: '30%'},800,"swing");
     }
     // Handle url redirection and history persistance, runs on a timeout 
@@ -266,16 +298,17 @@ function tileClick(event) {
       localStorage.setItem('lastColor', color );
       if(url !== null) {
         if (isLinkLocal(url) && url.split('.').pop() === 'json') {
+          localStorage.removeItem("lastFlipped");
+          localStorage.removeItem("tileSqrt");
           history.pushState({ 'jsonFile': url }, "");
           tileGenerator(url);
         }
-        else if (!isGame)
+        else if (!isGame) {
           window.location.href = url;
+        }
       }
       else
         location.reload();
-      if (!isGame)
-        localStorage.removeItem('lastFlipped');
     }, 350, url, color, type, isGame, lastFlipped);
   }
   localStorage.setItem('lastFlipped',this.id);
@@ -283,13 +316,14 @@ function tileClick(event) {
 
 function tileGenerator(jsonFile) {
   // Remove previous tile DOM elements & children
-  $("body").empty();
+  $(".auto-generated").remove();
   // Generate tiles after getJSON retrieves jsonFile
   $.getJSON(jsonFile, (data) => {
     // Retrieve tiles structure from jsonFile
     let tileSet = data.tiles;
     // Calculate a square root from num of timeto be used for tile sizing later on
     let tileSqrt = Math.max(Math.ceil(Math.sqrt(tileSet.length)), 2);
+    localStorage.setItem("tileSqrt", tileSqrt);
 
     // Retrieve last clicked tile color from localStorage if available
     let lastColor = false;
@@ -313,19 +347,26 @@ function tileGenerator(jsonFile) {
       resizeOnCanvas(tileSqrt, 100);
     });
 
-    // Grab the height of the container, half it and apply it as a hard value to the tiles origin.
-    // Setting this within the stylesheet to 50% does not seem to work correctly, this is a workaround
-    $(".tile").css("transform-origin", "50% " + $(".tile-container .front").css("height").match(/\d+/) / 2 + "px");
-
     // For each tile        
     for(let i=1;i <= tileSet.length; i++){
-      // Rotate each tile so that its front is visible
-
-      setTimeout((i) => {
+      let tile = tileSet[i-1];
+      setTimeout((i, tile) => {
+        // Rotate each tile so that its front is visible
         $("#"+i).removeClass('end-flipped');
         //watch for a click on the div with id i
         $("#"+i).click({"tileSet": tileSet}, tileClick);
-      }, 400, i);
+        if (tile.url !== null && !isLinkLocal(tile.url)) {
+          $("#"+i + " .back").hover(function() {
+            $(this).find("h1").fadeOut(300, function () {
+              $(this).html("Visit " + getHost(tile.url) + "?").fadeIn(300);
+            });
+          }, function () {
+            $(this).find("h1").fadeOut(300, function () {
+              $(this).html(tile.title).fadeIn(300);
+            });
+          });
+        }
+      }, 400, i, tile);
     }
     $("#return-button").click(() => {
       let lastFlipped = localStorage.getItem('lastFlipped');
@@ -339,10 +380,13 @@ function tileGenerator(jsonFile) {
 }
 
 window.onload = function() {
-  localStorage.removeItem('lastFlipped');
+  localStorage.removeItem("lastFlipped");
+  localStorage.removeItem("tileSqrt");
   let jsonFile = "/json/main.json";
   // Set listener for history popstate, restore JSON from history if possible
   window.addEventListener('popstate', (event) => {
+    localStorage.removeItem("lastFlipped");
+    localStorage.removeItem("tileSqrt");
     if (event.state == null)
       tileGenerator(jsonFile);
     else

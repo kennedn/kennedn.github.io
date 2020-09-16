@@ -1,68 +1,35 @@
 {
 	"return_icon": "/images/return_button.png",
-	"footer_text": "<span>© Joshua Kennedy 2020</span><br><span>Site code is open source 🔓 and can be found <a href='https://github.com/kennedn/kennedn.github.io'>here</a></span>.",
 	"tiles": [
-      	{
-			"type": "normal",
-			"id": null,
+
+		{
+			"type": "download",
 			"active": true,
-			"url":  "/json/github.json",
-			"color": "#1c817e",
-			"icon": "/images/github_icon.png",
-			"title": "Github",
-			"text": "Some of my cooler github projects.</br></br>Sorted by amount of coffee consumed."
-		},
-      	{
-			"type": "normal",
-			"id": null,
-			"active": false,
 			"url": null,
 			"color": "#dd2164",
-			"icon": "/images/stuff_icon.png",
-			"title": "Stuff I've made",
-			"text": "Be it games, some hacky bash scripts or some random project."
+			"icon": "/images/contact_icon.png",
+			"title": "Skills",
+			"text": "Get a copy <a href='misc/Resume.pdf' download>here</a>"
 		},
       	{
 			"type": "normal",
-			"id": null,
 			"active": true,
-			"url": "https://kennedn.root.sx/gollum",
-			"color": "#6e04a9",
-			"icon": "/images/contact_icon.png",
-			"title": "Contact",
-			"text": "How you can get in touch."
-		},
-      	{
-			"type": "normal",
-			"id": null,
-			"active": false,
-			"url": null,
-			"color": "#dd2164",
-			"icon": "/images/stuff_icon.png",
-			"title": "Stuff I've made",
-			"text": "Be it games, some hacky bash scripts or some random project."
-		},
-      	{
-			"type": "normal",
-			"id": null,
-			"active": false,
-			"url": null,
-			"color": "#6e04a9",
-			"icon": "/images/contact_icon.png",
-			"title": "Contact",
-			"text": "How you can get in touch."
-		},
-      	{
-			"type": "normal",
-			"id": null,
-			"active": false,
 			"url": null,
 			"color": "#1c817e",
 			"icon": "/images/bio_icon.png",
-			"title": "Bio",
+			"title": "About Me",
 			"text": "A summary of who I am, where I've been and what i've done."
 		},
-      	{
+		{
+			"type": "download",
+			"active": true,
+			"url": "/misc/Resume.pdf",
+			"color": "#6e04a9",
+			"icon": "/images/contact_icon.png",
+			"title": "Resume",
+			"text": "Get a copy <a href='misc/Resume.pdf' download>here</a>"
+		},
+		{
 			"type": "game",
 			"id": null,
 			"active": true,
@@ -70,21 +37,10 @@
 			"color": "#6e04a9",
 			"icon": "/images/stuff_icon.png",
 			"title": "p5Gravitation",
-			"text": "Manipulate gravity with your mouse, coded using the <a href='https://p5js.org/'>p5.js</a> library.",
+			"text": "Manipulate gravity with your mouse, coded using the <a target='_blank' href='https://p5js.org/'>p5.js</a> library.",
 			"big_text": "Hello mate 0"
 		},
-      	{
-			"type": "game",
-			"id": null,
-			"active": true,
-			"url": "/pong/index.html",
-			"color": "#1c817e",
-			"icon": "/images/stuff_icon.png",
-			"title": "p5Pong",
-			"text": "A simple Pong clone, coded using the <a href='https://p5js.org/'>p5.js</a> library.",
-			"big_text": "Hello mate 1"
-		},
-      	{
+		{
 			"type": "game",
 			"id": null,
 			"active": true,
@@ -92,8 +48,43 @@
 			"color": "#dd2164",
 			"icon": "/images/stuff_icon.png",
 			"title": "jsTetris",
-			"text": "A basic implementation of Tetris, coded in Python using <a href='https://www.pygame.org/wiki/GettingStarted'>Pygame</a>, compiled to JavaScript using <a href='http://pyjs.org/'>Pyjs</a> with <a href='https://gatc.ca/projects/pyjsdl/'>Pyjsdl</a>.",
+			"text": "A basic implementation of Tetris, coded in Python using <a target='_blank' href='https://www.pygame.org/wiki/GettingStarted'>Pygame</a>, compiled to JavaScript using <a target='_blank' href='http://pyjs.org/'>Pyjs</a> with <a target='_blank' href='https://gatc.ca/projects/pyjsdl/'>Pyjsdl</a>.",
 			"big_text": "Hello mate 2"
+		},
+   		{
+			"type": "game",
+			"id": null,
+			"active": true,
+			"url": "/pong/index.html",
+			"color": "#1c817e",
+			"icon": "/images/stuff_icon.png",
+			"title": "p5Pong",
+			"text": "A simple Pong clone, coded using the <a target='_blank' href='https://p5js.org/'>p5.js</a> library.",
+			"big_text": "Hello mate 1"
+		},
+      
+      
+		{
+			"type": "normal",
+			"active": true,
+			"url":  "/json/github.json",
+			"color": "#1c817e",
+			"icon": "/images/github_icon.png",
+			"title": "Github Projects",
+			"text": "Some of my cooler github projects. Made with ♥ and coffee beans."
+		},
+		{
+			"active": false,
+			"color": "#6e04a9"
+		},
+		{
+			"type": "download",
+			"active": true,
+			"url": null,
+			"color": "#dd2164",
+			"icon": "/images/contact_icon.png",
+			"title": "Get in touch",
+			"text": "How you can get in touch."
 		}
 	]
 }
