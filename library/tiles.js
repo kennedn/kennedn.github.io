@@ -18,9 +18,13 @@ function getHost(link) {
 // Recursive canvas resize function to compensate for the time between 
 // iframe onload event and canvas the becoming available on the DOM
 function resizeOnCanvas(time) {
+  let bigText = localStorage.getItem('bigText');
+  if (bigText === null)
+    bigText = "";
   let object = $("#0 > .back > .iframeWrap").children("iframe").contents().find("canvas");
   // Canvas now exists so call resize function
   if(object.length > 0) {
+      $("#0").find(".big-bg-right, .big-bg-bottom").last().html(bigText);
       resizeTile();
       return;
   }
@@ -289,7 +293,8 @@ function tileClick(event) {
       // Flip the tile array around
       $("#0").toggleClass('flipped');
       // Set paragraph text element
-      $("#0").find(".big-bg-right, .big-bg-bottom").last().html(tileSet[lastFlipped-1].big_text);
+      $("#0").find(".big-bg-right, .big-bg-bottom").last().html("</br><h1>Loading...</h1>");
+      localStorage.setItem("bigText", tileSet[lastFlipped-1].bigText);
       // Flip around return button so it is visible
       setTimeout( function () {
         $("#return-button").removeClass('flipped');
