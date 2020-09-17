@@ -21,15 +21,18 @@ function resizeOnCanvas(time) {
   let bigText = localStorage.getItem('bigText');
   if (bigText === null)
     bigText = "";
+  let bigBG = $("#0").find(".big-bg-right, .big-bg-bottom").last();
   let object = $("#0 > .back > .iframeWrap").children("iframe").contents().find("canvas");
   // Canvas now exists so call resize function
   if(object.length > 0) {
-      $("#0").find(".big-bg-right, .big-bg-bottom").last().html(bigText);
+      bigBG.html(bigText);
       resizeTile();
       return;
   }
   // Canvas not in DOM yet, call self again after a timeout
   else {
+      bigBG.html("</br><h1>Loading...</h1>");
+      resizeTile();
       setTimeout(function() {
           resizeOnCanvas(time);
       }, time);
@@ -191,7 +194,6 @@ function DOMBuilder(tileData) {
                   <iframe seamless scrolling='no' frameBorder='0' class='gameFrame'></iframe>
                 </div>
                 <div class="big-bg-right">
-                  <p id="big-p"> This is a big frickin tile my dude. </p>
                 </div>
               </div>
             </div>
@@ -293,7 +295,6 @@ function tileClick(event) {
       // Flip the tile array around
       $("#0").toggleClass('flipped');
       // Set paragraph text element
-      $("#0").find(".big-bg-right, .big-bg-bottom").last().html("</br><h1>Loading...</h1>");
       localStorage.setItem("bigText", tileSet[lastFlipped-1].bigText);
       // Flip around return button so it is visible
       setTimeout( function () {
@@ -311,8 +312,6 @@ function tileClick(event) {
         bigBG.attr("class", "big-bg-bottom");
         bigBG.css({height: extend + "%", left: 0, width: "100%"});
       }
-      // Call a resizeTile to ensure the font's get a resize
-      resizeTile();
     }
     // Handle url redirection and history persistance, runs on a timeout 
     // so that we execute just as the exit animations are finishing 
