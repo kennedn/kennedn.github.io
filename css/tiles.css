@@ -91,39 +91,91 @@ html, body {
 	display: inline;
 	position: absolute;
 	user-drag: none;
+	z-index: 0;
 }
-.tile-big .back .p-bg {
+.tile-big .back .big-bg-bottom {
     width: 98%;
     height: 1%;
     left:1%;
     bottom:1%;
-    background-color: rgba(0,0,0,0.1);
+    background-color: rgba(0,0,0,0.08);
     display: inline;
     position: absolute;
-  	z-index: 900;
+  	z-index: 2;
   	user-select: none;
-  	pointer-events: none;
+  	overflow: hidden;
+  	cursor: default;
 }
-.tile-big .back .p-bg #big-p {
-	display: inline;
-	left:0;
-  	//top: 20%;
-	position: absolute;
-	padding: 1% 1% 1% 3%;
+.tile-big .back .big-bg-right {
+    width: 0%;
+    height: 100%;
+    top: 0%;
+    left: 99%;
+    background-color: rgba(0,0,0,0.08);
+    display: inline;
+    position: absolute;
+  	z-index: 2;
+  	user-select: none;
+  	overflow: hidden;
+  	cursor: default;
+}
+
+.tile-big .back .big-bg-right p, .tile-big .back .big-bg-bottom p {
+	overflow: auto;
 	text-align: left;
-  	color: white;
+  	color: transparent;
+  	text-shadow: 0 0 0 white;
   	font-family: "ubuntu";
   	font-style: normal;    
-  	//line-height: 120%;
-  	user-select: none;
-	pointer-events: none;
+  	font-size: 18;
+  	white-space: normal;
+  	overflow: hidden;
+	padding: 0% 3% 0% 3%;
+}
+.tile-big .back .big-bg-right a, .tile-big .back .big-bg-bottom a {
+	overflow: auto;
+	text-align: left;
+  	color: transparent;
+  	text-shadow: 0 0 0 white;
+  	font-family: "ubuntu";
+  	font-style: normal;    
+  	font-size: 18;
+  	white-space: normal;
+  	overflow: hidden;
+	padding: 0% 0% 0% 0%;
+}
+.tile-big .back table {
+	overflow: auto;
+  	font-family: ubuntu;
+  	border-collapse: collapse;
+  	margin: 3% 3% 3% 3%;
+  	white-space: nowrap;
+  	width: 80%;
+}
+.tile-big .back th {
+ 	background-color: rgba(255, 255, 255, .3);
+	font-weight: bold;
+	text-align: left;
+	margin 0;
+}
+.tile-big .back td, .tile-big .back th {
+	padding: 3% 3% 3% 3%;
+  	border: 0;
+  	text-align: left;
+  	color: white;
+  	font-family: "ubuntu";
+  	font-size: 26;
+  	white-space: normal;
+}
+
+.tile-big .back tr:nth-child(even) {
+ 	background-color: rgba(255, 255, 255, .2);
+	margin: 0 0 0 0;
 }
 .tile-big .back h1 {
-	display: inline;
-	position: absolute;
-  	left: 0;
-  	top: 0;
-	padding: 10% 5% 5% 5%;
+	display: initial;
+	position: static;
+	padding: 3% 3% 3% 3%;
 	text-align: left;
   	color: white;
   	font-family: "ubuntu";
@@ -131,17 +183,7 @@ html, body {
   	font-size: 32pt;
   	user-select: none;
 }
-.tile-big .back .wrapperTop {
-	position: absolute;
-  	left: 0;
-  	top: 0;
-  	width: 98%;
-  	height: 98%;
-  	user-select: none;
-  	border: 0;*/
-  	z-index: 3;
-}
-.tile-big .back .wrapperLeft {
+.tile-big .back .iframeWrap {
 	position: absolute;
   	left: 0;
   	top: 0;
@@ -149,10 +191,10 @@ html, body {
   	height: 98%;
   	user-select: none;
   	border: 0;
-  	z-index: 3;
+  	z-index: 1;
 }
 
-.tile-big .back .wrapperLeft, .wrapperTop .gameFrame {
+.tile-big .back .iframeWrap .gameFrame {
 	left: 0;
 	top: 0;
 	user-select: none;
@@ -162,8 +204,8 @@ html, body {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
-
-
+	position: absolute;
+	z-index: 1;
 }
 
 .tile {
@@ -188,13 +230,13 @@ html, body {
 	width: 100%;
 	height: 100%;
 	position: absolute;
-	opacity: .8;
+	opacity: .95;
 	transition-property: opacity;
 	transition-duration: .4s;
 
 }
 .tile .back:hover > .background {
-	opacity: .55;
+	opacity: .80;
 }
 .tile .front,.back {
 	backface-visibility: hidden;
@@ -299,13 +341,14 @@ h1 {
   -webkit-transform: rotate(45deg) translate(50%);
   -moz-transform: rotate(45deg) translate(50%);
 }
-p {
+.iexplorer p {
 	left:0;
 	text-align: left;
   	color: white;
   	font-family: "ubuntu";
   	font-style: normal;    
   	font-size: 26;
+  	width:90%;
   	white-space: normal;
 }
 a {
@@ -313,23 +356,24 @@ a {
 	font-style: normal;
 	color: white;
 }
-table {
+.iexplorer table {
   font-family: ubuntu;
   border-collapse: collapse;
+  width: 30%;
 }
 
-td, th {
-  border: 1px solid #dddddd;
+.iexplorer td, .iexplorer th {
+  border: 0;
   text-align: left;
-  padding: 8px;
+  padding: 1%;
   color: white;
   font-family: "ubuntu";
   font-style: normal;    
-  font-size: 26;
+  font-size: 20;
   white-space: normal;
 }
 
-tr:nth-child(evenbr) {
+.iexplorer tr:nth-child(even) {
   background-color: rgba(171, 171, 178, .5);
 }
 .return-center {

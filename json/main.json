@@ -8,26 +8,27 @@
 			"url": null,
 			"color": "#dd2164",
 			"icon": "/images/contact_icon.png",
-			"title": "Skills",
+			"title": "Who am i?",
 			"text": "Get a copy <a href='misc/Resume.pdf' download>here</a>"
 		},
-      	{
-			"type": "normal",
-			"active": true,
-			"url": null,
-			"color": "#1c817e",
-			"icon": "/images/bio_icon.png",
-			"title": "About Me",
-			"text": "A summary of who I am, where I've been and what i've done."
-		},
-		{
+    	{
 			"type": "download",
 			"active": true,
 			"url": "/misc/Resume.pdf",
-			"color": "#6e04a9",
-			"icon": "/images/contact_icon.png",
+			"color": "#1c817e",
+			"icon": "/images/resume_icon.png",
 			"title": "Resume",
 			"text": "Get a copy <a href='misc/Resume.pdf' download>here</a>"
+		},  
+		{
+			"type": "normal",
+			"active": true,
+			"url":  "/json/github.json",
+			"color": "#6e04a9",
+			"icon": "/images/github_icon.png",
+			"outIcon": "/images/github_icon.png",
+			"title": "Github Projects",
+			"text": "Some of my cooler github projects. Made with ♥ and coffee beans."
 		},
 		{
 			"type": "game",
@@ -35,10 +36,12 @@
 			"active": true,
 			"url": "/gravitation/index.html",
 			"color": "#6e04a9",
-			"icon": "/images/stuff_icon.png",
+			"icon": "/images/gravity_icon.png",
 			"title": "p5Gravitation",
 			"text": "Manipulate gravity with your mouse, coded using the <a target='_blank' href='https://p5js.org/'>p5.js</a> library.",
-			"big_text": "Hello mate 0"
+			"big_text": "</br><h1>p5Gravitation</h1><p>Move the mouse or a finger around and the gravity will follow.</p><p>Scroll the wheel or adjust the top slider to vary the gravity offset.</p><p>Source code is available <a target='_blank' href='https://github.com/kennedn/p5Gravitation'>here</a>.</p>",
+			"orientation": "bottom",
+			"extend": 32
 		},
 		{
 			"type": "game",
@@ -46,10 +49,12 @@
 			"active": true,
 			"url": "/tetris/index.html",
 			"color": "#dd2164",
-			"icon": "/images/stuff_icon.png",
+			"icon": "/images/tetris_icon.png",
 			"title": "jsTetris",
 			"text": "A basic implementation of Tetris, coded in Python using <a target='_blank' href='https://www.pygame.org/wiki/GettingStarted'>Pygame</a>, compiled to JavaScript using <a target='_blank' href='http://pyjs.org/'>Pyjs</a> with <a target='_blank' href='https://gatc.ca/projects/pyjsdl/'>Pyjsdl</a>.",
-			"big_text": "Hello mate 2"
+			"big_text": "<br/><h1>jsTetris</h1><p>Keyboard controls are as follows:</p><span><table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody><tr><td>left arrow</td><td>move left</td></tr><tr><td>right arrow</td><td>move right</td></tr><tr><td>z</td><td>rotate left</td></tr><tr><td>x</td><td>rotate right</td></tr><tr><td>down arrow</td><td>soft drop</td></tr><tr><td>space</td><td>hard drop</td></tr><tr><td>p</td><td>pause</td></tr><tr><td>r</td><td>restart</td></tr></tbody></table></span><p> Use the buttons to the right of the grid if you lack a keyboard.<p>Source code is available <a target='_blank' href='https://github.com/kennedn/pytetris/tree/jsdl'>here</a>.</p>",
+			"orientation": "right",
+			"extend": 46
 		},
    		{
 			"type": "game",
@@ -57,21 +62,21 @@
 			"active": true,
 			"url": "/pong/index.html",
 			"color": "#1c817e",
-			"icon": "/images/stuff_icon.png",
+			"icon": "/images/pong_icon.png",
 			"title": "p5Pong",
 			"text": "A simple Pong clone, coded using the <a target='_blank' href='https://p5js.org/'>p5.js</a> library.",
-			"big_text": "Hello mate 1"
+			"big_text": "</br><h1>p5Pong</h1><p>Move the mouse or a finger around and the left paddle will follow.</p><p>Double click inside the game window or press 'p' to (un)pause.</p><p>Source code is available <a target='_blank' href='https://github.com/kennedn/p5Pong'>here</a>.</p>",
+			"orientation": "bottom",
+			"extend": 32
 		},
-      
-      
-		{
+      	{
 			"type": "normal",
 			"active": true,
-			"url":  "/json/github.json",
+			"url": null,
 			"color": "#1c817e",
-			"icon": "/images/github_icon.png",
-			"title": "Github Projects",
-			"text": "Some of my cooler github projects. Made with ♥ and coffee beans."
+			"icon": "/images/about_icon.png",
+			"title": "About this website",
+			"text": "A summary of who I am, where I've been and what i've done."
 		},
 		{
 			"active": false,
@@ -82,8 +87,8 @@
 			"active": true,
 			"url": null,
 			"color": "#dd2164",
-			"icon": "/images/contact_icon.png",
-			"title": "Get in touch",
+			"icon": "/images/link_icon.png",
+			"title": "Contact",
 			"text": "How you can get in touch."
 		}
 	]

@@ -6,7 +6,7 @@
 			"active": true,
 			"url": "https://github.com/kennedn/tvcom",
 			"color": "#1c817e",
-			"icon": "/images/github_icon.png",
+			"icon": "/images/term_icon.png",
 			"outIcon": "/images/tvcom_out.png",
 			"title": "tvcom",
 			"text": "<b>tvcom</b> is an assistance module that provides a friendly interface for commanding LG tvs via a serial connection."
@@ -16,7 +16,7 @@
 			"active": true,
 			"url": "https://github.com/kennedn/soundy",
 			"color": "#dd2164",
-			"icon": "/images/github_icon.png",
+			"icon": "/images/term_icon.png",
 			"outIcon": "/images/soundy_out.png",
 			"title": "soundy",
 			"text": "<b>soundy</b> allows easy switching of PulseAudio output devices in the command line."
@@ -26,7 +26,7 @@
 			"active": true,
 			"url": "https://github.com/kennedn/Action-On-LAN",
 			"color": "#6e04a9",
-			"icon": "/images/github_icon.png",
+			"icon": "/images/term_icon.png",
 			"outIcon": "/images/AOL_out.png",
 			"title": "Action-On-LAN",
 			"text": "<b>Action-On-LAN</b> listens for Wake-On-LAN magic packets and runs a command upon reciept."
@@ -36,10 +36,10 @@
 			"active": true,
 			"url": "https://github.com/kennedn/roomAPI",
 			"color": "#1c817e",
-			"icon": "/images/github_icon.png",
+			"icon": "/images/term_icon.png",
 			"outIcon": "/images/roomAPI_out.png",
 			"title": "roomAPI",
-			"text": "<b>roomAPI</b> is a tailored RESTful service for home automation, coded using Flask-restful."
+			"text": "<b>roomAPI</b> is a tailored RESTful service for home automation, coded using <a target='_blank' href='https://flask-restful.readthedocs.io/'>Flask-RESTful</a>."
 		}
 	]
 }

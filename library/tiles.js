@@ -18,7 +18,7 @@ function getHost(link) {
 // Recursive canvas resize function to compensate for the time between 
 // iframe onload event and canvas the becoming available on the DOM
 function resizeOnCanvas(time) {
-  let object = $("#0 > .back > .wrapperLeft, .wrapperTop").children("iframe").contents().find("canvas");
+  let object = $("#0 > .back > .iframeWrap").children("iframe").contents().find("canvas");
   // Canvas now exists so call resize function
   if(object.length > 0) {
       resizeTile();
@@ -54,6 +54,13 @@ function resizeTile() {
   // Derive a font scaler from the tileSize
   let fontScaler = tileScaler / 360;
   let fontTileScaler = tileSize / 360;
+
+  // Set fonts based on scaler
+  $(".tile .back p").css({'font-size' : 26 * fontTileScaler});
+  $(".tile-big .back .big-bg-right, .tile-big .back .big-bg-bottom").find("p,a,th,td,table").css({'font-size' : 26 * fontScaler});
+  $(".tile .back h1").css({'font-size' :32 * fontTileScaler});
+  $("h1").css({'font-size' :32 * fontTileScaler});
+  $("#footer p").css({'font-size' :26 * fontScaler});
 
   // Set Background div to the window dimensions (for colour transitions)
   $("#background").css({'width': WIDTH * 1.1 , 'height': HEIGHT * 1.1});
@@ -109,11 +116,12 @@ function resizeTile() {
   });
 
   // Resize Canvas to fit within wrapper element
-  $(".tile-container-big > .tile-big > .back > .wrapperLeft, .wrapperTop").each(function() {
+  $(".tile-container-big > .tile-big > .back > .iframeWrap").each(function() {
       let iframe = $(this).children("iframe");
+      let canvas = iframe.contents().find("canvas");
       // Derive scaler values from the difference between canvas dimensions and wrapper
-      let wScale = $(this).width() / iframe.contents().find("canvas").width();
-      let hScale = $(this).height() / iframe.contents().find("canvas").height();
+      let wScale = $(this).width() / canvas.width();
+      let hScale = $(this).height() / canvas.height();
       // Get lowest value of the two scalers
       let scale = Math.min(wScale,hScale);
       // Scale the iframe, ensuring its constraints are big enough to fit the canvas
@@ -122,12 +130,6 @@ function resizeTile() {
       iframe.css({'height': $(this).height() * 1 / (Math.floor(scale * 10) / 10)});
   });
   
-  // Set fonts based on scaler
-  $(".tile .back p").css({'font-size' : 26 * fontTileScaler});
-  $(".tile-big .back .p").css({'font-size' : 28 * fontScaler});
-  $(".tile .back h1").css({'font-size' :32 * fontTileScaler});
-  $("h1").css({'font-size' :32 * fontTileScaler});
-  $("#footer p").css({'font-size' :26 * fontScaler});
 
 }
 
@@ -147,15 +149,17 @@ function DOMBuilder(tileData) {
                     <div class="front" style="cursor:default;">`;
 
   tileSet.forEach((tile, i) => {
-    if (!tile.hasOwnProperty("outIcon"))
-      tile.outIcon = false;
-    if (tile.active)
+    if (tile.active){
+      if (!tile.hasOwnProperty("outIcon") && tile.hasOwnProperty("icon"))
+        tile.outIcon = tile.icon;
+
       tileHTML+=`<div class="tile-container">
                   <div id="${i+1}" class="tile end-flipped">
                     <div class="front" style="background:${tile.color};">
                       <h1> ${tile.title} </h1>
                       <img onmousedown="return false" src="${tile.icon}"/>
                     </div>`;
+    }
     else
       tileHTML+=`<div class="tile-container" style="pointer-events:none; cursor: default;">
                   <div id="${i+1}" class="tile end-flipped">
@@ -179,11 +183,11 @@ function DOMBuilder(tileData) {
   tileHTML += ` </div>
                <div class="back">
                 <img onmousedown="return false" src="/images/back_icon.png"/> 
-                <div class="p-bg">
-                  <p id="big-p"> This is a big frickin tile my dude. </p>
-                </div>
-                <div class='wrapperLeft'>
+                <div class='iframeWrap'>
                   <iframe seamless scrolling='no' frameBorder='0' class='gameFrame'></iframe>
+                </div>
+                <div class="big-bg-right">
+                  <p id="big-p"> This is a big frickin tile my dude. </p>
                 </div>
               </div>
             </div>
@@ -230,18 +234,17 @@ function tileClick(event) {
     return false;
   }
 
-
-
   // If we are not clicking the same tile for a second time
   if( i != lastFlipped ) {  
-    if (url !== null && !isLinkLocal(url) && JSON.parse(localStorage.getItem("isMobile"))) {
+    // Just set the "Visit x.com" title if we are on mobile e.g can't fire hover events 
+    if (url !== null && !isLinkLocal(url) && JSON.parse(localStorage.getItem("isMobile")))
       $("#"+i+" .back").find("h1").html("Visit " + getHost(url) + "?");
-  }
+
     // Rotate clicked tile
     $(this).toggleClass('flipped');
     // Animate the paragraph backgrounds height
     $(this).find(".p-bg").animate({height: '70%'},600,"swing", function() {
-      let iframe = $("#0 > .back > .wrapperLeft, .wrapperTop").children("iframe").get(0);
+      let iframe = $("#0 > .back > .iframeWrap").children("iframe").get(0);
       // Replace iframe source with url if tile is marked as a game and the url differs
       if (isGame && iframe.contentWindow.location.pathname !== url) {
         // Replace the iframe content with our url, an onload event should fire after doing so
@@ -255,12 +258,13 @@ function tileClick(event) {
     $("#background").show().fadeOut(400, "linear", function() {
         $(this).css("background-color", tileSet[i - 1].color); 
     });
+    localStorage.setItem('lastColor', color );
     // reflip the last tile
     $("#"+lastFlipped).toggleClass('flipped');
     //reset the paragraph background to 1% height
     $("#"+lastFlipped).find(".p-bg").animate({height: '1%'},400);
   }
-  // Ending animations.
+  // perform page exit animations.
   else if (type !== "download") {
     // pull some needed vars from the tile
     url = tileSet[lastFlipped-1].url;
@@ -280,33 +284,49 @@ function tileClick(event) {
             $("#"+k).toggleClass('end-flipped');
       }
     }
+    // If we are a game
     else {
       // Flip the tile array around
       $("#0").toggleClass('flipped');
       // Set paragraph text element
-      $("#0").find(".p-bg").last().html("<p id='big-p'>"+tileSet[lastFlipped-1].big_text+"</p>");
+      $("#0").find(".big-bg-right, .big-bg-bottom").last().html(tileSet[lastFlipped-1].big_text);
       // Flip around return button so it is visible
       setTimeout( function () {
         $("#return-button").removeClass('flipped');
       }, 600);
-      // Raise p-bg
-      $("#0").find(".p-bg").last().animate({height: '30%'},800,"swing");
+      let orientation = tileSet[lastFlipped-1].orientation;
+      let extend = tileSet[lastFlipped-1].extend;
+      let bigBG =  $("#0").find(".big-bg-right, .big-bg-bottom").last();
+      // Set the correct class and positioning based on tile values
+      if (orientation === "right") {
+        bigBG.attr("class", "big-bg-right");
+        bigBG.css({height: "100%", left: 100 - extend + "%", width: extend + "%"});
+      }
+      else if (orientation === "bottom") {
+        bigBG.attr("class", "big-bg-bottom");
+        bigBG.css({height: extend + "%", left: 0, width: "100%"});
+      }
+      // Call a resizeTile to ensure the font's get a resize
+      resizeTile();
     }
     // Handle url redirection and history persistance, runs on a timeout 
-    // so that we execute just as the second tile flip animation is finishing 
+    // so that we execute just as the exit animations are finishing 
     setTimeout((url, color, type, isGame, lastFlipped) => {
-      localStorage.setItem('lastColor', color );
       if(url !== null) {
         if (isLinkLocal(url) && url.split('.').pop() === 'json') {
+          // remove localStorage items to prevent accidental use via race conditions
           localStorage.removeItem("lastFlipped");
           localStorage.removeItem("tileSqrt");
+          // push a new history state and generate the new tileSet from the JSON url
           history.pushState({ 'jsonFile': url }, "");
           tileGenerator(url);
         }
+        // We probably just want to navigate to this url
         else if (!isGame) {
           window.location.href = url;
         }
       }
+      // Something went wrong, just reload the page
       else
         location.reload();
     }, 350, url, color, type, isGame, lastFlipped);
@@ -337,14 +357,14 @@ function tileGenerator(jsonFile) {
       $("#background").css("background-color", tileSet[1].color);
     }
     // Build and append HTML elements
-    DOMBuilder(data, tileSqrt);
+    DOMBuilder(data);
 
-    resizeTile(tileSqrt);
+    resizeTile();
     // Call resizeTile on window resize
-    window.onresize = () => {resizeTile(tileSqrt);};
+    window.onresize = () => {resizeTile();};
     // Call resizeOnCanvas when new iframe is loaded
-    $("#0 > .back > .wrapperLeft, .wrapperTop").children("iframe").on('load', () => {
-      resizeOnCanvas(tileSqrt, 100);
+    $(".gameFrame").on('load', () => {
+      resizeOnCanvas(100);
     });
 
     // For each tile        
@@ -355,6 +375,8 @@ function tileGenerator(jsonFile) {
         $("#"+i).removeClass('end-flipped');
         //watch for a click on the div with id i
         $("#"+i).click({"tileSet": tileSet}, tileClick);
+
+        // Perform fade-in / fade-out effect, replacing title with "Visit x.com?" on hover 
         if (tile.url !== null && !isLinkLocal(tile.url)) {
           $("#"+i + " .back").hover(function() {
             $(this).find("h1").fadeOut(300, function () {
@@ -368,10 +390,10 @@ function tileGenerator(jsonFile) {
         }
       }, 400, i, tile);
     }
+    // Return button animation to exit game back to tile selection
     $("#return-button").click(() => {
       let lastFlipped = localStorage.getItem('lastFlipped');
       $("#" + lastFlipped).removeClass('flipped');
-      //$("#" + lastFlipped).find(".p-bg").html('<p>'+tileSet[lastFlipped - 1].text+'</p>');
       localStorage.removeItem('lastFlipped');
       $("#0").removeClass('flipped');
       $("#return-button").addClass('flipped');
@@ -379,25 +401,33 @@ function tileGenerator(jsonFile) {
   });
 }
 
-window.onload = function() {
+// callback for popstate, try to restore JSON from history
+function onPopState (jsonFile) {
+  // remove localStorage items to prevent accidental use via race conditions
   localStorage.removeItem("lastFlipped");
   localStorage.removeItem("tileSqrt");
+  if (event.state == null)
+    tileGenerator(jsonFile);
+  else
+    tileGenerator(event.state.jsonFile);
+}
+
+window.addEventListener('load', (event) => {
   let jsonFile = "/json/main.json";
-  // Set listener for history popstate, restore JSON from history if possible
-  window.addEventListener('popstate', (event) => {
-    localStorage.removeItem("lastFlipped");
-    localStorage.removeItem("tileSqrt");
-    if (event.state == null)
-      tileGenerator(jsonFile);
-    else
-      tileGenerator(event.state.jsonFile);
-  });
+  // remove localStorage items to prevent accidental use via race conditions
+  localStorage.removeItem("lastFlipped");
+  localStorage.removeItem("tileSqrt");
+
+  // Set listener for history popstate, this will restore JSON from history if possible
+  window.addEventListener('popstate', function() {onPopState(jsonFile);});
+
   // If popstate didn't fire, this either means the user
   // didn't use history to get here or they are navigating back from an external site
-  if($(".center").length == 0) {
+  if($(".auto-generated").length == 0) {
     if (history.state != null)
       tileGenerator(history.state.jsonFile);
     else
       tileGenerator(jsonFile);
   }
-};
+});  
+
