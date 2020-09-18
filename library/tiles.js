@@ -250,11 +250,30 @@ function tileClick(event) {
     $(this).toggleClass('flipped');
     // Animate the paragraph backgrounds height
     $(this).find(".p-bg").animate({height: '70%'},600,"swing", function() {
-      let iframe = $("#0 > .back > .iframeWrap").children("iframe").get(0);
+      let iframe = $(".gameFrame").get(0);
       // Replace iframe source with url if tile is marked as a game and the url differs
       if (isGame && iframe.contentWindow.location.pathname !== url) {
+        localStorage.setItem("bigText", tileSet[i-1].bigText);
+        let orientation = tileSet[i-1].orientation;
+        let extend = tileSet[i-1].extend;
+        let bigBG =  $("#0").find(".big-bg-right, .big-bg-bottom").last();
+        bigBG.empty();
+        // Set the correct class and positioning based on tile values
+        if (orientation === "right") {
+          bigBG.attr("class", "big-bg-right");
+          bigBG.css({height: "100%", left: 100 - extend + "%", width: extend + "%"});
+        }
+        else if (orientation === "bottom") {
+          bigBG.attr("class", "big-bg-bottom");
+          bigBG.css({height: extend + "%", left: 0, width: "100%"});
+        }
         // Replace the iframe content with our url, an onload event should fire after doing so
-        iframe.contentWindow.location.replace(url);
+        //iframe.contentWindow.location.replace(url);
+        $(".iframeWrap").empty();
+        $(".iframeWrap").html(`<iframe seamless scrolling='no' frameBorder='0' src=${url} class='gameFrame'></iframe>`);
+        $(".gameFrame").on('load', () => {
+          resizeOnCanvas(100);
+        });
       }
     });    
 
@@ -294,24 +313,10 @@ function tileClick(event) {
     else {
       // Flip the tile array around
       $("#0").toggleClass('flipped');
-      // Set paragraph text element
-      localStorage.setItem("bigText", tileSet[lastFlipped-1].bigText);
       // Flip around return button so it is visible
       setTimeout( function () {
         $("#return-button").removeClass('flipped');
       }, 600);
-      let orientation = tileSet[lastFlipped-1].orientation;
-      let extend = tileSet[lastFlipped-1].extend;
-      let bigBG =  $("#0").find(".big-bg-right, .big-bg-bottom").last();
-      // Set the correct class and positioning based on tile values
-      if (orientation === "right") {
-        bigBG.attr("class", "big-bg-right");
-        bigBG.css({height: "100%", left: 100 - extend + "%", width: extend + "%"});
-      }
-      else if (orientation === "bottom") {
-        bigBG.attr("class", "big-bg-bottom");
-        bigBG.css({height: extend + "%", left: 0, width: "100%"});
-      }
     }
     // Handle url redirection and history persistance, runs on a timeout 
     // so that we execute just as the exit animations are finishing 
