@@ -1,45 +1,45 @@
 {
-	"return_icon": "/images/return_button.png",
+	"return_icon": "/images/return/button.png",
 	"tiles": [
-
 		{
-			"type": "download",
+
+			"type": "normal",
+			"active": true,
+			"url":  "/json/github.json",
+			"color": "#dd2164",
+			"icon": "/images/icon/github.png",
+			"title": "Github Projects",
+			"text": "Some of my cooler github projects. Made with ♥ and coffee beans."
+		},
+		{
+			"type": "custom",
 			"active": true,
 			"url": null,
-			"color": "#dd2164",
-			"icon": "/images/contact_icon.png",
+			"color": "#1c817e",
+			"icon": "/images/icon/contact.png",
 			"title": "Who am i?",
-			"text": "Get a copy <a href='misc/Resume.pdf' download>here</a>"
+			"text": "A little about who I am and what I get up to.",
+			"backHTML": "<div class='big-bg-left'></br><h1>Who am I?</h1><p>Hi, I’m Josh! I am an infrastructure and software engineer based in the United Kingdom.</br></br>I love solving problems with clean code and brain waves. You’ll usually find me at the gym, breaking something (and then fixing it) or knee deep in a personal project.</br></br>I currently work as a middlware engineer for the NatWest group.</p></div><div class='img-center'><div class='img'><img src='/images/misc/headshot.jpg'></div></div>"
 		},
     	{
 			"type": "download",
 			"active": true,
 			"url": "/misc/Resume.pdf",
-			"color": "#1c817e",
-			"icon": "/images/resume_icon.png",
-			"title": "Resume",
-			"text": "Get a copy <a href='misc/Resume.pdf' download>here</a>"
-		},  
-		{
-			"type": "normal",
-			"active": true,
-			"url":  "/json/github.json",
 			"color": "#6e04a9",
-			"icon": "/images/github_icon.png",
-			"outIcon": "/images/github_icon.png",
-			"title": "Github Projects",
-			"text": "Some of my cooler github projects. Made with ♥ and coffee beans."
-		},
+			"icon": "/images/icon/resume.png",
+			"title": "Resume",
+			"text": "Please take a copy:</br></br><a href='misc/Resume.pdf' download>View resume</a>"
+		},  
 		{
 			"type": "game",
 			"id": null,
 			"active": true,
 			"url": "/gravitation/index.html",
 			"color": "#6e04a9",
-			"icon": "/images/gravity_icon.png",
+			"icon": "/images/icon/gravity.png",
 			"title": "p5Gravitation",
 			"text": "Manipulate gravity with your mouse, coded using the <a target='_blank' href='https://p5js.org/'>p5.js</a> library.",
-			"bigText": "</br><h1>p5Gravitation</h1><p>Move the mouse or a finger around and the gravity will follow.</p><p>Scroll the wheel or adjust the top slider to vary the gravity offset.</p><p>Source code is available <a target='_blank' href='https://github.com/kennedn/p5Gravitation'>here</a>.</p>",
+			"backHTML": "</br><h1>p5Gravitation</h1><p>Move the mouse or a finger around and the gravity will follow.</p><p>Scroll the wheel or adjust the top slider to vary the gravity offset.</p><p>Source code is available <a target='_blank' href='https://github.com/kennedn/p5Gravitation'>here</a>.</p>",
 			"orientation": "bottom",
 			"extend": 32
 		},
@@ -49,10 +49,10 @@
 			"active": true,
 			"url": "/tetris/index.html",
 			"color": "#dd2164",
-			"icon": "/images/tetris_icon.png",
+			"icon": "/images/icon/tetris.png",
 			"title": "jsTetris",
 			"text": "A basic implementation of Tetris, coded in Python using <a target='_blank' href='https://www.pygame.org/wiki/GettingStarted'>Pygame</a>, compiled to JavaScript using <a target='_blank' href='http://pyjs.org/'>Pyjs</a> with <a target='_blank' href='https://gatc.ca/projects/pyjsdl/'>Pyjsdl</a>.",
-			"bigText": "<br/><h1>jsTetris</h1><p>Keyboard controls are as follows:</p><span><table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody><tr><td>left arrow</td><td>move left</td></tr><tr><td>right arrow</td><td>move right</td></tr><tr><td>z</td><td>rotate left</td></tr><tr><td>x</td><td>rotate right</td></tr><tr><td>down arrow</td><td>soft drop</td></tr><tr><td>space</td><td>hard drop</td></tr><tr><td>p</td><td>pause</td></tr><tr><td>r</td><td>restart</td></tr></tbody></table></span><p> Use the buttons to the right of the grid if you lack a keyboard.<p>Source code is available <a target='_blank' href='https://github.com/kennedn/pytetris/tree/jsdl'>here</a>.</p>",
+			"backHTML": "<br/><h1>jsTetris</h1><p>Keyboard controls are as follows:</p><span><table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody><tr><td>left arrow</td><td>move left</td></tr><tr><td>right arrow</td><td>move right</td></tr><tr><td>z</td><td>rotate left</td></tr><tr><td>x</td><td>rotate right</td></tr><tr><td>down arrow</td><td>soft drop</td></tr><tr><td>space</td><td>hard drop</td></tr><tr><td>p</td><td>pause</td></tr><tr><td>r</td><td>restart</td></tr></tbody></table></span><p> Use the buttons to the right of the grid if you lack a keyboard.<p>Source code is available <a target='_blank' href='https://github.com/kennedn/pytetris/tree/jsdl'>here</a>.</p>",
 			"orientation": "right",
 			"extend": 46
 		},
@@ -62,34 +62,42 @@
 			"active": true,
 			"url": "/pong/index.html",
 			"color": "#1c817e",
-			"icon": "/images/pong_icon.png",
+			"icon": "/images/icon/pong.png",
 			"title": "p5Pong",
 			"text": "A simple Pong clone, coded using the <a target='_blank' href='https://p5js.org/'>p5.js</a> library.",
-			"bigText": "</br><h1>p5Pong</h1><p>Move the mouse or a finger around and the left paddle will follow.</p><p>Double click inside the game window or press 'p' to (un)pause.</p><p>Source code is available <a target='_blank' href='https://github.com/kennedn/p5Pong'>here</a>.</p>",
+			"backHTML": "</br><h1>p5Pong</h1><p>Move the mouse or a finger around and the left paddle will follow.</p><p>Double click inside the game window or press 'p' to (un)pause.</p><p>Source code is available <a target='_blank' href='https://github.com/kennedn/p5Pong'>here</a>.</p>",
 			"orientation": "bottom",
 			"extend": 32
 		},
       	{
-			"type": "normal",
+			"type": "custom",
 			"active": true,
 			"url": null,
 			"color": "#1c817e",
-			"icon": "/images/about_icon.png",
+			"icon": "/images/icon/about.png",
 			"title": "About this website",
-			"text": "A summary of who I am, where I've been and what i've done."
-		},
-		{
-			"active": false,
-			"color": "#6e04a9"
+			"text": "A little about what this website runs on and how you can create your own home server",
+			"title": "About this website",
+			"backHTML": "<div class='big-bg-left'></br><h1>Who am I?</h1><p>The website you are currently browsing is self hosted on a bad boy like the one to the right. It is a thin client, the type of low power device you may find in a large company that’s sole purpose is to log in to a more powerful machine over the network.</br></br>Specs are:</br><table style='width:90%;'><thead><tr><th>Feature</th><th> Description</th></tr></thead><tbody><tr><td>CPU</td><td> AMD G-T56N (15x slower than mid range x86 CPU)</td></tr><tr><td>Memory</td><td> 4GB DDR3</td></tr><tr><td>USB</td><td> USB2 x 4, USB3 x 2</td></tr><tr><td>Ethernet</td><td> Gigabit</td></tr></tbody></table></br>The CPU is not intensive enough to even require a fan. This makes it ideal for a low cost server. It is currently running Debian Linux and hosts a number of web services.</br></br>If you find yourself in need of a low cost, low power home server, I would highly recommend parkytowers (<a target='_blank' href='https://www.parkytowers.me.uk/thin/'>here</a>) as a place to start.</p></div><div class='img-center'><div class='img'><img src='/images/misc/server.png'></div></div>"
 		},
 		{
 			"type": "download",
 			"active": true,
 			"url": null,
-			"color": "#dd2164",
-			"icon": "/images/link_icon.png",
+			"color": "#6e04a9",
+			"icon": "/images/icon/link.png",
 			"title": "Contact",
-			"text": "How you can get in touch."
+			"text": "<ul><li><a target='_blank' href='https://github.com/kennedn'>Github</a></li><li><a target='_blank' href='https://www.linkedin.com/in/kennedn'>LinkedIn</a></li><li><a target='_blank' href='https://www.facebook.com/kennedn'>Facebook</a></li></ul>"
+		},
+		{
+			"type": "normal",
+			"active": false,
+			"url": null,
+			"color": "#dd2164",
+			"icon": "/images/icon/question.png",
+			"title": "Coming soon",
+			"text": " "
 		}
+		
 	]
 }

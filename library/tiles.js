@@ -18,21 +18,19 @@ function getHost(link) {
 // Recursive canvas resize function to compensate for the time between 
 // iframe onload event and canvas the becoming available on the DOM
 function resizeOnCanvas(time) {
-  let bigText = localStorage.getItem('bigText');
-  if (bigText === null)
-    bigText = "";
+  let backHTML = localStorage.getItem('backHTML');
+  if (backHTML === null)
+    backHTML = "";
   let bigBG = $("#0").find(".big-bg-right, .big-bg-bottom").last();
   let object = $("#0 > .back > .iframeWrap").children("iframe").contents().find("canvas");
   // Canvas now exists so call resize function
   if(object.length > 0) {
-      bigBG.html(bigText);
+      bigBG.html(backHTML);
       resizeTile();
       return;
   }
   // Canvas not in DOM yet, call self again after a timeout
   else {
-      bigBG.html("</br><h1>Loading...</h1>");
-      resizeTile();
       setTimeout(function() {
           resizeOnCanvas(time);
       }, time);
@@ -63,9 +61,9 @@ function resizeTile() {
   let fontTileScaler = tileSize / 360;
 
   // Set fonts based on scaler
-  $(".tile .back p").css({'font-size' : 26 * fontTileScaler});
-  $(".tile-big .back .big-bg-right, .tile-big .back .big-bg-bottom").find("p,a,th,td,table").css({'font-size' : 26 * fontScaler});
-  $(".tile .back h1").css({'font-size' :32 * fontTileScaler});
+  $(".tile .back").find("li,p").css({'font-size' : 26 * fontTileScaler});
+  $(".tile-big .back .big-bg-right, .tile-big .back .big-bg-bottom, .tile-big .back .big-bg-left").find("li,p,a,th,td,table").css({'font-size' : 26 * fontScaler});
+  $(".tile-big .back h1, .tile .back h1").css({'font-size' :32 * fontTileScaler});
   $("h1").css({'font-size' :32 * fontTileScaler});
   $("#footer p").css({'font-size' :26 * fontScaler});
 
@@ -77,7 +75,6 @@ function resizeTile() {
     {'width': tileSize, 'height': tileSize});
   $(".tile-container-big, .tile-big > .front, .tile-big > .back").css(
     {'width': tileSize*tileSqrt, 'height': tileSize*tileSqrt});
-
   if (isMobile) {
    // Set container divs to equal the derived tile sizes
     $(".return").css(
@@ -136,7 +133,8 @@ function resizeTile() {
       iframe.css({'width': $(this).width() * 1 / (Math.floor(scale * 10) / 10)});
       iframe.css({'height': $(this).height() * 1 / (Math.floor(scale * 10) / 10)});
   });
-  
+ 
+ $(".img-center .img img").css({'max-width': $(".img-center .img").width(), 'max-height': $(".img-center .img").height()});
 
 }
 
@@ -156,31 +154,31 @@ function DOMBuilder(tileData) {
                     <div class="front" style="cursor:default;">`;
 
   tileSet.forEach((tile, i) => {
-    if (tile.active){
+    // if (tile.active){
       if (!tile.hasOwnProperty("outIcon") && tile.hasOwnProperty("icon"))
         tile.outIcon = tile.icon;
 
-      tileHTML+=`<div class="tile-container">
+      tileHTML+=`<div class="tile-container" ${tile.active ? '' : 'style="pointer-events:none; cursor: default; opacity: 0.2;"'}>
                   <div id="${i+1}" class="tile end-flipped">
                     <div class="front" style="background:${tile.color};">
                       <h1> ${tile.title} </h1>
                       <img onmousedown="return false" src="${tile.icon}"/>
+                    </div>
+                    <div class="back ${tile.type === "custom" ? 'nohover' : ''}" ${tile.type === "download" ? 'style="cursor: default;"' : ''}>
+                      <img src="${tile.outIcon}" onerror="this.src='/images/out/default.png'"/>
+                      <div class="background" style="background:${tile.color}"></div>
+                      <img onmousedown="return false" src="/images/icon/back.png"/>
+                      <h1> ${tile.title} </h1>
+                      <div class="p-bg"> 
+                        <p> ${tile.text} </p>
+                      </div> 
                     </div>`;
-    }
-    else
-      tileHTML+=`<div class="tile-container" style="pointer-events:none; cursor: default;">
-                  <div id="${i+1}" class="tile end-flipped">
-                  <div class="front" style="background:${tile.color};"></div>`;
-    tileHTML+=`<div class="back" ${tile.type === "download" ? 'style="cursor: default;"' : ''}>
-                <img src="${tile.outIcon}" onerror="this.src='/images/default_out.png'"/>
-                <div class="background" style="background:${tile.color}"></div>
-                <img onmousedown="return false" src="/images/back_icon.png"/>
-                <h1> ${tile.title} </h1>
-                <div class="p-bg"> 
-                  <p> ${tile.text} </p>
-                </div> 
-              </div>
-            </div>
+    // }
+    // else
+    //   tileHTML+=`<div class="tile-container" style="pointer-events:none; cursor: default;">
+    //               <div id="${i+1}" class="tile end-flipped">
+    //               <div class="front" style="background:${tile.color};"></div>`;
+    tileHTML+=`</div>
           </div>`;
     // Insert break (go to next row) if i == square root of tile number
     if(i != 0 && i + 1 % tileSqrt == 0)
@@ -189,7 +187,7 @@ function DOMBuilder(tileData) {
 
   tileHTML += ` </div>
                <div class="back">
-                <img onmousedown="return false" src="/images/back_icon.png"/> 
+                <img class="onmousedown="return false" src="/images/icon/back.png"/> 
                 <div class='iframeWrap'>
                   <iframe seamless scrolling='no' frameBorder='0' class='gameFrame'></iframe>
                 </div>
@@ -200,9 +198,9 @@ function DOMBuilder(tileData) {
           </div>
         </div>
           <div class="return-center">
-            <div id="return-button" class="return flipped">
+            <div id="return-button" class="return flipped"> 
               <img onmousedown="return false" src="${tileData.return_icon}"/>
-              <img onmousedown="return false" src="images/return_back.png"/>
+              <img onmousedown="return false" src="/images/return/back.png"/>
             </div>
           </div>
         </div>`;
@@ -228,6 +226,7 @@ function tileClick(event) {
   let title = tileSet[i-1].title;
   let color = tileSet[i-1].color;
   let type = tileSet[i-1].type;
+  let backTile = $("#0").find(".back").last();
   // Determine whether tile seems to be a valid game
   let isGame = (isLinkLocal(url) && url.split('/').pop() === 'index.html' && type === 'game');
 
@@ -250,30 +249,55 @@ function tileClick(event) {
     $(this).toggleClass('flipped');
     // Animate the paragraph backgrounds height
     $(this).find(".p-bg").animate({height: '70%'},600,"swing", function() {
-      let iframe = $(".gameFrame").get(0);
       // Replace iframe source with url if tile is marked as a game and the url differs
-      if (isGame && iframe.contentWindow.location.pathname !== url) {
-        localStorage.setItem("bigText", tileSet[i-1].bigText);
-        let orientation = tileSet[i-1].orientation;
-        let extend = tileSet[i-1].extend;
-        let bigBG =  $("#0").find(".big-bg-right, .big-bg-bottom").last();
-        bigBG.empty();
-        // Set the correct class and positioning based on tile values
-        if (orientation === "right") {
-          bigBG.attr("class", "big-bg-right");
-          bigBG.css({height: "100%", left: 100 - extend + "%", width: extend + "%"});
+      if (isGame ) {
+        if ($("#0").find(".big-bg-right, .big-bg-bottom").last().length == 0) {
+          backTile.empty();
+          backTile.append(`<img onmousedown="return false" src="/images/icon/back.png"/> 
+                           <div class='iframeWrap'>
+                            <iframe seamless scrolling='no' frameBorder='0' class='gameFrame'></iframe>
+                           </div>
+                           <div class="big-bg-right">
+                           </div>`);
         }
-        else if (orientation === "bottom") {
-          bigBG.attr("class", "big-bg-bottom");
-          bigBG.css({height: extend + "%", left: 0, width: "100%"});
+
+        let iframe = $(".gameFrame");
+        if (iframe[0].contentWindow.location.pathname !== url) {
+          // set a backHTML localStorage object so that resizeOnCanvas can push it to DOM after canvas resolves
+          localStorage.setItem("backHTML", tileSet[i-1].backHTML);
+          // Get some vars from tile and find our bigBG div
+          let orientation = tileSet[i-1].orientation;
+          let extend = tileSet[i-1].extend;
+
+
+          let bigBG =  $("#0").find(".big-bg-right, .big-bg-bottom").last();
+
+          // Empty the current HTML within the div
+          bigBG.empty();
+          bigBG.html("</br><h1>Loading...</h1>");
+          resizeTile();
+          // Set the correct class and positioning based on tile values
+          if (orientation === "right") {
+            bigBG.attr("class", "big-bg-right");
+            bigBG.css({height: "100%", left: 100 - extend + "%", width: extend + "%"});
+          }
+          else if (orientation === "bottom") {
+            bigBG.attr("class", "big-bg-bottom");
+            bigBG.css({height: extend + "%", left: 0, width: "100%"});
+          }
+          // Empty the iframe div of its iframe and then write a new one with our url, setting up the onload callback again
+          $(".iframeWrap").empty();
+          $(".iframeWrap").html(`<iframe seamless scrolling='no' frameBorder='0' src=${url} class='gameFrame'></iframe>`);
+          $(".gameFrame").on('load', () => {
+            resizeOnCanvas(100);
+          });
         }
-        // Replace the iframe content with our url, an onload event should fire after doing so
-        //iframe.contentWindow.location.replace(url);
-        $(".iframeWrap").empty();
-        $(".iframeWrap").html(`<iframe seamless scrolling='no' frameBorder='0' src=${url} class='gameFrame'></iframe>`);
-        $(".gameFrame").on('load', () => {
-          resizeOnCanvas(100);
-        });
+      }
+      else if (tileSet[i-1].type === "custom") {
+        backTile.empty();
+        backTile.append(`<img onmousedown="return false" src="/images/icon/back.png"/>`);
+        backTile.append(tileSet[i-1].backHTML);
+        resizeTile();
       }
     });    
 
@@ -297,7 +321,7 @@ function tileClick(event) {
     type = tileSet[lastFlipped-1].type;
 
     // Perform ending animation for each tile if we are not a game
-    if (!isGame) {
+    if (!isGame && tileSet[lastFlipped-1].type !== "custom") {
       for(let k=1;k<=tileSet.length;k++) {
           if (k === lastFlipped) {
             // hot fix for chrome/chromium, which can't handle multiple css transition subclasses
@@ -335,9 +359,6 @@ function tileClick(event) {
           window.location.href = url;
         }
       }
-      // Something went wrong, just reload the page
-      else
-        location.reload();
     }, 350, url, color, type, isGame, lastFlipped);
   }
   localStorage.setItem('lastFlipped',this.id);
