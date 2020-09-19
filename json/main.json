@@ -19,7 +19,7 @@
 			"icon": "/images/icon/contact.png",
 			"title": "Who am i?",
 			"text": "A little about who I am and what I get up to.",
-			"backHTML": "<div class='big-bg-left'></br><h1>Who am I?</h1><p>Hi, I’m Josh! I am an infrastructure and software engineer based in the United Kingdom.</br></br>I love solving problems with clean code and brain waves. You’ll usually find me at the gym, breaking something (and then fixing it) or knee deep in a personal project.</br></br>I currently work as a middlware engineer for the NatWest group.</p></div><div class='img-center'><div class='img'><img src='/images/misc/headshot.jpg'></div></div>"
+			"backHTML": "<div class='big-bg-left'></br><h1>Who am I?</h1><p>Hi, I’m Josh! I am an infrastructure and software engineer based in the United Kingdom.</br></br>I love solving problems with clean code and brain waves. You’ll usually find me at the gym, breaking something (and then fixing it) or knee deep in a personal project.</br></br>I currently work as a middlware engineer for the NatWest group.</p></div><div class='img-center'><div class='img'><img src='/images/misc/headshot2.jpg'></div></div>"
 		},
     	{
 			"type": "download",

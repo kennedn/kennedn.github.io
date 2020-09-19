@@ -400,10 +400,8 @@ a {
 	perspective: 100%;
 	display: inline-block;
 	float:right;
-	width: 46%;
+	width: 49%;
 	height:100%;
-	padding-right: 2%;
-	padding-top: 3%;
 }
 
 .img-center .img {
@@ -418,6 +416,7 @@ a {
 	max-height: 100%;
 	width: auto;
 	height: auto;
+	z-index: -1;
 }
 
 .return-center {
