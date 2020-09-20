@@ -38,13 +38,11 @@ html, body {
 }
 .tile-container:hover {   
   transition: transform 0.3s;
-  transform: perspective(1px) translateZ(0) scale(0.97);
-  backface-visibility: hidden; 
+  transform: scale(0.97); 
 }
 .tile-container:not(:hover) {
   transition: transform 0.3s;
-  transform: perspective(1px) translateZ(0) scale(1.0);
-  backface-visibility: hidden; 
+  transform: scale(1.0); 
 }
 
 .tile-container-big {
