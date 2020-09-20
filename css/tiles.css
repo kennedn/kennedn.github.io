@@ -304,6 +304,9 @@ html, body {
   	color: white;
   	font-size: 26;
 }
+.tile .back ul {
+	padding-left: 15%;
+}
 .tile .back a {
 	pointer-events: auto;
 	font-family: ubuntu;
