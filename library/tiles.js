@@ -48,7 +48,8 @@ function resizeTile() {
   let HEIGHT = $(window).outerHeight();
   // 15% pad either side of tiles
   let pad = 0.7;
-  let isMobile = (WIDTH < HEIGHT * pad);
+  let isMobile = (WIDTH < HEIGHT * .76);
+  //let isMobile = /Mobi/.test(navigator.userAgent);
   localStorage.setItem("isMobile", isMobile);
   // Calculate maximum width / height each tile could have to fit in current window (minus a small pad)
   let tileWidth= Math.floor((WIDTH * (1/tileSqrt)) - (WIDTH * 0.002));
