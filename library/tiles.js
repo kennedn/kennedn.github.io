@@ -135,7 +135,9 @@ function resizeTile() {
       iframe.css({'height': $(this).height() * 1 / (Math.floor(scale * 10) / 10)});
   });
  
- $(".img-center .img img").css({'max-width': $(".img-center .img").width(), 'max-height': $(".img-center .img").height()});
+ $(".img-center .img img").css({'max-width': $(".img-center .img").width(), 
+                                'max-height': $(".img-center .img").height(),
+                                'width': $(".img-center .img").width()});
 
 }
 
@@ -366,11 +368,11 @@ function tileClick(event) {
 }
 
 function tileGenerator(jsonFile) {
-  // Remove previous tile DOM elements & children
-  $(".auto-generated").remove();
   // Generate tiles after getJSON retrieves jsonFile
-  $.getJSON(jsonFile, (data) => {
-    // Retrieve tiles structure from jsonFile
+  $.getJSON(jsonFile, function(data) {
+    // Remove previous tile DOM elements & children
+    $(".auto-generated").remove();
+      // Retrieve tiles structure from jsonFile
     let tileSet = data.tiles;
     // Calculate a square root from num of timeto be used for tile sizing later on
     let tileSqrt = Math.max(Math.ceil(Math.sqrt(tileSet.length)), 2);
@@ -443,7 +445,7 @@ function onPopState (jsonFile) {
     tileGenerator(event.state.jsonFile);
 }
 
-window.addEventListener('load', (event) => {
+$(document).ready((event) => {
   let jsonFile = "/json/main.json";
   // remove localStorage items to prevent accidental use via race conditions
   localStorage.removeItem("lastFlipped");
@@ -456,9 +458,9 @@ window.addEventListener('load', (event) => {
   // didn't use history to get here or they are navigating back from an external site
   if($(".auto-generated").length == 0) {
     if (history.state != null)
-      tileGenerator(history.state.jsonFile);
+      window.requestAnimationFrame(function() {tileGenerator(history.state.jsonFile);});
     else
-      tileGenerator(jsonFile);
+      window.requestAnimationFrame(function() {tileGenerator(jsonFile);});
   }
 });  
 
