@@ -409,7 +409,7 @@ function tileGenerator(jsonFile) {
         $("#"+i).css({'pointer-events': 'auto'});
         // Rotate each tile so that its front is visible
         $("#"+i).removeClass('start');
-      }, 700, i, tile);
+      }, 800, i, tile);
 
       $("#"+i).css({'pointer-events': 'none'});
       $("#"+i).off();
