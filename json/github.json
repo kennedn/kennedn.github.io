@@ -1,6 +1,15 @@
 {
 	"return_icon": "/images/return/button.png",
 	"tiles": [
+
+		{
+			"type": "normal",
+			"active": false,
+			"url": null,
+			"color": "rgba(255, 255, 255, .0)",
+			"icon": "/images/icon/default.png",
+			"title": ""
+		},
 		{
 			"type": "normal",
 			"active": true,
@@ -19,29 +28,23 @@
 			"icon": "/images/icon/default.png",
 			"title": ""
 		},
+
       	{
 			"type": "normal",
 			"active": true,
 			"url": "https://github.com/kennedn/soundy",
-			"color": "#dd2164",
+			"color": "#6e04a9",
 			"icon": "/images/icon/term.png",
 			"outIcon": "/images/out/soundy.png",
 			"title": "soundy",
 			"text": "<b>soundy</b> allows easy switching of PulseAudio output devices in the command line."
 		},
-		{
-			"type": "normal",
-			"active": false,
-			"url": null,
-			"color": "rgba(255, 255, 255, .0)",
-			"icon": "/images/icon/default.png",
-			"title": ""
-		},
+		
       	{
 			"type": "normal",
 			"active": true,
 			"url": "https://github.com/kennedn/Action-On-LAN",
-			"color": "#6e04a9",
+			"color": "#dd2164",
 			"icon": "/images/icon/term.png",
 			"outIcon": "/images/out/AOL.png",
 			"title": "Action-On-LAN",
@@ -49,17 +52,9 @@
 		},
 		{
 			"type": "normal",
-			"active": false,
-			"url": null,
-			"color": "rgba(255, 255, 255, .0)",
-			"icon": "/images/icon/default.png",
-			"title": ""
-		},
-      	{
-			"type": "normal",
 			"active": true,
 			"url": "https://github.com/kennedn/roomAPI",
-			"color": "#dd2164",
+			"color": "#6e04a9",
 			"icon": "/images/icon/term.png",
 			"outIcon": "/images/out/roomAPI.png",
 			"title": "roomAPI",
@@ -73,7 +68,7 @@
 			"icon": "/images/icon/default.png",
 			"title": ""
 		},
-      	{
+       	{
 			"type": "normal",
 			"active": true,
 			"url": "https://github.com/kennedn/tvcom",
@@ -82,6 +77,15 @@
 			"outIcon": "/images/out/tvcom.png",
 			"title": "tvcom",
 			"text": "<b>tvcom</b> is an assistance module that provides a friendly interface for commanding LG tvs via a serial connection."
+		},
+		{
+			"type": "normal",
+			"active": false,
+			"url": null,
+			"color": "rgba(255, 255, 255, .0)",
+			"icon": "/images/icon/default.png",
+			"title": ""
 		}
+
 	]
 }
