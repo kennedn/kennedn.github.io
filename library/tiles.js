@@ -162,7 +162,7 @@ function DOMBuilder(tileData) {
         tile.outIcon = tile.icon;
 
       tileHTML+=`<div class="tile-container" ${tile.active ? '' : 'style="pointer-events:none; cursor: default; opacity: 0.2;"'}>
-                  <div id="${i+1}" class="tile end-flipped">
+                  <div id="${i+1}" class="tile start">
                     <div class="front" style="background:${tile.color};">
                       <h1> ${tile.title} </h1>
                       <img onmousedown="return false" src="${tile.icon}"/>
@@ -405,7 +405,7 @@ function tileGenerator(jsonFile) {
       let tile = tileSet[i-1];
       setTimeout((i, tile) => {
         // Rotate each tile so that its front is visible
-        $("#"+i).removeClass('end-flipped');
+        $("#"+i).removeClass('start');
         //watch for a click on the div with id i
         $("#"+i).click({"tileSet": tileSet}, tileClick);
 
@@ -421,7 +421,7 @@ function tileGenerator(jsonFile) {
             });
           });
         }
-      }, 400, i, tile);
+      }, 800, i, tile);
     }
     // Return button animation to exit game back to tile selection
     $("#return-button").click(() => {

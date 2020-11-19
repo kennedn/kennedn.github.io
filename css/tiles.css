@@ -95,12 +95,6 @@ html, body {
     transform: rotateY( 180deg );
     -webkit-transform: rotateY( 180deg );
 }
-.tile-big.end-flipped {
-	transition: transform 0.5s;
-	-webkit-transition: transform 0.5s;
-	transform: rotateY(90deg);
-	-webkit-transform: rotateY(90deg);
-} 
 .tile-big img {
 	width:100%;
 	height: 100%;
@@ -251,14 +245,50 @@ html, body {
 .tile {
 	transform-style: preserve-3d;
 	-webkit-transform-style: preserve-3d;
-	transition: transform 0.7s;
-	-webkit-transition: transform 0.7s;
+
 	position: relative; 
 	overflow: visible;
 	white-space: normal;
 	-webkit-touch-callout: none;             
     -webkit-user-select: none;
+	transition: transform 0.7s;
+	-webkit-transition: transform 0.7s;
 }			
+
+.start {
+	transform-style: preserve-3d;
+	-webkit-transform-style: preserve-3d;
+
+	position: relative; 
+	overflow: visible;
+	white-space: normal;
+	-webkit-touch-callout: none;             
+    -webkit-user-select: none;
+    opacity: 0;
+    //transform: rotateY(-90deg);
+    animation: rotateIn 0.7s ease 0.1s 1 forwards;
+}
+@keyframes rotateIn {
+	0% {
+		opacity: 1;
+		transition: all 0.7s;
+		-webkit-transition: all 0.7s;
+		transform: rotateY(-90deg);
+	}
+	10% {
+		opacity: 1;
+		transition: all 0.7s;
+		-webkit-transition: all 0.7s;
+		transform: rotateY(-90deg);
+	}
+	100% {
+		transition: all 0.7s;
+		-webkit-transition: all 0.7s;
+		transform: rotateX(0deg);
+		opacity: 1;
+	}
+}
+
 .tile .front {
 	z-index: 2;
 	transform: rotateY(0deg); 
@@ -305,6 +335,7 @@ html, body {
 	transform: rotateY(-90deg);
 	-webkit-transform: rotateY(-90deg);
 } 
+
 .tile img {
 	width:100%;
 	height: 100%;
