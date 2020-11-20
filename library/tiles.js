@@ -167,7 +167,7 @@ function DOMBuilder(tileData) {
                       <h1> ${tile.title} </h1>
                       <img onmousedown="return false" src="${tile.icon}"/>
                     </div>
-                    <div class="back ${tile.type === "download" ? 'nohover-back " style="cursor: default;"' : ''}>
+                    <div ${tile.type === "download" ? 'class="back nohover-back" style="cursor: default;"' : 'class="back"'}>
                       <img src="${tile.outIcon}" onerror="this.src='/images/out/default.png'"/>
                       <div class="background" style="background:${tile.color}"></div>
                       <img onmousedown="return false" src="/images/icon/back.png"/>
