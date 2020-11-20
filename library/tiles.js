@@ -162,8 +162,8 @@ function DOMBuilder(tileData) {
         tile.outIcon = tile.icon;
 
       tileHTML+=`<div class="tile-container" ${tile.active ? '' : 'style="pointer-events:none; cursor: default; opacity: 0.2;"'}>
-                  <div id="${i+1}" class="tile start">
-                    <div class="front" style="background:${tile.color};">
+                  <div id="${i+1}" class="tile start" >
+                    <div class="front" style="background:${tile.color} ;">
                       <h1> ${tile.title} </h1>
                       <img onmousedown="return false" src="${tile.icon}"/>
                     </div>
@@ -404,29 +404,32 @@ function tileGenerator(jsonFile) {
     // For each tile        
     for(let i=1;i <= tileSet.length; i++){
       let tile = tileSet[i-1];
-       //$('#'+i).off();
-      setTimeout((i, tile) => {
-        $("#"+i).css({'pointer-events': 'auto'});
-        // Rotate each tile so that its front is visible
-        $("#"+i).removeClass('start');
-      }, 800, i, tile);
+      if (tile.active) {
+         //$('#'+i).off();
+        
+        setTimeout((i, tile) => {
+          $("#"+i).css({'pointer-events': 'auto'});
+          // Rotate each tile so that its front is visible
+          $("#"+i).removeClass('start');
+        }, 800, i, tile);
 
-      $("#"+i).css({'pointer-events': 'none'});
-      $("#"+i).off();
-      //watch for a click on the div with id i
-      $("#"+i).click({"tileSet": tileSet}, tileClick);
+        $("#"+i).css({'pointer-events': 'none'});
+        $("#"+i).off();
+        //watch for a click on the div with id i
+        $("#"+i).click({"tileSet": tileSet}, tileClick);
 
-      // Perform fade-in / fade-out effect, replacing title with "Visit x.com?" on hover 
-      if (tile.url !== null && !isLinkLocal(tile.url)) {
-        $("#"+i + " .back").hover(function() {
-          $(this).find("h1").fadeOut(300, function () {
-            $(this).html("Visit " + getHost(tile.url) + "?").fadeIn(300);
+        // Perform fade-in / fade-out effect, replacing title with "Visit x.com?" on hover 
+        if (tile.url !== null && !isLinkLocal(tile.url)) {
+          $("#"+i + " .back").hover(function() {
+            $(this).find("h1").fadeOut(300, function () {
+              $(this).html("Visit " + getHost(tile.url) + "?").fadeIn(300);
+            });
+          }, function () {
+            $(this).find("h1").fadeOut(300, function () {
+              $(this).html(tile.title).fadeIn(300);
+            });
           });
-        }, function () {
-          $(this).find("h1").fadeOut(300, function () {
-            $(this).html(tile.title).fadeIn(300);
-          });
-        });
+        }
       }
     }
     // Return button animation to exit game back to tile selection
