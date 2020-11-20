@@ -265,7 +265,6 @@ html, body {
 	-webkit-touch-callout: none;             
     -webkit-user-select: none;
     opacity: 0;
-    //transform: rotateY(-90deg);
     animation: rotateIn 0.7s ease 0.1s 1 forwards;
 }
 @keyframes rotateIn {
@@ -274,17 +273,20 @@ html, body {
 		transition: all 0.7s;
 		-webkit-transition: all 0.7s;
 		transform: rotateY(-90deg);
+  		-webkit-transform: rotateY( -90deg ); 
 	}
 	10% {
 		opacity: 1;
 		transition: all 0.7s;
 		-webkit-transition: all 0.7s;
 		transform: rotateY(-90deg);
+  		-webkit-transform: rotateY( -90deg ); 
 	}
 	100% {
 		transition: all 0.7s;
 		-webkit-transition: all 0.7s;
 		transform: rotateX(0deg);
+  		-webkit-transform: rotateY( 0deg ); 
 		opacity: 1;
 	}
 }
