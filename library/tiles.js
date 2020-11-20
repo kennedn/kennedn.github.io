@@ -404,14 +404,13 @@ function tileGenerator(jsonFile) {
     // For each tile        
     for(let i=1;i <= tileSet.length; i++){
       let tile = tileSet[i-1];
-      if (tile.active) {
-         //$('#'+i).off();
-        
         setTimeout((i, tile) => {
           $("#"+i).css({'pointer-events': 'auto'});
           // Rotate each tile so that its front is visible
           $("#"+i).removeClass('start');
         }, 800, i, tile);
+      if (tile.active) {
+         //$('#'+i).off();
 
         $("#"+i).css({'pointer-events': 'none'});
         $("#"+i).off();
