@@ -41,19 +41,38 @@ html, body {
 	width:400px;
 	height:400px; 
 }
-.tile-container:hover {   
+.tile .back:hover {   
+  transition: transform 0.3s;
+  -webkit-transition: transform 0.3s;
+  transform: scale(0.97) rotateY(180deg); 
+  -webkit-transform: scale(0.97) rotateY(180deg); 
+}
+.tile .back:not(:hover) {
+  transition: transform 0.3s;
+  -webkit-transition: transform 0.3s;
+  transform: scale(1.0) rotateY(180deg); 
+  -webkit-transform: scale(1.0) rotateY(180deg); 
+}
+.nohover-back {
+  transform: scale(1.0) rotateY(180deg) !important; 
+  -webkit-transform: scale(1.0) rotateY(180deg) !important; 
+}
+.tile .front:hover {   
   transition: transform 0.3s;
   -webkit-transition: transform 0.3s;
   transform: scale(0.97); 
   -webkit-transform: scale(0.97); 
 }
-.tile-container:not(:hover) {
+.tile .front:not(:hover) {
   transition: transform 0.3s;
   -webkit-transition: transform 0.3s;
-  transform: scale(1.0); 
+  transform: scale(1.0);
   -webkit-transform: scale(1.0); 
 }
-
+.nohover-front {
+  transform: scale(1.0) !important; 
+  -webkit-transform: scale(1.0) !important; 
+}
 .tile-container-big {
 	perspective: 100%;
 	-webkit-perspective: 100%;

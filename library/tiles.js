@@ -163,11 +163,11 @@ function DOMBuilder(tileData) {
 
       tileHTML+=`<div class="tile-container" ${tile.active ? '' : 'style="pointer-events:none; cursor: default; opacity: 0.2;"'}>
                   <div id="${i+1}" class="tile start" >
-                    <div class="front" style="background:${tile.color} ;">
+                    <div class="front ${tile.active ? '' : 'nohover-front'}" style="background:${tile.color} ;">
                       <h1> ${tile.title} </h1>
                       <img onmousedown="return false" src="${tile.icon}"/>
                     </div>
-                    <div class="back ${tile.type === "custom" ? 'nohover' : ''}" ${tile.type === "download" ? 'style="cursor: default;"' : ''}>
+                    <div class="back ${tile.type === "download" ? 'nohover-back " style="cursor: default;"' : ''}>
                       <img src="${tile.outIcon}" onerror="this.src='/images/out/default.png'"/>
                       <div class="background" style="background:${tile.color}"></div>
                       <img onmousedown="return false" src="/images/icon/back.png"/>
