@@ -404,7 +404,8 @@ html, body {
 	font-family: ubuntu;
 	font-style: normal;
 	color: white;
-	text-decoration: underline;
+	text-decoration: none;
+	font-weight: bold;
 }
 .tile .back h1 {
 	display: inline;

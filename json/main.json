@@ -86,7 +86,7 @@
 			"color": "#6e04a9",
 			"icon": "/images/icon/link.png",
 			"title": "Contact",
-			"text": "<ul><li><a target='_blank' href='https://github.com/kennedn'>Github</a></li><li><a target='_blank' href='https://www.linkedin.com/in/kennedn'>LinkedIn</a></li><li><a target='_blank' href='https://www.facebook.com/kennedn'>Facebook</a></li></ul>"
+			"text": "<ul><li><a target='_blank' href='mailto:kennedn@msn.com'>kennedn@msn.com</a></li><li><a target='_blank' href='https://github.com/kennedn'>Github</a></li><li><a target='_blank' href='https://www.linkedin.com/in/kennedn'>LinkedIn</a></li></ul>"
 		},
 		{
 			"type": "normal",
