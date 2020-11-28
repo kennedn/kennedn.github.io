@@ -58,7 +58,7 @@
 			"icon": "/images/icon/term.png",
 			"outIcon": "/images/out/roomAPI.png",
 			"title": "roomAPI",
-			"text": "<b>roomAPI</b> is a tailored RESTful service for home automation, coded using <a target='_blank' href='https://flask-restful.readthedocs.io/'>Flask-RESTful</a>."
+			"text": "<b>roomAPI</b> is a tailored RESTful service for home automation, coded using Flask-RESTful."
 		},
 		{
 			"type": "normal",

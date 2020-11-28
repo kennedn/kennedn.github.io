@@ -38,7 +38,7 @@
 			"color": "#6e04a9",
 			"icon": "/images/icon/gravity.png",
 			"title": "p5Gravitation",
-			"text": "Manipulate gravity with your mouse, coded using the <a target='_blank' href='https://p5js.org/'>p5.js</a> library.",
+			"text": "Manipulate gravity with your mouse, coded using the <b>p5.js</b> library.",
 			"backHTML": "</br><h1>p5Gravitation</h1><p>Move the mouse or a finger around and the gravity will follow.</p><p>Scroll the wheel or adjust the top slider to vary the gravity offset.</p><p>Source code is available <a target='_blank' href='https://github.com/kennedn/p5Gravitation'>here</a>.</p>",
 			"orientation": "bottom",
 			"extend": 32
@@ -51,7 +51,7 @@
 			"color": "#dd2164",
 			"icon": "/images/icon/tetris.png",
 			"title": "jsTetris",
-			"text": "A basic implementation of Tetris, coded in Python using <a target='_blank' href='https://www.pygame.org/wiki/GettingStarted'>Pygame</a>, compiled to JavaScript using <a target='_blank' href='http://pyjs.org/'>Pyjs</a> with <a target='_blank' href='https://gatc.ca/projects/pyjsdl/'>Pyjsdl</a>.",
+			"text": "A basic implementation of Tetris, coded in Python using <b>Pygame</b>, compiled to JavaScript using <b>Pyjs</b> with <b>Pyjsdl</b>.",
 			"backHTML": "<br/><h1>jsTetris</h1><p>Keyboard controls are as follows:</p><span><table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody><tr><td>left arrow</td><td>move left</td></tr><tr><td>right arrow</td><td>move right</td></tr><tr><td>z</td><td>rotate left</td></tr><tr><td>x</td><td>rotate right</td></tr><tr><td>down arrow</td><td>soft drop</td></tr><tr><td>space</td><td>hard drop</td></tr><tr><td>p</td><td>pause</td></tr><tr><td>r</td><td>restart</td></tr></tbody></table></span><p> Use the buttons to the right of the grid if you lack a keyboard.<p>Source code is available <a target='_blank' href='https://github.com/kennedn/pytetris/tree/jsdl'>here</a>.</p>",
 			"orientation": "right",
 			"extend": 46
@@ -64,7 +64,7 @@
 			"color": "#1c817e",
 			"icon": "/images/icon/pong.png",
 			"title": "p5Pong",
-			"text": "A simple Pong clone, coded using the <a target='_blank' href='https://p5js.org/'>p5.js</a> library.",
+			"text": "A simple Pong clone, coded using the <b>p5.js</b> library.",
 			"backHTML": "</br><h1>p5Pong</h1><p>Move the mouse or a finger around and the left paddle will follow.</p><p>Double click inside the game window or press 'p' to (un)pause.</p><p>Source code is available <a target='_blank' href='https://github.com/kennedn/p5Pong'>here</a>.</p>",
 			"orientation": "bottom",
 			"extend": 32
