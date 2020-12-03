@@ -9,7 +9,7 @@
 			"color": "#dd2164",
 			"icon": "/images/icon/github.png",
 			"title": "Github Projects",
-			"text": "Some of my cooler github projects. Made with ♥ and coffee beans."
+			"text": "Some of my cooler github projects. Made with ♥ and fueled by coffee beans."
 		},
 		{
 			"type": "custom",
@@ -18,8 +18,8 @@
 			"color": "#1c817e",
 			"icon": "/images/icon/contact.png",
 			"title": "Who am i?",
-			"text": "A little about who I am and what I get up to.",
-			"backHTML": "<div class='big-bg-left'></br><h1>Who am I?</h1><p>Hi, I’m Josh! I am an infrastructure and software engineer based in the United Kingdom.</br></br>I love solving problems with clean code and brain waves. You’ll usually find me at the gym, breaking something (and then fixing it) or knee deep in a personal project.</br></br>You can find a few links and demonstrations of my work displayed on this website.</br></br>I currently work as a middlware engineer for the NatWest group.</p></div><div class='img-center'><div class='img'><img src='/images/misc/headshot2.jpg'></div></div>"
+			"text": "A little word or two on me.</br>Who I am, where I'm from and what I get up to.",
+			"backHTML": "<div class='big-bg-left'></br><h1>Who am I?</h1><p>Call me Josh. I am a software engineer hailing from Central Scotland.</br></br>I like coffee a little bit to much and as a result of this I consistantly find myself counter balancing the caffine content by writing clean and efficient code.</br></br>You’ll usually find me at the gym, breaking something (and then fixing it) or knee deep in a personal project.</br></br>This website current purpose is to showcase some of the interesting things I’ve done. You can find a few links and demonstrations of my work displayed on this website.</br></br>Speaking of work, I am currently positioned as a middlware engineer for the NatWest group.</p></div><div class='img-center'><div class='img'><img src='/images/misc/headshot2.jpg'></div></div>"
 		},
     	{
 			"type": "download",
