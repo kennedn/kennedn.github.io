@@ -351,8 +351,6 @@ function tileClick(event) {
       if(url !== null) {
         if (isLinkLocal(url) && url.split('.').pop() === 'json') {
           // remove localStorage items to prevent accidental use via race conditions
-          localStorage.removeItem("lastFlipped");
-          localStorage.removeItem("tileSqrt");
           localStorage.setItem("color", color);
           // push a new history state and generate the new tileSet from the JSON url
           history.pushState({ 'jsonFile': url }, "");
@@ -369,6 +367,8 @@ function tileClick(event) {
 }
 
 function tileGenerator(jsonFile) {
+  localStorage.removeItem("lastFlipped");
+  localStorage.removeItem("tileSqrt");
   // Generate tiles after getJSON retrieves jsonFile
   $.getJSON(jsonFile, function(data) {
     // Remove previous tile DOM elements & children
@@ -445,8 +445,6 @@ function tileGenerator(jsonFile) {
 // callback for popstate, try to restore JSON from history
 function onPopState (jsonFile) {
   // remove localStorage items to prevent accidental use via race conditions
-  localStorage.removeItem("lastFlipped");
-  localStorage.removeItem("tileSqrt");
   if (event.state == null)
     tileGenerator(jsonFile);
   else
@@ -455,9 +453,6 @@ function onPopState (jsonFile) {
 
 $(document).ready((event) => {
   let jsonFile = "/json/main.json";
-  // remove localStorage items to prevent accidental use via race conditions
-  localStorage.removeItem("lastFlipped");
-  localStorage.removeItem("tileSqrt");
 
   // Set listener for history popstate, this will restore JSON from history if possible
   window.addEventListener('popstate', function() {onPopState(jsonFile);});
