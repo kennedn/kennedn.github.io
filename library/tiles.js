@@ -18,7 +18,7 @@ function getHost(link) {
 // Recursive canvas resize function to compensate for the time between 
 // iframe onload event and canvas the becoming available on the DOM
 function resizeOnCanvas(time) {
-  let backHTML = localStorage.getItem('backHTML');
+  let backHTML = sessionStorage.getItem('backHTML');
   if (backHTML === null)
     backHTML = "";
   let bigBG = $("#0").find(".big-bg-right, .big-bg-bottom").last();
@@ -40,7 +40,7 @@ function resizeOnCanvas(time) {
 // Dynamic resize function
 // governs the sizing of the tile array, iframe canvas's and fonts.
 function resizeTile() {
-  let tileSqrt = localStorage.getItem('tileSqrt');
+  let tileSqrt = sessionStorage.getItem('tileSqrt');
   if (tileSqrt === null)
     return;
   // Get Window dimensions
@@ -50,7 +50,7 @@ function resizeTile() {
   let pad = 0.7;
   let isMobile = (WIDTH < HEIGHT * .76);
   //let isMobile = /Mobi/.test(navigator.userAgent);
-  localStorage.setItem("isMobile", isMobile);
+  sessionStorage.setItem("isMobile", isMobile);
   // Calculate maximum width / height each tile could have to fit in current window (minus a small pad)
   let tileWidth= Math.floor((WIDTH * (1/tileSqrt)) - (WIDTH * 0.002));
   let tileHeight= Math.floor((HEIGHT * 1/tileSqrt) - (HEIGHT * 0.009));
@@ -143,9 +143,9 @@ function resizeTile() {
 
 // Build DOM elements, inserting properties from the tileSet JSON where relevant
 function DOMBuilder(tileData) {
-  // Retrieve tileSqrt from localStorage, if it does not exist we are not
+  // Retrieve tileSqrt from sessionStorage, if it does not exist we are not
   // ready to draw the DOM
-  let tileSqrt = localStorage.getItem('tileSqrt');
+  let tileSqrt = sessionStorage.getItem('tileSqrt');
   if (tileSqrt === null)
     return;
 
@@ -220,7 +220,7 @@ function tileClick(event) {
   let tileSet = event.data.tileSet;
   let tileData = event.data;
   // Retrieve lastFlipped from local storage, set to false if not available
-  let lastFlipped = Number(localStorage.getItem('lastFlipped'));
+  let lastFlipped = Number(sessionStorage.getItem('lastFlipped'));
   if (lastFlipped === 0)
     lastFlipped = false;
 
@@ -245,7 +245,7 @@ function tileClick(event) {
   // If we are not clicking the same tile for a second time
   if( i != lastFlipped ) {  
     // Just set the "Visit x.com" title if we are on mobile e.g can't fire hover events 
-    if (url !== null && !isLinkLocal(url) && JSON.parse(localStorage.getItem("isMobile")))
+    if (url !== null && !isLinkLocal(url) && JSON.parse(sessionStorage.getItem("isMobile")))
       $("#"+i+" .back").find("h1").html("Visit " + getHost(url) + "?");
 
     // Rotate clicked tile
@@ -266,8 +266,8 @@ function tileClick(event) {
 
         let iframe = $(".gameFrame");
         if (iframe[0].contentWindow.location.pathname !== url) {
-          // set a backHTML localStorage object so that resizeOnCanvas can push it to DOM after canvas resolves
-          localStorage.setItem("backHTML", tileSet[i-1].backHTML);
+          // set a backHTML sessionStorage object so that resizeOnCanvas can push it to DOM after canvas resolves
+          sessionStorage.setItem("backHTML", tileSet[i-1].backHTML);
           // Get some vars from tile and find our bigBG div
           let orientation = tileSet[i-1].orientation;
           let extend = tileSet[i-1].extend;
@@ -310,6 +310,7 @@ function tileClick(event) {
     $("#background").show().fadeOut(400, "linear", function() {
         $(this).css("background-color", tileSet[i - 1].color); 
     });
+    sessionStorage.setItem('lastColor', color );
     localStorage.setItem('lastColor', color );
     // reflip the last tile
     $("#"+lastFlipped).toggleClass('flipped');
@@ -350,8 +351,8 @@ function tileClick(event) {
     setTimeout((url, color, type, isGame, lastFlipped) => {
       if(url !== null) {
         if (isLinkLocal(url) && url.split('.').pop() === 'json') {
-          // remove localStorage items to prevent accidental use via race conditions
-          localStorage.setItem("color", color);
+          // remove sessionStorage items to prevent accidental use via race conditions
+          sessionStorage.setItem("color", color);
           // push a new history state and generate the new tileSet from the JSON url
           history.pushState({ 'jsonFile': url }, "");
           tileGenerator(url);
@@ -363,12 +364,12 @@ function tileClick(event) {
       }
     }, 350, url, color, type, isGame, lastFlipped);
   }
-  localStorage.setItem('lastFlipped',this.id);
+  sessionStorage.setItem('lastFlipped',this.id);
 }
 
 function tileGenerator(jsonFile) {
-  localStorage.removeItem("lastFlipped");
-  localStorage.removeItem("tileSqrt");
+  sessionStorage.removeItem("lastFlipped");
+  sessionStorage.removeItem("tileSqrt");
   // Generate tiles after getJSON retrieves jsonFile
   $.getJSON(jsonFile, function(data) {
     // Remove previous tile DOM elements & children
@@ -377,11 +378,11 @@ function tileGenerator(jsonFile) {
     let tileSet = data.tiles;
     // Calculate a square root from num of timeto be used for tile sizing later on
     let tileSqrt = Math.max(Math.ceil(Math.sqrt(tileSet.length)), 2);
-    localStorage.setItem("tileSqrt", tileSqrt);
+    sessionStorage.setItem("tileSqrt", tileSqrt);
 
-    // Retrieve last clicked tile color from localStorage if available
+    // Retrieve last clicked tile color from sessionStorage if available
     let lastColor = false;
-    lastColor = localStorage.getItem('lastColor');
+    lastColor = sessionStorage.getItem('lastColor');
     if(lastColor) {
       $("body").css("background-color", lastColor);
       $("#background").css("background-color", lastColor);
@@ -433,9 +434,9 @@ function tileGenerator(jsonFile) {
     }
     // Return button animation to exit game back to tile selection
     $("#return-button").click(() => {
-      let lastFlipped = localStorage.getItem('lastFlipped');
+      let lastFlipped = sessionStorage.getItem('lastFlipped');
       $("#" + lastFlipped).removeClass('flipped');
-      localStorage.removeItem('lastFlipped');
+      sessionStorage.removeItem('lastFlipped');
       $("#0").removeClass('flipped');
       $("#return-button").addClass('flipped');
     });
@@ -444,7 +445,7 @@ function tileGenerator(jsonFile) {
 
 // callback for popstate, try to restore JSON from history
 function onPopState (jsonFile) {
-  // remove localStorage items to prevent accidental use via race conditions
+  // remove sessionStorage items to prevent accidental use via race conditions
   if (event.state == null)
     tileGenerator(jsonFile);
   else
@@ -460,6 +461,12 @@ $(document).ready((event) => {
   // If popstate didn't fire, this either means the user
   // didn't use history to get here or they are navigating back from an external site
   if($(".auto-generated").length == 0) {
+    
+    // Copy lastColor to sessionStorage if it exists (persists last color from any session)
+    lastColor = localStorage.getItem('lastColor');
+    if (lastColor)
+      sessionStorage.setItem('lastColor', lastColor);
+
     if (history.state != null)
       window.requestAnimationFrame(function() {tileGenerator(history.state.jsonFile);});
     else
