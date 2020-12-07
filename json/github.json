@@ -48,7 +48,7 @@
 			"icon": "/images/icon/term.png",
 			"outIcon": "/images/out/AOL.png",
 			"title": "Action-On-LAN",
-			"text": "<b>Action-On-LAN</b> listens for Wake-On-LAN magic packets and runs a command upon reciept."
+			"text": "<b>Action-On-LAN</b> listens for Wake-On-LAN magic packets and runs a command upon receipt."
 		},
 		{
 			"type": "normal",
@@ -76,7 +76,7 @@
 			"icon": "/images/icon/term.png",
 			"outIcon": "/images/out/tvcom.png",
 			"title": "tvcom",
-			"text": "<b>tvcom</b> is an assistance module that provides a friendly interface for commanding LG tvs via a serial connection."
+			"text": "<b>tvcom</b> is an assistance module that provides a friendly interface for commanding LG TVs via a serial connection."
 		},
 		{
 			"type": "normal",

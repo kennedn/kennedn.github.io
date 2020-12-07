@@ -9,7 +9,7 @@
 			"color": "#dd2164",
 			"icon": "/images/icon/github.png",
 			"title": "Github Projects",
-			"text": "Some of my cooler github projects. Made with ♥ and fueled by coffee beans."
+			"text": "Some of my cooler github projects. Made with ♥ and fuelled by coffee beans."
 		},
 		{
 			"type": "custom",
@@ -19,7 +19,7 @@
 			"icon": "/images/icon/contact.png",
 			"title": "Who am i?",
 			"text": "A little word or two on me.</br>Who I am, where I'm from and what I get up to.",
-			"backHTML": "<div class='big-bg-left'></br><h1>Who am I?</h1><p>Call me Josh. I am a software engineer hailing from Central Scotland.</br></br>I like coffee a little bit to much and as a result of this I consistantly find myself counter balancing the caffine content by writing clean and efficient code.</br></br>You’ll usually find me at the gym, breaking something (and then fixing it) or knee deep in a personal project.</br></br>This websites current purpose is to showcase some of the interesting things I’ve done. You can find a few links and demonstrations of my work displayed on this website.</br></br>Speaking of work, I am currently positioned as a middlware engineer for the NatWest group.</p></div><div class='img-center'><div class='img'><img src='/images/misc/headshot2.jpg'></div></div>"
+			"backHTML": "<div class='big-bg-left'></br><h1>Who am I?</h1><p>Call me Josh. I am a software engineer hailing from Central Scotland.</br></br>I like coffee a little bit to much and as a result of this I consistently find myself counter balancing the caffeine content by writing clean and efficient code.</br></br>You’ll usually find me at the gym, breaking something (and then fixing it) or knee deep in a personal project.</br></br>This websites current purpose is to showcase some of the interesting things I’ve done. You can find a few links and demonstrations of my work displayed on this website.</br></br>Speaking of work, I am currently positioned as a middleware engineer for the NatWest group.</p></div><di class='img-center'><div class='img'><img src='/images/misc/headshot2.jpg'></div></div>"
 		},
     	{
 			"type": "download",
@@ -77,7 +77,7 @@
 			"icon": "/images/icon/about.png",
 			"title": "About this website",
 			"text": "A little about what this website runs on and how you can create your own home server",
-			"backHTML": "<div class='big-bg-left'></br><h1>About this website</h1><p>This website started out as a pet project in 2017. It was originally an experiment to see if it was possible to use css transforms as a navigational tool. You can see to the right a screenshot of the original proof of concept.</br></br>The website has since evolved in to a sort of pseudo webapp. 95% of the HTML is generated on the fly. This makes it quite modular and easy to add new content.</br></br>The website is also self hosted on a thin client (pictured right). It is a type of low power device akin to a raspberry pi.</br></br> It is currently running Debian Linux and hosts a number of web services.</br></br>If you find yourself in need of a low cost, low power home server, I would highly recommend parkytowers (<a target='_blank' href='https://www.parkytowers.me.uk/thin/'>here</a>) as a place to start.</p></div><div class='img-center'><div class='img'><img src='/images/misc/pilot.png'></div></br><div class='img'><img src='/images/misc/server.png'></div></div>"
+			"backHTML": "<div class='big-bg-left'></br><h1>About this website</h1><p>This website started out as a pet project in 2017. It was originally an experiment to see if it was possible to use CSS transforms as a navigational tool. You can see to the right a screenshot of the original proof of concept.</br></br>The website has since evolved in to a sort of pseudo web-app. 95% of the HTML is generated on the fly. This makes it quite modular and easy to add new content.</br></br>The website is also self hosted on a thin client (pictured right). It is a type of low power device akin to a raspberry pi.</br></br> It is currently running Debian Linux and hosts a number of web services.</br></br>If you find yourself in need of a low cost, low power home server, I would highly recommend parkytowers (<a target='_blank' href='https://www.parkytowers.me.uk/thin/'>here</a>) as a place to start.</p></div><div class='img-center'><div class='img'><img src='/images/misc/pilot.png'></div></br><div class='img'><img src='/images/misc/server.png'></div></div>"
 		},
 		{
 			"type": "download",
