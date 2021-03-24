@@ -16,7 +16,6 @@
 			"url": "https://github.com/kennedn/kindlepass",
 			"color": "#1c817e",
 			"icon": "/images/icon/term.png",
-			"outIcon": "/images/out/roomAPI.png",
 			"title": "kindlepass",
 			"text": "<b>kindlepass</b> is designed to streamline the retrieval of licenses for legacy Kindle devices."
 		},
@@ -32,12 +31,11 @@
       	{
 			"type": "normal",
 			"active": true,
-			"url": "https://github.com/kennedn/soundy",
+			"url": "https://github.com/kennedn/gnome-shell-extension-mprispanel",
 			"color": "#6e04a9",
 			"icon": "/images/icon/term.png",
-			"outIcon": "/images/out/soundy.png",
-			"title": "soundy",
-			"text": "<b>soundy</b> allows easy switching of PulseAudio output devices in the command line."
+			"title": "MPRIS panel",
+			"text": "<b>MPRIS panel</b> uses a 'smart-switching' technique to effortlessly control multiple media players in linux."
 		},
 		
       	{
@@ -46,7 +44,6 @@
 			"url": "https://github.com/kennedn/Action-On-LAN",
 			"color": "#dd2164",
 			"icon": "/images/icon/term.png",
-			"outIcon": "/images/out/AOL.png",
 			"title": "Action-On-LAN",
 			"text": "<b>Action-On-LAN</b> listens for Wake-On-LAN magic packets and runs a command upon receipt."
 		},
@@ -56,7 +53,6 @@
 			"url": "https://github.com/kennedn/roomAPI",
 			"color": "#6e04a9",
 			"icon": "/images/icon/term.png",
-			"outIcon": "/images/out/roomAPI.png",
 			"title": "roomAPI",
 			"text": "<b>roomAPI</b> is a tailored RESTful service for home automation, coded using Flask-RESTful."
 		},
@@ -74,7 +70,6 @@
 			"url": "https://github.com/kennedn/tvcom",
 			"color": "#1c817e",
 			"icon": "/images/icon/term.png",
-			"outIcon": "/images/out/tvcom.png",
 			"title": "tvcom",
 			"text": "<b>tvcom</b> is an assistance module that provides a friendly interface for commanding LG TVs via a serial connection."
 		},
