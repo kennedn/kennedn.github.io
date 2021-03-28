@@ -19,13 +19,18 @@ if (!window.document.documentMode) {
 	       event.preventDefault();
 	}, {passive: false}); 
 
-	// Prevent touch event if more than one finger is present
-	document.addEventListener('touchstart',(event) => {
-	    if(event.touches.length > 1)
-	        event.preventDefault();
-	}, {passive: false});
+	
 	document.addEventListener('touchmove', (event) => {
 	if (event.scale !== 1)
 	        event.preventDefault();
 	}, {passive: false});
+
+	var doubleTouchStartTimestamp = 0;
+	document.addEventListener("touchstart", function(event){
+    	var now = +(new Date());
+    	if (doubleTouchStartTimestamp + 500 > now || event.touches.length > 1){
+        	event.preventDefault();
+    	}
+    	doubleTouchStartTimestamp = now;
+	});
 }
