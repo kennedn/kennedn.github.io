@@ -31,6 +31,24 @@ html, body {
 	//border: 10px solid purple;
 }
 
+.websocket-bar {
+	width: 0%;
+	height: 97%;
+	-webkit-transition: width 1s;
+    transition: width 1s;	
+    background-color: black;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+}
+
+#websocket-table {table-layout:fixed; width:97%;}/*Setting the table width is important!*/
+#websocket-table td {overflow:hidden; padding:2%;}/*Hide text outside the cell.*/
+	
+#websocket-table td:nth-of-type(1) {width:25%;}/*Setting the width of column 1.*/
+#websocket-table td:nth-of-type(2) {width:75%; text-align: center; vertical-align: middle; position: relative;}/*Setting the width of column 2.*/
+#websocket-table span {}/*Setting the width of column 2.*/
+
 .tile-container {
 	perspective: 100%;
 	-webkit-perspective: 100%;
@@ -192,12 +210,12 @@ html, body {
 	text-decoration: underline;
 }
 .tile-big .back table {
-	overflow: auto;
+	overflow: hidden;
   	font-family: ubuntu;
   	border-collapse: collapse;
   	margin: 3% 3% 3% 3%;
   	white-space: nowrap;
-  	width: 80%;
+  	width: 80%
 }
 .tile-big .back th {
  	background-color: rgba(255, 255, 255, .3);
@@ -213,6 +231,7 @@ html, body {
   	font-family: ubuntu;
   	font-size: 26;
   	white-space: normal;
+  	overflow: hidden;
 }
 
 .tile-big .back tr:nth-child(even) {
@@ -390,6 +409,19 @@ html, body {
   	transform: scale(1);
   	-webkit-transform: scale(1);
 }
+
+.tile-big .back li {
+  	font-family: ubuntu;
+  	font-style: normal;    
+  	color: white;
+  	font-size: 26;
+}
+.tile-big .back ul {
+	padding: 0;
+}
+
+
+
 .tile .back li {
   	font-family: ubuntu;
   	font-style: normal;    

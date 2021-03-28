@@ -62,8 +62,9 @@ function resizeTile() {
   let fontTileScaler = tileSize / 360;
 
   // Set fonts based on scaler
-  $(".tile .back").find("li,p").css({'font-size' : 26 * fontTileScaler});
-  $(".tile-big .back .big-bg-right, .tile-big .back .big-bg-bottom, .tile-big .back .big-bg-left").find("li,p,a,th,td,table").css({'font-size' : 26 * fontScaler});
+  $(".tile .back").find("br,li,p").css({'font-size' : 26 * fontTileScaler});
+  $(".tile-big .back .big-bg-right, .tile-big .back .big-bg-bottom, .tile-big .back .big-bg-left").find("br,li,p,a,th,td,table").css({'font-size' : 26 * fontScaler});
+  $(".tile-big .back .img-center").find("br,li,p,a,th,td,table").css({'font-size' : 22 * fontScaler});
   $(".tile-big .back h1, .tile .back h1").css({'font-size' :32 * fontTileScaler});
   $("h1").css({'font-size' :32 * fontTileScaler});
   $("#footer p").css({'font-size' :26 * fontScaler});
@@ -230,6 +231,7 @@ function tileClick(event) {
   let color = tileSet[i-1].color;
   let type = tileSet[i-1].type;
   let backTile = $("#0").find(".back").last();
+
   // Determine whether tile seems to be a valid game
   let isGame = (isLinkLocal(url) && url.split('/').pop() === 'index.html' && type === 'game');
 
@@ -301,6 +303,40 @@ function tileClick(event) {
         backTile.append(`<img onmousedown="return false" src="/images/icon/back.png"/>`);
         backTile.append(tileSet[i-1].backHTML);
         resizeTile();
+        if (tileSet[i-1].websocket === true) {
+          let socket = io();
+
+          let cpu = $("#websocket-cpu");
+          let mem = $("#websocket-mem");
+          let download = $("#websocket-download");
+          let upload = $("#websocket-upload");
+          let uptime = $("#websocket-uptime");
+
+          cpu.children("div").css({"background-color": "#dd2164", "height": cpu.outerHeight()});
+          mem.children("div").css({"background-color": "#6e04a9", "height": mem.outerHeight()});
+          download.children("div").css({"background-color": "#dd2164", "height": download.outerHeight()});
+          upload.children("div").css({"background-color": "#6e04a9", "height": upload.outerHeight()});
+
+          socket.on('response', msg => {
+
+            let lastFlipped = Number(sessionStorage.getItem('lastFlipped'));
+            if (lastFlipped === i)
+              socket.emit('ping');
+            else
+              socket.disconnect(); 
+
+            cpu.children("div").css({"width": msg.cpu * cpu.outerWidth()});
+            mem.children("div").css({"width": msg.memory * mem.outerWidth()});
+            download.children("div").css({"width": msg.download * download.outerWidth()});
+            upload.children("div").css({"width": msg.upload * upload.outerWidth()});
+
+            cpu.children("span").text(msg.cpu_h);
+            mem.children("span").text(msg.memory_h);
+            download.children("span").text(msg.download_h);
+            upload.children("span").text(msg.upload_h);
+            uptime.text(msg.uptime);
+          }); 
+        }
       }
     });    
 

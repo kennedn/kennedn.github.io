@@ -71,13 +71,14 @@
 		},
       	{
 			"type": "custom",
+			"websocket": true,
 			"active": true,
 			"url": null,
 			"color": "#1c817e",
 			"icon": "/images/icon/about.png",
 			"title": "About this website",
-			"text": "A little about what this website runs on and how you can create your own home server",
-			"backHTML": "<div class='big-bg-left'></br><h1>About this website</h1><p>This website started out as a pet project in 2017. It was originally an experiment to see if it was possible to use CSS transforms as a navigational tool. You can see to the right a screenshot of the original proof of concept.</br></br>The website has since evolved in to a sort of pseudo web-app. 95% of the HTML is generated on the fly. This makes it quite modular and easy to add new content.</br></br>The website is also self hosted on a thin client (pictured right). It is a type of low power device akin to a raspberry pi.</br></br> It is currently running Debian Linux and hosts a number of web services.</br></br>If you find yourself in need of a low cost, low power home server, I would highly recommend parkytowers (<a target='_blank' href='https://www.parkytowers.me.uk/thin/'>here</a>) as a place to start.</p></div><div class='img-center'><div class='img'><img src='/images/misc/pilot.png'></div></br><div class='img'><img src='/images/misc/server.png'></div></div>"
+			"text": "Some information on the rubber bands and string holding this website together.",
+			"backHTML": "<div class='big-bg-left'></br><h1>About this website</h1><p>This website is currently self hosting on a repurposed thin client, pictured right. It's a low power computer akin to a raspberry pi but packs some additional features that were only recently standardised on embedded devices (Gigabit ethernet, USB3).</p><p>The website itself sits on an Nginx reverse proxy and consists mainly of a custom JQuery DOM builder with some CSS animations sprinkled on top.</p><p>As you can see from the statistics, its usually doing a fat lot of nothing but it does host a surprising number of services; Flask, Node.js, Bitwarden and Gollum to name a few.</p><p>If you ever find yourself in need of a low cost, low power home server, I would highly recommend parkytowers (<a target='_blank' href='https://www.parkytowers.me.uk/thin/'>here</a>) as a place to start.</p></div><div class='img-center'><div class='img'><img src='/images/misc/server.png'></div></br></br></br></br></br></br><table id='websocket-table'><tbody><tr><td>CPU</td><td id='websocket-cpu'><span></span><div class='websocket-bar'></div></td></tr><tr><td>Memory</td><td id='websocket-mem'><span></span><div class='websocket-bar'></div></td></tr><td>Download</td><td id='websocket-download'><span></span><div class='websocket-bar'></div></td></tr><td>Upload</td><td id='websocket-upload'><span></span><div class='websocket-bar'></div></td></tr><tr><td>Uptime</td><td id='websocket-uptime'></td></tr></tbody></table></div>"
 		},
 		{
 			"type": "download",
