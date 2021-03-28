@@ -302,7 +302,6 @@ function tileClick(event) {
         backTile.empty();
         backTile.append(`<img onmousedown="return false" src="/images/icon/back.png"/>`);
         backTile.append(tileSet[i-1].backHTML);
-        resizeTile();
         if (tileSet[i-1].websocket === true) {
           let socket = io();
 
@@ -337,6 +336,7 @@ function tileClick(event) {
             uptime.text(msg.uptime);
           }); 
         }
+        resizeTile();
       }
     });    
 
