@@ -334,7 +334,8 @@ function tileClick(event) {
             download.children("span").text(msg.download_h);
             upload.children("span").text(msg.upload_h);
             uptime.text(msg.uptime);
-          }); 
+          });
+          socket.emit('ping');
         }
         resizeTile();
       }
