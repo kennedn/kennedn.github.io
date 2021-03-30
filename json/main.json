@@ -65,7 +65,7 @@
 			"icon": "/images/icon/pong.png",
 			"title": "p5Pong",
 			"text": "A simple Pong clone, coded using the <b>p5.js</b> library.",
-			"backHTML": "</br><h1>p5Pong</h1><p>Move the mouse or a finger around and the left paddle will follow.</p><p>Double click inside the game window or press 'p' to (un)pause.</p><p>Source code is available <a target='_blank' href='https://github.com/kennedn/p5Pong'>here</a>.</p>",
+			"backHTML": "</br><h1>p5Pong</h1><p>Move the mouse or a finger around and the left paddle will follow.</p><p>Tap inside the game window to start playing.</p><p>Source code is available <a target='_blank' href='https://github.com/kennedn/p5Pong'>here</a>.</p>",
 			"orientation": "bottom",
 			"extend": 32
 		},
