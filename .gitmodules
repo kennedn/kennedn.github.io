@@ -7,7 +7,8 @@
 [submodule ".PyTetris"]
 	path = .PyTetris
 	url = https://github.com/kennedn/PyTetris
-        branch = jsdl
+  branch = jsdl
 [submodule ".livestats"]
 	path = .livestats
-	url = https://github.com/kennedn/livestats
+  url = https://github.com/kennedn/livestats
+  branch = main
