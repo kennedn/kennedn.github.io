@@ -81,7 +81,7 @@
 			"active": true,
 			"url": "https://github.com/kennedn/soundy",
 			"color": "#1c817e",
-			"icon": "/images/languages/python.svg",
+			"icon": "/images/languages/bash_python.svg",
 			"title": "soundy",
 			"text": "<b>soundy</b> is a helper script for controlling alsa sinks via the command line."
 		}
