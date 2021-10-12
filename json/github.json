@@ -2,84 +2,88 @@
 	"return_icon": "/images/return/button.png",
 	"tiles": [
 
-		{
+
+      	{
 			"type": "normal",
-			"active": false,
-			"url": null,
-			"color": "rgba(255, 255, 255, .0)",
-			"icon": "/images/icon/default.png",
-			"title": ""
+			"active": true,
+			"url": "https://github.com/kennedn/gnome-shell-extension-mprispanel",
+			"color": "#dd2164",
+			"icon": "/images/languages/javascript.svg",
+			"title": "MPRIS panel",
+			"text": "<b>MPRIS panel</b> uses a 'smart-switching' technique to effortlessly control multiple media players in linux."
 		},
 		{
 			"type": "normal",
 			"active": true,
 			"url": "https://github.com/kennedn/kindlepass",
 			"color": "#1c817e",
-			"icon": "/images/icon/term.png",
+			"icon": "/images/languages/python.svg",
 			"title": "kindlepass",
 			"text": "<b>kindlepass</b> is designed to streamline the retrieval of licenses for legacy Kindle devices."
 		},
-		{
-			"type": "normal",
-			"active": false,
-			"url": null,
-			"color": "rgba(255, 255, 255, .0)",
-			"icon": "/images/icon/default.png",
-			"title": ""
-		},
-
-      	{
+       	{
 			"type": "normal",
 			"active": true,
-			"url": "https://github.com/kennedn/gnome-shell-extension-mprispanel",
+			"url": "https://github.com/kennedn/meross",
 			"color": "#6e04a9",
-			"icon": "/images/icon/term.png",
-			"title": "MPRIS panel",
-			"text": "<b>MPRIS panel</b> uses a 'smart-switching' technique to effortlessly control multiple media players in linux."
+			"icon": "/images/languages/bash.svg",
+			"title": "meross",
+			"text": "<b>meross</b> provides tools and documentation for detaching Meross smart product from the cloud."
 		},
-		
       	{
 			"type": "normal",
 			"active": true,
 			"url": "https://github.com/kennedn/Action-On-LAN",
-			"color": "#dd2164",
-			"icon": "/images/icon/term.png",
+			"color": "#1c817e",
+			"icon": "/images/languages/python.svg",
 			"title": "Action-On-LAN",
 			"text": "<b>Action-On-LAN</b> listens for Wake-On-LAN magic packets and runs a command upon receipt."
 		},
 		{
 			"type": "normal",
 			"active": true,
-			"url": "https://github.com/kennedn/roomAPI",
+			"url": "https://github.com/kennedn/stateful",
 			"color": "#6e04a9",
-			"icon": "/images/icon/term.png",
+			"icon": "/images/languages/c_js.svg",
+			"title": "stateful",
+			"text": "<b>stateful</b> is a tile based Pebble app and is able to control RESTful API's with minimal Clicks."
+		},
+		
+		{
+			"type": "normal",
+			"active": true,
+			"url": "https://github.com/kennedn/roomAPI",
+			"color": "#dd2164",
+			"icon": "/images/languages/python.svg",
 			"title": "roomAPI",
 			"text": "<b>roomAPI</b> is a tailored RESTful service for home automation, coded using Flask-RESTful."
 		},
-		{
+       	{
 			"type": "normal",
-			"active": false,
-			"url": null,
-			"color": "rgba(255, 255, 255, .0)",
-			"icon": "/images/icon/default.png",
-			"title": ""
+			"active": true,
+			"url": "https://github.com/kennedn/teams-js-injector",
+			"color": "#6e04a9",
+			"icon": "/images/languages/go.svg",
+			"title": "teams-js-injector",
+			"text": "<b>teams-js-injector</b> injects custom JavaScript & CSS payloads into Microsoft Teams."
 		},
        	{
 			"type": "normal",
 			"active": true,
 			"url": "https://github.com/kennedn/tvcom",
-			"color": "#1c817e",
-			"icon": "/images/icon/term.png",
+			"color": "#dd2164",
+			"icon": "/images/languages/python.svg",
 			"title": "tvcom",
 			"text": "<b>tvcom</b> is an assistance module that provides a friendly interface for commanding LG TVs via a serial connection."
 		},
-		{
+       	{
 			"type": "normal",
-			"active": false,
-			"url": null,
-			"color": "rgba(255, 255, 255, .0)",
-			"icon": "/images/icon/default.png",
-			"title": ""
+			"active": true,
+			"url": "https://github.com/kennedn/soundy",
+			"color": "#1c817e",
+			"icon": "/images/languages/python.svg",
+			"title": "soundy",
+			"text": "<b>soundy</b> is a helper script for controlling alsa sinks via the command line."
 		}
 
 	]
