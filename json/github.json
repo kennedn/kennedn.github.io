@@ -46,7 +46,7 @@
 			"color": "#6e04a9",
 			"icon": "/images/languages/c_js.svg",
 			"title": "stateful",
-			"text": "<b>stateful</b> is a tile based Pebble app and is able to control RESTful API's with minimal Clicks."
+			"text": "<b>stateful</b> is a tile based Pebble app, able to control RESTful API's with minimal Clicks."
 		},
 		
 		{
