@@ -21,14 +21,14 @@
 			"title": "kindlepass",
 			"text": "<b>kindlepass</b> is designed to streamline the retrieval of licenses for legacy Kindle devices."
 		},
-       	{
+		{
 			"type": "normal",
 			"active": true,
-			"url": "https://github.com/kennedn/meross",
+			"url": "https://github.com/kennedn/stateful",
 			"color": "#6e04a9",
-			"icon": "/images/languages/bash.svg",
-			"title": "meross",
-			"text": "<b>meross</b> provides tools and documentation for detaching Meross smart products from the cloud."
+			"icon": "/images/languages/c_js.svg",
+			"title": "stateful",
+			"text": "<b>stateful</b> is a tile based Pebble app, able to control RESTful API's with minimal clicks."
 		},
       	{
 			"type": "normal",
@@ -39,16 +39,15 @@
 			"title": "Action-On-LAN",
 			"text": "<b>Action-On-LAN</b> listens for Wake-On-LAN magic packets and runs a custom shell command upon detection"
 		},
-		{
+       	{
 			"type": "normal",
 			"active": true,
-			"url": "https://github.com/kennedn/stateful",
+			"url": "https://github.com/kennedn/spotify_mood",
 			"color": "#6e04a9",
-			"icon": "/images/languages/c_js.svg",
-			"title": "stateful",
-			"text": "<b>stateful</b> is a tile based Pebble app, able to control RESTful API's with minimal clicks."
+			"icon": "/images/languages/python.svg",
+			"title": "spotify mood",
+			"text": "<b>spotify mood</b> is a cli tool for generating spotify playlists based on genre searches"
 		},
-		
 		{
 			"type": "normal",
 			"active": true,
