@@ -28,7 +28,7 @@
 			"color": "#6e04a9",
 			"icon": "/images/languages/bash.svg",
 			"title": "meross",
-			"text": "<b>meross</b> provides tools and documentation for detaching Meross smart product from the cloud."
+			"text": "<b>meross</b> provides tools and documentation for detaching Meross smart products from the cloud."
 		},
       	{
 			"type": "normal",
@@ -37,7 +37,7 @@
 			"color": "#1c817e",
 			"icon": "/images/languages/python.svg",
 			"title": "Action-On-LAN",
-			"text": "<b>Action-On-LAN</b> listens for Wake-On-LAN magic packets and runs a command upon receipt."
+			"text": "<b>Action-On-LAN</b> listens for Wake-On-LAN magic packets and runs a custom shell command upon detection"
 		},
 		{
 			"type": "normal",
