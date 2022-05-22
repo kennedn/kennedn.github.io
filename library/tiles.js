@@ -310,6 +310,7 @@ function tileClick(event) {
           let download = $("#websocket-download");
           let upload = $("#websocket-upload");
           let uptime = $("#websocket-uptime");
+          let pods = $("#websocket-pods");
 
           cpu.children("div").css({"background-color": "#dd2164", "height": cpu.outerHeight()});
           mem.children("div").css({"background-color": "#6e04a9", "height": mem.outerHeight()});
@@ -334,6 +335,7 @@ function tileClick(event) {
             download.children("span").text(msg.download_h);
             upload.children("span").text(msg.upload_h);
             uptime.text(msg.uptime);
+            pods.text(msg.pods);
           });
           socket.emit('ping');
         }
