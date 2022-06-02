@@ -11,10 +11,16 @@ metadata:
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection "upgrade";
       }
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
+  tls:
+  - hosts:
+    - kennedn.com
+    secretName: kennedn-github-io
+
   ingressClassName: public
   rules:
-  - host: baby8s.test
+  - host: kennedn.com
     http:
       paths:
       - path: /
@@ -31,4 +37,10 @@ spec:
             name: livestats
             port:
               number: 5000
-
+      - path: /bitwarden
+        pathType: Prefix
+        backend:
+          service:
+            name: vaultwarden-old
+            port:
+              number: 80
