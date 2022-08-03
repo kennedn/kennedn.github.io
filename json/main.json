@@ -91,13 +91,12 @@
 		},
 		{
 			"type": "normal",
-			"active": false,
-			"url": null,
+			"active": true,
+			"url": "/blog",
 			"color": "#dd2164",
-			"icon": "/images/icon/question.png",
-			"title": "Coming soon",
-			"text": " "
+			"icon": "/images/icon/blog.png",
+			"title": "Blog",
+			"text": "My own personal blog, dedicated to some of the weird and wacky projects I have fallen into"
 		}
-		
 	]
 }
