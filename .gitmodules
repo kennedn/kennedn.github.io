@@ -15,6 +15,3 @@
 [submodule "blog"]
 	path = .blog
 	url = https://github.com/kennedn/blog
-[submodule ".blog"]
-	path = .blog
-	url = https://github.com/kennedn/blog
