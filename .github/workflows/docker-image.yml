@@ -25,4 +25,4 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: ${{ github.repository }}:latest
+          tags: quay.io/${{ github.repository }}:latest
