@@ -1,0 +1,19 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: kennedn-github-io
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kennedn-github-io
+  template:
+    metadata:
+      labels:
+        app: kennedn-github-io
+    spec:
+      containers:
+        - image: quay.io/kennedn/kennedn.github.io
+          name: kennedn-github-io
+          ports:
+            - containerPort: 80
