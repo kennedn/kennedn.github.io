@@ -37,10 +37,3 @@ spec:
             name: livestats
             port:
               number: 5000
-      - path: /bitwarden
-        pathType: Prefix
-        backend:
-          service:
-            name: vaultwarden-old
-            port:
-              number: 80
