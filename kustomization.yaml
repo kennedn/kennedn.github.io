@@ -1,0 +1,10 @@
+resources:
+  - ingress.yaml
+  - service.yaml
+  - deployment.yaml
+  - .livestats
+
+namespace: default
+commonLabels:
+    app: kennedn-github-io
+
