@@ -10,80 +10,34 @@
 			"color": "#dd2164",
 			"icon": "/images/languages/c_js.svg",
 			"title": "stateful",
-			"text": "<b>stateful</b> is a tile based Pebble app, able to control RESTful API's with minimal clicks."
-		},
-		{
-			"type": "normal",
-			"active": true,
-			"url": "https://github.com/kennedn/kindlepass",
-			"color": "#1c817e",
-			"icon": "/images/languages/python.svg",
-			"title": "kindlepass",
-			"text": "<b>kindlepass</b> is designed to streamline the retrieval of licenses for legacy Kindle devices."
+			"text": "<b>stateful</b> is a Pebble watchapp designed to control RESTful API's with minimal clicks."
 		},
 		{
 			"type": "normal",
 			"active": true,
 			"url": "https://github.com/kennedn/gnome-shell-extension-mprispanel",
-			"color": "#6e04a9",
+			"color": "#1c817e",
 			"icon": "/images/languages/javascript.svg",
 			"title": "MPRIS panel",
-			"text": "<b>MPRIS panel</b> uses a 'smart-switching' technique to effortlessly control multiple media players in linux."
-		},
-      	{
-			"type": "normal",
-			"active": true,
-			"url": "https://github.com/kennedn/Action-On-LAN",
-			"color": "#1c817e",
-			"icon": "/images/languages/python.svg",
-			"title": "Action-On-LAN",
-			"text": "<b>Action-On-LAN</b> listens for Wake-On-LAN magic packets and runs a custom shell command upon detection"
-		},
-       	{
-			"type": "normal",
-			"active": true,
-			"url": "https://github.com/kennedn/spotify_mood",
-			"color": "#6e04a9",
-			"icon": "/images/languages/python.svg",
-			"title": "spotify mood",
-			"text": "<b>spotify mood</b> is a cli tool for generating spotify playlists based on genre searches"
+			"text": "<b>MPRIS panel</b> is a gnome shell extension that uses a 'smart-switching' technique to effortlessly control multiple media players in linux."
 		},
 		{
 			"type": "normal",
 			"active": true,
-			"url": "https://github.com/kennedn/roomAPI",
-			"color": "#dd2164",
-			"icon": "/images/languages/python.svg",
-			"title": "roomAPI",
-			"text": "<b>roomAPI</b> is a tailored RESTful service for home automation, coded using Flask-RESTful."
-		},
-       	{
-			"type": "normal",
-			"active": true,
-			"url": "https://github.com/kennedn/teams-js-injector",
+			"url": "https://github.com/kennedn/kindlepass",
 			"color": "#6e04a9",
-			"icon": "/images/languages/go.svg",
-			"title": "teams-js-injector",
-			"text": "<b>teams-js-injector</b> injects custom JavaScript & CSS payloads into Microsoft Teams."
-		},
-       	{
-			"type": "normal",
-			"active": true,
-			"url": "https://github.com/kennedn/tvcom",
-			"color": "#dd2164",
 			"icon": "/images/languages/python.svg",
-			"title": "tvcom",
-			"text": "<b>tvcom</b> is an assistance module that provides a friendly interface for commanding LG TVs via a serial connection."
+			"title": "kindlepass",
+			"text": "<b>kindlepass</b> helps older kindle devices continue to use the Amazon Audible service"
 		},
-       	{
+      	{
 			"type": "normal",
 			"active": true,
-			"url": "https://github.com/kennedn/soundy",
-			"color": "#1c817e",
-			"icon": "/images/languages/bash_python.svg",
-			"title": "soundy",
-			"text": "<b>soundy</b> is a helper script for controlling alsa sinks via the command line."
+			"url": "https://github.com/kennedn/snowdon-ii-wifi",
+            "color": "#dd2164",
+			"icon": "/images/languages/c.svg",
+			"title": "snowdon II wifi",
+			"text": "<b>Snowdon II Wifi</b> is a hardware mod for the Snowdon II soundbar that transforms it into an IoT device."
 		}
-
 	]
 }

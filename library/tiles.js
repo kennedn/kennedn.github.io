@@ -162,7 +162,7 @@ function DOMBuilder(tileData) {
       if (!tile.hasOwnProperty("outIcon") && tile.hasOwnProperty("icon"))
         tile.outIcon = tile.icon;
 
-      tileHTML+=`<div class="tile-container" ${tile.active ? '' : 'style="pointer-events:none; cursor: default; opacity: 0.2;"'}>
+      tileHTML+=`<div class="tile-container" ${tile.active ? '' : 'style="pointer-events:none; cursor: default; opacity: 1;"'}>
                   <div id="${i+1}" class="tile start" >
                     <div class="front ${tile.active ? '' : 'nohover-front'}" style="background:${tile.color} ;">
                       <h1> ${tile.title} </h1>

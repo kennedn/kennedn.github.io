@@ -2,6 +2,41 @@
 	"return_icon": "/images/return/button.png",
 	"tiles": [
 		{
+			"type": "normal",
+			"active": true,
+			"url": "/blog",
+			"color": "#dd2164",
+			"icon": "/images/icon/blog.png",
+			"title": "Blog",
+			"text": "My own personal blog, dedicated to some of the weird and wacky projects I have fallen into"
+		},
+		{
+			"type": "custom",
+			"active": true,
+			"url": null,
+			"color": "#1c817e",
+			"icon": "/images/icon/contact.png",
+			"title": "Who am i?",
+			"text": "A little word or two on me.</br>Who I am, where I'm from and what I get up to.",
+			"backHTML": "<div class='big-bg-left'></br><h1>Who am I?</h1><p>Call me Josh. I am a software engineer hailing from Central Scotland.</br></br>I like coffee a little bit too much and as a result of this I consistently find myself counter balancing the caffeine content by writing clean and efficient code.</br></br>You’ll usually find me at the gym, breaking something (and then fixing it) or knee deep in a personal project.</br></br>This websites current purpose is to showcase some of the interesting things I’ve done. You can find a few links and demonstrations of my work displayed on this website.</br></br>Speaking of work, I am currently positioned as a middleware engineer for the NatWest group.</p><h1>Contact</h1><p><i class='fa fa-envelope'></i>&nbsp&nbsp<a target='_blank' href='mailto:kennedn@msn.com'>kennedn@msn.com</a></br><i class='fa-brands fa-github'></i>&nbsp&nbsp<a target='_blank' href='https://github.com/kennedn'>Github</a></br><i class='fa-brands fa-linkedin-in'></i>&nbsp&nbsp<a target='_blank' href='https://www.linkedin.com/in/kennedn'>LinkedIn</a></p></div><di class='img-center'><div class='img'><img src='/images/misc/headshot2.jpg'></div></div>"
+		},
+    	{
+			"type": "download",
+			"active": true,
+			"url": "/misc/Resume.pdf",
+			"color": "#6e04a9",
+			"icon": "/images/icon/resume.png",
+			"title": "Resume",
+			"text": "Please take a copy:</br></br><i class='fa-solid fa-file-pdf'></i> <a href='misc/Joshua Kennedy - Resume.pdf' download>View resume</a>"
+		},  
+		{
+			"type": "normal",
+			"active": false,
+			"color": "#6e04a9",
+			"icon": "/images/icon/default.png",
+			"title": ""
+		},
+		{
 
 			"type": "normal",
 			"active": true,
@@ -12,62 +47,11 @@
 			"text": "Some of my cooler github projects. Made with ♥ and fuelled by coffee beans."
 		},
 		{
-			"type": "custom",
-			"active": true,
-			"url": null,
+			"type": "normal",
+			"active": false,
 			"color": "#1c817e",
-			"icon": "/images/icon/contact.png",
-			"title": "Who am i?",
-			"text": "A little word or two on me.</br>Who I am, where I'm from and what I get up to.",
-			"backHTML": "<div class='big-bg-left'></br><h1>Who am I?</h1><p>Call me Josh. I am a software engineer hailing from Central Scotland.</br></br>I like coffee a little bit too much and as a result of this I consistently find myself counter balancing the caffeine content by writing clean and efficient code.</br></br>You’ll usually find me at the gym, breaking something (and then fixing it) or knee deep in a personal project.</br></br>This websites current purpose is to showcase some of the interesting things I’ve done. You can find a few links and demonstrations of my work displayed on this website.</br></br>Speaking of work, I am currently positioned as a middleware engineer for the NatWest group.</p></div><di class='img-center'><div class='img'><img src='/images/misc/headshot2.jpg'></div></div>"
-		},
-    	{
-			"type": "download",
-			"active": true,
-			"url": "/misc/Resume.pdf",
-			"color": "#6e04a9",
-			"icon": "/images/icon/resume.png",
-			"title": "Resume",
-			"text": "Please take a copy:</br></br><a href='misc/Joshua Kennedy - Resume.pdf' download>View resume</a>"
-		},  
-		{
-			"type": "game",
-			"id": null,
-			"active": true,
-			"url": "/gravitation/index.html",
-			"color": "#6e04a9",
-			"icon": "/images/icon/gravity.png",
-			"title": "p5Gravitation",
-			"text": "Manipulate gravity with your mouse, coded using the <b>p5.js</b> library.",
-			"backHTML": "</br><h1>p5Gravitation</h1><p>Move the mouse or a finger around and the gravity will follow.</p><p>Scroll the wheel or adjust the top slider to vary the gravity offset.</p><p>Source code is available <a target='_blank' href='https://github.com/kennedn/p5Gravitation'>here</a>.</p>",
-			"orientation": "bottom",
-			"extend": 32
-		},
-		{
-			"type": "game",
-			"id": null,
-			"active": true,
-			"url": "/tetris/index.html",
-			"color": "#dd2164",
-			"icon": "/images/icon/tetris.png",
-			"title": "jsTetris",
-			"text": "A basic implementation of Tetris, coded in Python using <b>Pygame</b>, compiled to JavaScript using <b>Pyjs</b> with <b>Pyjsdl</b>.",
-			"backHTML": "<br/><h1>jsTetris</h1><p>Keyboard controls are as follows:</p><span><table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody><tr><td>left arrow</td><td>move left</td></tr><tr><td>right arrow</td><td>move right</td></tr><tr><td>z</td><td>rotate left</td></tr><tr><td>x</td><td>rotate right</td></tr><tr><td>down arrow</td><td>soft drop</td></tr><tr><td>space</td><td>hard drop</td></tr><tr><td>p</td><td>pause</td></tr><tr><td>r</td><td>restart</td></tr></tbody></table></span><p> Use the buttons to the right of the grid if you lack a keyboard.<p>Source code is available <a target='_blank' href='https://github.com/kennedn/pytetris/tree/jsdl'>here</a>.</p>",
-			"orientation": "right",
-			"extend": 46
-		},
-   		{
-			"type": "game",
-			"id": null,
-			"active": true,
-			"url": "/pong/index.html",
-			"color": "#1c817e",
-			"icon": "/images/icon/pong.png",
-			"title": "p5Pong",
-			"text": "A simple Pong clone, coded using the <b>p5.js</b> library.",
-			"backHTML": "</br><h1>p5Pong</h1><p>Move the mouse or a finger around and the left paddle will follow.</p><p>Tap inside the game window to start playing.</p><p>Source code is available <a target='_blank' href='https://github.com/kennedn/p5Pong'>here</a>.</p>",
-			"orientation": "bottom",
-			"extend": 32
+			"icon": "/images/icon/default.png",
+			"title": ""
 		},
       	{
 			"type": "custom",
@@ -78,25 +62,24 @@
 			"icon": "/images/icon/about.png",
 			"title": "About this website",
 			"text": "Some information on the rubber bands and string holding this website together.",
-			"backHTML": "<div class='big-bg-left'></br><h1>About this website</h1><p>This website is currently self hosting on an Intel NUC (Model NUC5i5RYH), pictured right. It was purchased for £115 as a replacement for my last home server and packs quite a punch.</p><p>The website itself is running in a kubernetes cluster on the NUC. The original core of this website was built from scratch using only Jquery and CSS3 transformations to achieve the tiling effects. Recently I have expanded the website with a <a target='_blank' href='https://kennedn.com/blog'>blog</a>, which I built using <a target='_blank' href='https://gohugo.io/'>Hugo</a>.</p><p>As you can see from the statistics, it's usually doing very little. But the cluster does host a surprising number of services, some of which were home grown! For example <a target='_blank' href='https://github.com/kennedn/roomAPI'>roomAPI</a> drives my home automation and <a target='_blank' href='https://github.com/kennedn/livestats/tree/k8s'>livestats</a> is powering the table to your right.</p></div><div class='img-center'><div class='img'><img src='/images/misc/server.png'></div></br></br></br></br></br></br><table id='websocket-table'><tbody><tr><td>CPU</td><td id='websocket-cpu'><span></span><div class='websocket-bar'></div></td></tr><tr><td>Memory</td><td id='websocket-mem'><span></span><div class='websocket-bar'></div></td></tr><td>Download</td><td id='websocket-download'><span></span><div class='websocket-bar'></div></td></tr><td>Upload</td><td id='websocket-upload'><span></span><div class='websocket-bar'></div></td></tr><tr><td>Uptime</td><td id='websocket-uptime'></td></tr></tbody></table></div>"
+			"backHTML": "<div class='big-bg-left'></br><h1>About this website</h1><p>This website is currently self hosting on an Intel NUC (Model NUC5i5RYH), pictured right. It was purchased for £115 as a replacement for my last home server and packs quite a punch.</p><p>The website itself is running in a kubernetes cluster on the NUC. The original core of this website was built from scratch using only Jquery and CSS3 transformations to achieve the tiling effects. Recently I have expanded the website with a <i class='fa-regular fa-clone'></i> <a target='_blank' href='https://kennedn.com/blog'>blog</a>, which I built using <i class='fa-solid fa-arrow-up-right-from-square'></i> <a target='_blank' href='https://gohugo.io/'>Hugo</a>.</p><p>As you can see from the statistics, it's usually doing very little. But the cluster does host a surprising number of services, some of which were home grown! For example <i class='fa-brands fa-github'></i>  <a target='_blank' href='https://github.com/kennedn/roomAPI'>roomAPI</a> drives my home automation and <i class='fa-brands fa-github'></i>  <a target='_blank' href='https://github.com/kennedn/livestats/tree/k8s'>livestats</a> is powering the table to your right.</p></div><div class='img-center'><div class='img'><img src='/images/misc/server.png'></div></br></br></br></br></br></br><table id='websocket-table'><tbody><tr><td>CPU</td><td id='websocket-cpu'><span></span><div class='websocket-bar'></div></td></tr><tr><td>Memory</td><td id='websocket-mem'><span></span><div class='websocket-bar'></div></td></tr><td>Download</td><td id='websocket-download'><span></span><div class='websocket-bar'></div></td></tr><td>Upload</td><td id='websocket-upload'><span></span><div class='websocket-bar'></div></td></tr><tr><td>Uptime</td><td id='websocket-uptime'></td></tr></tbody></table></div>"
 		},
 		{
-			"type": "download",
+
+			"type": "normal",
 			"active": true,
-			"url": null,
+			"url":  "/json/games.json",
 			"color": "#6e04a9",
-			"icon": "/images/icon/link.png",
-			"title": "Contact",
-			"text": "<ul><li><a target='_blank' href='mailto:kennedn@msn.com'>kennedn@msn.com</a></li><li><a target='_blank' href='https://github.com/kennedn'>Github</a></li><li><a target='_blank' href='https://www.linkedin.com/in/kennedn'>LinkedIn</a></li></ul>"
+			"icon": "/images/icon/tetris.png",
+			"title": "Games",
+			"text": "A collection of in-browser interactive games developed by yours truly"
 		},
 		{
 			"type": "normal",
-			"active": true,
-			"url": "/blog",
+			"active": false,
 			"color": "#dd2164",
-			"icon": "/images/icon/blog.png",
-			"title": "Blog",
-			"text": "My own personal blog, dedicated to some of the weird and wacky projects I have fallen into"
+			"icon": "/images/icon/default.png",
+			"title": ""
 		}
 	]
 }
