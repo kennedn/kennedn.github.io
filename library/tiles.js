@@ -311,10 +311,10 @@ function tileClick(event) {
           let upload = $("#websocket-upload");
           let uptime = $("#websocket-uptime");
 
-          cpu.children("div").css({"background-color": "#dd2164 !important", "height": cpu.outerHeight()});
-          mem.children("div").css({"background-color": "##1C817E !important", "height": mem.outerHeight()});
-          download.children("div").css({"background-color": "#dd2164 !important", "height": download.outerHeight()});
-          upload.children("div").css({"background-color": "#1C817E !important", "height": upload.outerHeight()});
+          cpu.children("div").css({"background-color": "#dd2164", "height": cpu.outerHeight()});
+          mem.children("div").css({"background-color": "#1C817E", "height": mem.outerHeight()});
+          download.children("div").css({"background-color": "#dd2164", "height": download.outerHeight()});
+          upload.children("div").css({"background-color": "#1C817E", "height": upload.outerHeight()});
 
           socket.on('response', msg => {
 
