@@ -17,4 +17,5 @@
 	url = https://github.com/kennedn/blog
 [submodule ".resume"]
 	path = .resume
+	branch = master
 	url = git@github.com:kennedn/best-resume-ever.git
