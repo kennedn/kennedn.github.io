@@ -18,4 +18,4 @@
 [submodule ".resume"]
 	path = .resume
 	branch = master
-	url = git@github.com:kennedn/best-resume-ever.git
+	url = https://github.com/kennedn/best-resume-ever.git
