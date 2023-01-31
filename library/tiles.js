@@ -312,9 +312,9 @@ function tileClick(event) {
           let uptime = $("#websocket-uptime");
 
           cpu.children("div").css({"background-color": "#dd2164", "height": cpu.outerHeight()});
-          mem.children("div").css({"background-color": "#6e04a9", "height": mem.outerHeight()});
+          mem.children("div").css({"background-color": "##1C817E", "height": mem.outerHeight()});
           download.children("div").css({"background-color": "#dd2164", "height": download.outerHeight()});
-          upload.children("div").css({"background-color": "#6e04a9", "height": upload.outerHeight()});
+          upload.children("div").css({"background-color": "#1C817E", "height": upload.outerHeight()});
 
           socket.on('response', msg => {
 
