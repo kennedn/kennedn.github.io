@@ -11,7 +11,7 @@
 [submodule ".livestats"]
 	path = .livestats
   url = https://github.com/kennedn/livestats
-  branch = k8s
+  branch = main
 [submodule "blog"]
 	path = .blog
 	url = https://github.com/kennedn/blog
