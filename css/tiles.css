@@ -199,11 +199,12 @@ html, body {
   	color: white;
   	font-family: ubuntu;
   	font-style: normal;    
+  	font-weight: bold;    
   	font-size: 18;
   	white-space: normal;
   	overflow: hidden;
 	padding: 0% 0% 0% 0%;
-	text-decoration: underline;
+	text-decoration: none;
 }
 .tile-big .back table {
 	overflow: hidden;
@@ -235,6 +236,18 @@ html, body {
 	margin: 0 0 0 0;
 }
 .tile-big .back h1 {
+	display: initial;
+	position: static;
+	padding: 3% 3% 3% 3%;
+	text-align: left;
+  	color: white;
+  	font-family: ubuntu;
+  	font-style: normal;    
+  	font-size: 32pt;
+  	user-select: none;
+  	-webkit-user-select: none;
+}
+.tile-big .back h2 {
 	display: initial;
 	position: static;
 	padding: 3% 3% 3% 3%;
@@ -411,22 +424,22 @@ html, body {
   	font-size: 26;
 }
 .tile-big .back ul {
-	padding: 0;
+	padding-top: 0;
 }
 
 
 
-.tile .back li {
+.tile.back li {
   	font-family: ubuntu;
   	font-style: normal;    
   	color: white;
   	font-size: 26;
   	margin-bottom: 5%;
 }
-.tile .back ul {
+.tile.back ul {
 	padding-left: 15%;
 }
-.tile .back a {
+.tile.back a {
 	pointer-events: auto;
 	font-family: ubuntu;
 	font-style: normal;
@@ -499,6 +512,7 @@ h1 {
 a {
 	font-family: ubuntu;
 	font-style: normal;
+	text-decoration: none;
 	color: white;
 }
 .iexplorer table {
@@ -622,5 +636,3 @@ a {
   	white-space: normal;
   	line-height: 1.5;
   }
-
-

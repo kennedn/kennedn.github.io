@@ -162,7 +162,7 @@ function DOMBuilder(tileData) {
       if (!tile.hasOwnProperty("outIcon") && tile.hasOwnProperty("icon"))
         tile.outIcon = tile.icon;
 
-      tileHTML+=`<div class="tile-container" ${tile.active ? '' : 'style="pointer-events:none; cursor: default; opacity: 0.2;"'}>
+      tileHTML+=`<div class="tile-container" ${tile.active ? '' : 'style="pointer-events:none; cursor: default; opacity: 1;"'}>
                   <div id="${i+1}" class="tile start" >
                     <div class="front ${tile.active ? '' : 'nohover-front'}" style="background:${tile.color} ;">
                       <h1> ${tile.title} </h1>
@@ -312,9 +312,9 @@ function tileClick(event) {
           let uptime = $("#websocket-uptime");
 
           cpu.children("div").css({"background-color": "#dd2164", "height": cpu.outerHeight()});
-          mem.children("div").css({"background-color": "#6e04a9", "height": mem.outerHeight()});
+          mem.children("div").css({"background-color": "#1C817E", "height": mem.outerHeight()});
           download.children("div").css({"background-color": "#dd2164", "height": download.outerHeight()});
-          upload.children("div").css({"background-color": "#6e04a9", "height": upload.outerHeight()});
+          upload.children("div").css({"background-color": "#1C817E", "height": upload.outerHeight()});
 
           socket.on('response', msg => {
 

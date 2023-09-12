@@ -1,0 +1,51 @@
+{
+	"return_icon": "/images/return/button.png",
+	"tiles": [
+		{
+			"type": "game",
+			"id": null,
+			"active": true,
+			"url": "/tetris/index.html",
+			"color": "#dd2164",
+			"icon": "/images/icon/tetris.png",
+			"title": "jsTetris",
+			"text": "A basic implementation of Tetris. Cross compiled to the browser from python!",
+			"backHTML": "<br/><h1>jsTetris</h1><p>Keyboard controls are as follows:</p><span><table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody><tr><td>left arrow</td><td>move left</td></tr><tr><td>right arrow</td><td>move right</td></tr><tr><td>z</td><td>rotate left</td></tr><tr><td>x</td><td>rotate right</td></tr><tr><td>down arrow</td><td>soft drop</td></tr><tr><td>space</td><td>hard drop</td></tr><tr><td>p</td><td>pause</td></tr><tr><td>r</td><td>restart</td></tr></tbody></table></span><p> Use the buttons to the right of the grid if you lack a keyboard.<p>Source code is available <i class='fa-brands fa-github'></i> <a target='_blank' href='https://github.com/kennedn/pytetris/tree/jsdl'>here</a>.</p>",
+			"orientation": "right",
+			"extend": 46
+		},
+   		{
+			"type": "game",
+			"id": null,
+			"active": true,
+			"url": "/pong/index.html",
+			"color": "#1c817e",
+			"icon": "/images/icon/pong.png",
+			"title": "p5Pong",
+			"text": "A simple Pong clone, build with <b>p5.js</b>.",
+			"backHTML": "</br><h1>p5Pong</h1><p>Move the mouse or a finger around and the left paddle will follow.</p><p>Tap inside the game window to start playing.</p><p>Source code is available <i class='fa-brands fa-github'></i>  <a target='_blank' href='https://github.com/kennedn/p5Pong'>here</a>.</p>",
+			"orientation": "bottom",
+			"extend": 32
+		},
+		{
+			"type": "game",
+			"id": null,
+			"active": true,
+			"url": "/gravitation/index.html",
+			"color": "#6e04a9",
+			"icon": "/images/icon/gravity.png",
+			"title": "p5Gravitation",
+			"text": "A gravity experiment, build with <b>p5.js</b>.",
+			"backHTML": "</br><h1>p5Gravitation</h1><p>Move the mouse or a finger around and the gravity will follow.</p><p>Scroll the wheel or adjust the top slider to vary the gravity offset.</p><p>Source code is available <i class='fa-brands fa-github'></i> <a target='_blank' href='https://github.com/kennedn/p5Gravitation'>here</a>.</p>",
+			"orientation": "bottom",
+			"extend": 32
+		},
+    	{
+			"type": "normal",
+			"active": false,
+			"color": "#dd2164",
+			"icon": "/images/icon/default.png",
+			"title": ""
+		}
+	]
+}

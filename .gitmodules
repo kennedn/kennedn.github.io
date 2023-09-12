@@ -15,3 +15,7 @@
 [submodule "blog"]
 	path = .blog
 	url = https://github.com/kennedn/blog
+[submodule ".resume"]
+	path = .resume
+	branch = master
+	url = https://github.com/kennedn/best-resume-ever.git
