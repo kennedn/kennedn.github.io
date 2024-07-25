@@ -2,7 +2,7 @@ resources:
   - ingress.yaml
   - service.yaml
   - deployment.yaml
-  - .livestats
+  - pvc.yaml
 
 namespace: default
 commonLabels:

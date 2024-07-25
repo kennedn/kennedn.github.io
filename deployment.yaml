@@ -13,7 +13,32 @@ spec:
         app: kennedn-github-io
     spec:
       containers:
-        - image: quay.io/kennedn/kennedn.github.io
-          name: kennedn-github-io
-          ports:
-            - containerPort: 80
+      - image: nginx
+        name: kennedn-github-io
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: web-data
+          mountPath: /usr/share/nginx/html
+      initContainers:
+      - image: alpine/git
+        name: git
+        command:
+        - sh
+        - -c
+        - >
+          git clone --recurse-submodules -j8 https://github.com/kennedn/kennedn.github.io /html ||
+          {
+            cd /html;
+            git reset --hard HEAD;
+            git submodule foreach --recursive git reset --hard HEAD;
+            git pull --recurse-submodules -j8;
+          }
+        volumeMounts:
+        - name: web-data
+          mountPath: /html
+      volumes:
+      - name: web-data
+        persistentVolumeClaim:
+          claimName: kennedn-github-io
+        
