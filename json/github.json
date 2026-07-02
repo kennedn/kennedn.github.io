@@ -1,43 +1,41 @@
 {
-	"return_icon": "/images/return/button.png",
-	"tiles": [
-
-
-      	{
-			"type": "normal",
-			"active": true,
-			"url": "https://github.com/kennedn/stateful",
-			"color": "#dd2164",
-			"icon": "/images/languages/c_js.svg",
-			"title": "stateful",
-			"text": "<b>stateful</b> is a Pebble watchapp designed to control RESTful API's with minimal clicks."
-		},
-		{
-			"type": "normal",
-			"active": true,
-			"url": "https://github.com/kennedn/gnome-shell-extension-mprispanel",
-			"color": "#1c817e",
-			"icon": "/images/languages/javascript.svg",
-			"title": "MPRIS panel",
-			"text": "<b>MPRIS panel</b> is a gnome shell extension that uses a 'smart-switching' technique to effortlessly control multiple media players in linux."
-		},
-		{
-			"type": "normal",
-			"active": true,
-			"url": "https://github.com/kennedn/kindlepass",
-			"color": "#6e04a9",
-			"icon": "/images/languages/python.svg",
-			"title": "kindlepass",
-			"text": "<b>kindlepass</b> helps older kindle devices continue to use the Amazon Audible service"
-		},
-      	{
-			"type": "normal",
-			"active": true,
-			"url": "https://github.com/kennedn/snowdon-ii-wifi",
-            "color": "#dd2164",
-			"icon": "/images/languages/c.svg",
-			"title": "snowdon II wifi",
-			"text": "<b>Snowdon II Wifi</b> is a hardware mod for the Snowdon II soundbar that transforms it into an IoT device."
-		}
-	]
+  "return_icon": "/images/return/button.png",
+  "tiles": [
+    {
+      "type": "normal",
+      "active": true,
+      "url": "https://github.com/kennedn/tapo-onboarding",
+      "color": "#1c817e",
+      "icon": "/images/languages/bash.svg",
+      "title": "tapo-onboarding",
+      "text": "<b>tapo-onboarding</b> is open-source tooling for onboarding modern TP-Link Tapo cameras without using the vendor cloud, including support for newer v3 encrypted provisioning."
+    },
+    {
+      "type": "normal",
+      "active": true,
+      "url": "https://github.com/kennedn/Stateful",
+      "color": "#dd2164",
+      "icon": "/images/languages/c_js.svg",
+      "title": "Stateful",
+      "text": "<b>Stateful</b> is a Pebble smartwatch application providing a tile-based interface for controlling RESTful APIs with minimal user interaction."
+    },
+    {
+      "type": "normal",
+      "active": true,
+      "url": "https://github.com/kennedn/restate-go",
+      "color": "#6e04a9",
+      "icon": "/images/languages/go.svg",
+      "title": "restate-go",
+      "text": "<b>restate-go</b> is a local-first home automation platform written in Go, designed to provide cloudless automation without dependence on external services."
+    },
+    {
+      "type": "normal",
+      "active": true,
+      "url": "https://github.com/kennedn/snowdon-ii-wifi",
+      "color": "#dd2164",
+      "icon": "/images/languages/c.svg",
+      "title": "Snowdon II WiFi",
+      "text": "<b>Snowdon II WiFi</b> is a Raspberry Pi Pico based modchip adding Wi-Fi and a RESTful API to a Majority Snowdon II soundbar by driving its infrared interface and inferring state from its status LED."
+    }
+  ]
 }
