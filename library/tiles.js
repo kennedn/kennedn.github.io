@@ -481,7 +481,7 @@ function tileGenerator(jsonFile) {
 }
 
 // callback for popstate, try to restore JSON from history
-function onPopState (jsonFile) {
+function onPopState (event, jsonFile) {
   // remove sessionStorage items to prevent accidental use via race conditions
   if (event.state == null)
     tileGenerator(jsonFile);
@@ -493,7 +493,7 @@ $(document).ready((event) => {
   let jsonFile = "/json/main.json";
 
   // Set listener for history popstate, this will restore JSON from history if possible
-  window.addEventListener('popstate', function() {onPopState(jsonFile);});
+  window.addEventListener('popstate', function(event) {onPopState(event, jsonFile);});
 
   // If popstate didn't fire, this either means the user
   // didn't use history to get here or they are navigating back from an external site
