@@ -62,7 +62,7 @@ function resizeTile() {
   let fontTileScaler = tileSize / 360;
 
   // Set fonts based on scaler
-  $(".tile .back").find("br,li,p").css({'font-size' : 26 * fontTileScaler});
+  $(".tile .back").find("br,li,p").css({'font-size' : 22 * fontTileScaler});
   $(".tile-big .back .big-bg-right, .tile-big .back .big-bg-bottom, .tile-big .back .big-bg-left").find("br,li,p,a,th,td,table").css({'font-size' : 26 * fontScaler});
   $(".tile-big .back .img-center").find("br,li,p,a,th,td,table").css({'font-size' : 22 * fontScaler});
   $(".tile-big .back h1, .tile .back h1").css({'font-size' :32 * fontTileScaler});
