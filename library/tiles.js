@@ -480,22 +480,27 @@ function tileGenerator(jsonFile) {
   });
 }
 
-// callback for popstate, try to restore JSON from history
-function onPopState (event, jsonFile) {
-  // remove sessionStorage items to prevent accidental use via race conditions
-  if (event.state == null)
-    tileGenerator(jsonFile);
-  else
-    tileGenerator(event.state.jsonFile);
-}
 
 $(document).ready((event) => {
   let jsonFile = "/json/main.json";
 
-  // Set listener for history popstate, this will restore JSON from history if possible
-  window.addEventListener('popstate', function(event) {onPopState(event, jsonFile);});
+  // Handle normal browser back/forward navigation between history states
+  window.addEventListener('popstate', function(event) {
+    const targetJson = event.state?.jsonFile || jsonFile;
+    tileGenerator(targetJson);
+  });
 
-  // If popstate didn't fire, this either means the user
+  // Handle pages restored from the browser back/forward cache (BFCache),
+  // where the existing DOM may be restored in its previous animation state
+  // without a popstate event firing
+  window.addEventListener('pageshow', function(event) {
+    if (event.persisted) {
+      const targetJson = history.state?.jsonFile || jsonFile;
+      tileGenerator(targetJson);
+    }
+  });    
+
+  // If popstate / pageshow didn't fire, this either means the user
   // didn't use history to get here or they are navigating back from an external site
   if($(".auto-generated").length == 0) {
     
